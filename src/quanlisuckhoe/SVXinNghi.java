@@ -37,30 +37,30 @@ public class SVXinNghi extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tieude_magv = new javax.swing.JLabel();
-        tieude_tengv = new javax.swing.JLabel();
+        tieude_masv = new javax.swing.JLabel();
+        tieude_tensv = new javax.swing.JLabel();
         tieude_khoa = new javax.swing.JLabel();
         tieude = new javax.swing.JLabel();
-        text_mgv = new javax.swing.JTextField();
+        text_tensv = new javax.swing.JTextField();
         tieude_ngay = new javax.swing.JLabel();
-        text_mgv1 = new javax.swing.JTextField();
+        text_msv = new javax.swing.JTextField();
         text_khoa = new javax.swing.JTextField();
         text_ngay = new javax.swing.JTextField();
         bt_gui = new javax.swing.JButton();
-        tieude_ngay2 = new javax.swing.JLabel();
-        text_ngay2 = new javax.swing.JTextField();
+        tieude_ngaybd = new javax.swing.JLabel();
+        text_ngaybd = new javax.swing.JTextField();
         tieude_ngay3 = new javax.swing.JLabel();
-        text_ngay3 = new javax.swing.JTextField();
+        text_ngaykt = new javax.swing.JTextField();
         tieude_ngay4 = new javax.swing.JLabel();
         cb_lydo = new javax.swing.JComboBox<>();
         tieude_ngay5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        text_chitiet = new javax.swing.JTextArea();
         tieude_ngay6 = new javax.swing.JLabel();
         bt_file = new javax.swing.JButton();
         file_name = new javax.swing.JLabel();
         tieude_khoa1 = new javax.swing.JLabel();
-        text_khoa1 = new javax.swing.JTextField();
+        text_lop = new javax.swing.JTextField();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
         m_gvKhaiBao = new javax.swing.JMenu();
@@ -71,28 +71,28 @@ public class SVXinNghi extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tieude_magv.setText("Mã sinh viên");
+        tieude_masv.setText("Mã sinh viên");
 
-        tieude_tengv.setText("Tên sinh viên");
+        tieude_tensv.setText("Tên sinh viên");
 
         tieude_khoa.setText("Khoa");
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Đơn Xin Nghỉ Phép");
 
-        text_mgv.setEditable(false);
-        text_mgv.addActionListener(new java.awt.event.ActionListener() {
+        text_tensv.setEditable(false);
+        text_tensv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_mgvActionPerformed(evt);
+                text_tensvActionPerformed(evt);
             }
         });
 
         tieude_ngay.setText("Ngày gửi");
 
-        text_mgv1.setEditable(false);
-        text_mgv1.addActionListener(new java.awt.event.ActionListener() {
+        text_msv.setEditable(false);
+        text_msv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_mgv1ActionPerformed(evt);
+                text_msvActionPerformed(evt);
             }
         });
 
@@ -117,19 +117,19 @@ public class SVXinNghi extends javax.swing.JFrame{
             }
         });
 
-        tieude_ngay2.setText("Ngày bắt đầu");
+        tieude_ngaybd.setText("Ngày bắt đầu");
 
-        text_ngay2.addActionListener(new java.awt.event.ActionListener() {
+        text_ngaybd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngay2ActionPerformed(evt);
+                text_ngaybdActionPerformed(evt);
             }
         });
 
         tieude_ngay3.setText("Ngày kết thúc");
 
-        text_ngay3.addActionListener(new java.awt.event.ActionListener() {
+        text_ngaykt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngay3ActionPerformed(evt);
+                text_ngayktActionPerformed(evt);
             }
         });
 
@@ -144,9 +144,9 @@ public class SVXinNghi extends javax.swing.JFrame{
 
         tieude_ngay5.setText("Mô tả chi tiết:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        text_chitiet.setColumns(20);
+        text_chitiet.setRows(5);
+        jScrollPane1.setViewportView(text_chitiet);
 
         tieude_ngay6.setText("Các tài liệu/hình ảnh liên quan:");
 
@@ -161,10 +161,10 @@ public class SVXinNghi extends javax.swing.JFrame{
 
         tieude_khoa1.setText("Lớp");
 
-        text_khoa1.setEditable(false);
-        text_khoa1.addActionListener(new java.awt.event.ActionListener() {
+        text_lop.setEditable(false);
+        text_lop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_khoa1ActionPerformed(evt);
+                text_lopActionPerformed(evt);
             }
         });
 
@@ -193,127 +193,136 @@ public class SVXinNghi extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tieude_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)
+                                .addComponent(text_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(tieude_khoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tieude_ngay5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(135, 135, 135)
+                                .addComponent(tieude_ngaybd, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(text_ngaybd, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(tieude_ngay)
+                        .addGap(16, 16, 16)
+                        .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(tieude_masv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(text_msv, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tieude_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(text_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tieude_ngay6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(190, 190, 190)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bt_file))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_file)))
+                        .addGap(5, 5, 5)
                         .addComponent(file_name))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tieude_ngay4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tieude_ngay5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tieude_ngay2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(text_ngay2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tieude_ngay3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(text_ngay3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tieude_tengv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tieude_magv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(text_mgv, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(text_mgv1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tieude_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tieude_khoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(tieude_ngay))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(text_khoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addGap(221, 221, 221)
+                        .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(31, 31, 31)
+                            .addComponent(tieude_ngay4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)
+                            .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(tieude_ngay3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(text_ngaykt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_mgv1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tieude_magv)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tieude_tengv)
-                                    .addComponent(text_mgv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tieude_ngay)
-                            .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(tieude_khoa)
-                                .addComponent(text_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tieude_khoa1)
-                                    .addComponent(text_khoa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tieude_ngay2)
-                    .addComponent(text_ngay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tieude_ngay5))
+                    .addComponent(tieude_ngay)
+                    .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tieude_ngay3)
-                        .addComponent(text_ngay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tieude_ngay4)
-                        .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tieude_masv)
+                    .addComponent(text_msv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tieude_ngay6)
-                            .addComponent(bt_file)
-                            .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 32, Short.MAX_VALUE))
+                            .addComponent(tieude_khoa)
+                            .addComponent(text_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(tieude_tensv))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(text_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tieude_khoa1)
+                            .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tieude_ngay5)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tieude_ngaybd)
+                        .addComponent(text_ngaybd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_lydo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tieude_ngay4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tieude_ngay3)
+                                .addComponent(text_ngaykt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(tieude_ngay6))
+                    .addComponent(bt_file)
+                    .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(bt_gui)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void text_mgvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_mgvActionPerformed
+    private void text_tensvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tensvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_text_mgvActionPerformed
+    }//GEN-LAST:event_text_tensvActionPerformed
 
-    private void text_mgv1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_mgv1ActionPerformed
+    private void text_msvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_msvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_text_mgv1ActionPerformed
+    }//GEN-LAST:event_text_msvActionPerformed
 
     private void text_khoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoaActionPerformed
         // TODO add your handling code here:
@@ -327,13 +336,13 @@ public class SVXinNghi extends javax.swing.JFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_guiActionPerformed
 
-    private void text_ngay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngay2ActionPerformed
+    private void text_ngaybdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngaybdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngay2ActionPerformed
+    }//GEN-LAST:event_text_ngaybdActionPerformed
 
-    private void text_ngay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngay3ActionPerformed
+    private void text_ngayktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayktActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngay3ActionPerformed
+    }//GEN-LAST:event_text_ngayktActionPerformed
 
     private void cb_lydoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_lydoActionPerformed
         // TODO add your handling code here:
@@ -401,9 +410,9 @@ public class SVXinNghi extends javax.swing.JFrame{
         }
     }//GEN-LAST:event_bt_fileActionPerformed
 
-    private void text_khoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoa1ActionPerformed
+    private void text_lopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_lopActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_text_khoa1ActionPerformed
+    }//GEN-LAST:event_text_lopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,7 +462,6 @@ public class SVXinNghi extends javax.swing.JFrame{
     private javax.swing.JComboBox<String> cb_lydo;
     private javax.swing.JLabel file_name;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenu m_gvKhaiBao;
     private javax.swing.JMenu m_gvThongBao;
     private javax.swing.JMenu m_gvThongKe;
@@ -461,23 +469,24 @@ public class SVXinNghi extends javax.swing.JFrame{
     private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenu m_gvXinNghi;
     private javax.swing.JMenuBar menu_gv;
+    private javax.swing.JTextArea text_chitiet;
     private javax.swing.JTextField text_khoa;
-    private javax.swing.JTextField text_khoa1;
-    private javax.swing.JTextField text_mgv;
-    private javax.swing.JTextField text_mgv1;
+    private javax.swing.JTextField text_lop;
+    private javax.swing.JTextField text_msv;
     private javax.swing.JTextField text_ngay;
-    private javax.swing.JTextField text_ngay2;
-    private javax.swing.JTextField text_ngay3;
+    private javax.swing.JTextField text_ngaybd;
+    private javax.swing.JTextField text_ngaykt;
+    private javax.swing.JTextField text_tensv;
     private javax.swing.JLabel tieude;
     private javax.swing.JLabel tieude_khoa;
     private javax.swing.JLabel tieude_khoa1;
-    private javax.swing.JLabel tieude_magv;
+    private javax.swing.JLabel tieude_masv;
     private javax.swing.JLabel tieude_ngay;
-    private javax.swing.JLabel tieude_ngay2;
     private javax.swing.JLabel tieude_ngay3;
     private javax.swing.JLabel tieude_ngay4;
     private javax.swing.JLabel tieude_ngay5;
     private javax.swing.JLabel tieude_ngay6;
-    private javax.swing.JLabel tieude_tengv;
+    private javax.swing.JLabel tieude_ngaybd;
+    private javax.swing.JLabel tieude_tensv;
     // End of variables declaration//GEN-END:variables
 }
