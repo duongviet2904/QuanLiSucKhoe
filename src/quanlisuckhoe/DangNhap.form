@@ -112,13 +112,16 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tf_name">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_pass">
           <Properties>
-            <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_passActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_login">
           <Properties>

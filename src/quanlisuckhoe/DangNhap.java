@@ -88,9 +88,14 @@ public class DangNhap extends javax.swing.JFrame {
 
         jLabel2.setText("Mật khẩu");
 
-        tf_name.setText("Tên đăng nhập");
+        tf_name.setToolTipText("");
 
-        tf_pass.setText("Mật khẩu");
+        tf_pass.setToolTipText("");
+        tf_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_passActionPerformed(evt);
+            }
+        });
 
         bt_login.setText("Đăng nhập");
         bt_login.setToolTipText("");
@@ -225,6 +230,10 @@ public class DangNhap extends javax.swing.JFrame {
     private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_loginMouseClicked
+
+    private void tf_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_passActionPerformed
 
     /**
      * @param args the command line arguments
