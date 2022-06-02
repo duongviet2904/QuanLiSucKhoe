@@ -26,24 +26,7 @@ public class SVKhaiBao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rb_14Co = new javax.swing.JRadioButton();
-        rb_14Khong = new javax.swing.JRadioButton();
-        jTextArea2 = new javax.swing.JTextArea();
-        jTextArea3 = new javax.swing.JTextArea();
-        jTextArea4 = new javax.swing.JTextArea();
-        jTextArea5 = new javax.swing.JTextArea();
-        jTextArea6 = new javax.swing.JTextArea();
-        rb_14Khong1 = new javax.swing.JRadioButton();
-        rb_14Co1 = new javax.swing.JRadioButton();
-        rb_14Co2 = new javax.swing.JRadioButton();
-        rb_14Khong2 = new javax.swing.JRadioButton();
-        rb_14Co3 = new javax.swing.JRadioButton();
-        rb_14Khong3 = new javax.swing.JRadioButton();
-        rb_14Co4 = new javax.swing.JRadioButton();
-        rb_14Khong4 = new javax.swing.JRadioButton();
         tieude = new javax.swing.JLabel();
-        bt_khaibao = new javax.swing.JButton();
-        jTextArea1 = new javax.swing.JTextArea();
         text_ngay = new javax.swing.JTextField();
         tieude_masv = new javax.swing.JLabel();
         tieude_khoa1 = new javax.swing.JLabel();
@@ -54,133 +37,34 @@ public class SVKhaiBao extends javax.swing.JFrame {
         tieude_ngay = new javax.swing.JLabel();
         text_msv = new javax.swing.JTextField();
         text_khoa = new javax.swing.JTextField();
+        rb_14Co = new javax.swing.JRadioButton();
+        rb_14Khong = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        rb_14Khong1 = new javax.swing.JRadioButton();
+        rb_14Co1 = new javax.swing.JRadioButton();
+        rb_14Co2 = new javax.swing.JRadioButton();
+        rb_14Khong2 = new javax.swing.JRadioButton();
+        rb_14Co3 = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        rb_14Khong3 = new javax.swing.JRadioButton();
+        rb_14Co4 = new javax.swing.JRadioButton();
+        rb_14Khong4 = new javax.swing.JRadioButton();
+        bt_khaibao = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
         m_gvTroGiup = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        rb_14Co.setText("Có");
-        rb_14Co.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14CoActionPerformed(evt);
-            }
-        });
-
-        rb_14Khong.setText("Không");
-        rb_14Khong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14KhongActionPerformed(evt);
-            }
-        });
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText("Người từ nước có bệnh Covid-19");
-        jTextArea2.setAutoscrolls(false);
-        jTextArea2.setVerifyInputWhenFocusTarget(false);
-
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Trong vòng 14 ngày qua Anh/Chị có tiếp xúc với:");
-        jTextArea3.setAutoscrolls(false);
-        jTextArea3.setVerifyInputWhenFocusTarget(false);
-
-        jTextArea4.setEditable(false);
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jTextArea4.setText("Người bệnh có biểu hiện sốt, ho, khó thở, viêm phổi");
-        jTextArea4.setAutoscrolls(false);
-        jTextArea4.setVerifyInputWhenFocusTarget(false);
-
-        jTextArea5.setEditable(false);
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jTextArea5.setText("Người bệnh hoặc nghi ngờ mắc bệnh đậu mùa khỉ");
-        jTextArea5.setAutoscrolls(false);
-        jTextArea5.setVerifyInputWhenFocusTarget(false);
-
-        jTextArea6.setEditable(false);
-        jTextArea6.setColumns(20);
-        jTextArea6.setRows(5);
-        jTextArea6.setText("Người bệnh hoặc nghi ngờ mắc bệnh Covid-19");
-        jTextArea6.setAutoscrolls(false);
-        jTextArea6.setVerifyInputWhenFocusTarget(false);
-
-        rb_14Khong1.setText("Không");
-        rb_14Khong1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong1ActionPerformed(evt);
-            }
-        });
-
-        rb_14Co1.setText("Có");
-        rb_14Co1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co1ActionPerformed(evt);
-            }
-        });
-
-        rb_14Co2.setText("Có");
-        rb_14Co2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co2ActionPerformed(evt);
-            }
-        });
-
-        rb_14Khong2.setText("Không");
-        rb_14Khong2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong2ActionPerformed(evt);
-            }
-        });
-
-        rb_14Co3.setText("Có");
-        rb_14Co3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co3ActionPerformed(evt);
-            }
-        });
-
-        rb_14Khong3.setText("Không");
-        rb_14Khong3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong3ActionPerformed(evt);
-            }
-        });
-
-        rb_14Co4.setText("Có");
-        rb_14Co4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co4ActionPerformed(evt);
-            }
-        });
-
-        rb_14Khong4.setText("Không");
-        rb_14Khong4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong4ActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Khai Báo Y Tế");
-
-        bt_khaibao.setText("Khai Báo");
-        bt_khaibao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_khaibaoActionPerformed(evt);
-            }
-        });
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Trong vòng 14 ngày qua,Anh/Chị có thấy xuất hiện ít nhất 1 trong\n các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi, thay \nđổi vị giác không?");
-        jTextArea1.setAutoscrolls(false);
-        jTextArea1.setVerifyInputWhenFocusTarget(false);
 
         text_ngay.setEditable(false);
         text_ngay.addActionListener(new java.awt.event.ActionListener() {
@@ -227,6 +111,120 @@ public class SVKhaiBao extends javax.swing.JFrame {
             }
         });
 
+        rb_14Co.setText("Có");
+        rb_14Co.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14CoActionPerformed(evt);
+            }
+        });
+
+        rb_14Khong.setText("Không");
+        rb_14Khong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14KhongActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Người từ nước có bệnh Covid-19");
+
+        jLabel7.setText("Người bệnh có biểu hiện sốt, ho, khó thở, viêm phổi");
+
+        jLabel8.setText("Người bệnh hoặc nghi ngờ mắc bệnh đậu mùa khỉ");
+
+        rb_14Khong1.setText("Không");
+        rb_14Khong1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Khong1ActionPerformed(evt);
+            }
+        });
+
+        rb_14Co1.setText("Có");
+        rb_14Co1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Co1ActionPerformed(evt);
+            }
+        });
+
+        rb_14Co2.setText("Có");
+        rb_14Co2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Co2ActionPerformed(evt);
+            }
+        });
+
+        rb_14Khong2.setText("Không");
+        rb_14Khong2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Khong2ActionPerformed(evt);
+            }
+        });
+
+        rb_14Co3.setText("Có");
+        rb_14Co3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Co3ActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setRequestFocusEnabled(false);
+        jPanel1.setVerifyInputWhenFocusTarget(false);
+
+        jLabel1.setText("Trong vòng 14 ngày qua,Anh/Chị có thấy xuất hiện ít nhất 1 trong");
+
+        jLabel2.setText("các dấu hiệu: sốt, ho, khó thở, viêm phổi, đau họng, mệt mỏi, thay");
+
+        jLabel3.setText("đổi vị giác không?");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel3)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel2)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jLabel4.setText("Trong vòng 14 ngày qua Anh/Chị có tiếp xúc với:");
+
+        jLabel5.setText("Người bệnh hoặc nghi ngờ mắc bệnh Covid-19");
+
+        rb_14Khong3.setText("Không");
+        rb_14Khong3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Khong3ActionPerformed(evt);
+            }
+        });
+
+        rb_14Co4.setText("Có");
+        rb_14Co4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Co4ActionPerformed(evt);
+            }
+        });
+
+        rb_14Khong4.setText("Không");
+        rb_14Khong4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_14Khong4ActionPerformed(evt);
+            }
+        });
+
+        bt_khaibao.setText("Khai Báo");
+        bt_khaibao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_khaibaoActionPerformed(evt);
+            }
+        });
+
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,43 +251,6 @@ public class SVKhaiBao extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_14Co3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_14Khong3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextArea5, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_14Co4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_14Khong4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextArea3)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextArea2, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextArea6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(rb_14Co1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(rb_14Khong1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(rb_14Co2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(rb_14Khong2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(rb_14Khong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(rb_14Co, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(195, 195, 195)
-                                .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(249, 249, 249)
@@ -311,7 +272,43 @@ public class SVKhaiBao extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(tieude_khoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rb_14Khong, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Co, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(70, 70, 70)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(rb_14Co1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rb_14Khong1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(rb_14Co2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rb_14Khong2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(44, 44, 44)
+                                .addComponent(rb_14Co3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rb_14Khong3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(54, 54, 54)
+                                .addComponent(rb_14Co4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rb_14Khong4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -342,45 +339,67 @@ public class SVKhaiBao extends javax.swing.JFrame {
                             .addComponent(text_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tieude_khoa1)
                             .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rb_14Co)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rb_14Khong)))
-                .addGap(27, 27, 27)
-                .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_14Co1)
-                        .addComponent(rb_14Khong1))
-                    .addComponent(jTextArea6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_14Co2)
-                        .addComponent(rb_14Khong2)))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rb_14Co3)
-                    .addComponent(rb_14Khong3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextArea5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_14Co4)
-                        .addComponent(rb_14Khong4)))
-                .addGap(27, 27, 27)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb_14Co1)
+                    .addComponent(rb_14Khong1)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb_14Co2)
+                    .addComponent(rb_14Khong2)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb_14Co3)
+                    .addComponent(rb_14Khong3)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb_14Co4)
+                    .addComponent(rb_14Khong4)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(bt_khaibao)
-                .addContainerGap())
+                .addGap(33, 33, 33))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_m_gvTrangChuMouseClicked
+
+    private void text_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_ngayActionPerformed
+
+    private void text_lopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_lopActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_lopActionPerformed
+
+    private void text_tensvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tensvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_tensvActionPerformed
+
+    private void text_msvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_msvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_msvActionPerformed
+
+    private void text_khoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_khoaActionPerformed
 
     private void rb_14CoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14CoActionPerformed
         // TODO add your handling code here:
@@ -427,31 +446,6 @@ public class SVKhaiBao extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_bt_khaibaoActionPerformed
 
-    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_m_gvTrangChuMouseClicked
-
-    private void text_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngayActionPerformed
-
-    private void text_lopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_lopActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_lopActionPerformed
-
-    private void text_tensvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tensvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_tensvActionPerformed
-
-    private void text_msvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_msvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_msvActionPerformed
-
-    private void text_khoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_khoaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -489,12 +483,15 @@ public class SVKhaiBao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_khaibao;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu m_gvTrangChu;
     private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenuBar menu_gv;
