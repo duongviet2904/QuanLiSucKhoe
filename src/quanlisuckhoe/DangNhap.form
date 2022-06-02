@@ -68,10 +68,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+<<<<<<< HEAD
                       <Component id="jButton1" alignment="1" max="32767" attributes="0"/>
                       <Component id="jTextField2" alignment="1" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField1" alignment="1" max="32767" attributes="0"/>
+=======
+                      <Component id="bt_login" alignment="1" max="32767" attributes="0"/>
+                      <Component id="tf_pass" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_name" alignment="1" max="32767" attributes="0"/>
+>>>>>>> 32ce09fc5d51ca87fb85710de44d98fa4766967a
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton2" pref="309" max="32767" attributes="0"/>
                   </Group>
@@ -85,6 +92,7 @@
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="jTextField1" min="-2" pref="26" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="24" max="-2" attributes="0"/>
@@ -92,6 +100,15 @@
                   <Component id="jTextField2" min="-2" pref="26" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="tf_name" min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="tf_pass" min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="bt_login" min="-2" max="-2" attributes="0"/>
+>>>>>>> 32ce09fc5d51ca87fb85710de44d98fa4766967a
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="110" max="32767" attributes="0"/>
@@ -110,6 +127,7 @@
             <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
           </Properties>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JTextField" name="jTextField1">
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p"/>
@@ -121,10 +139,33 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
+=======
+        <Component class="javax.swing.JTextField" name="tf_name">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_pass">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_passActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="bt_login">
+>>>>>>> 32ce09fc5d51ca87fb85710de44d98fa4766967a
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng nh&#x1ead;p"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+<<<<<<< HEAD
+=======
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_loginMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_loginActionPerformed"/>
+          </Events>
+>>>>>>> 32ce09fc5d51ca87fb85710de44d98fa4766967a
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
