@@ -4,6 +4,16 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Container;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import object.TaiKhoan;
+import object.DocGhi;
+
 /**
  *
  * @author duongv
@@ -13,10 +23,43 @@ public class DangNhap extends javax.swing.JFrame {
     /**
      * Creates new form DangNhap
      */
-    public DangNhap() {
+    ArrayList<TaiKhoan> tk = new ArrayList<>();
+    DocGhi rw = new DocGhi();
+    public DangNhap() throws IOException {
         initComponents();
+        getTK();
     }
-
+    
+    
+    
+    public int checkTK(String name, String pass)
+    {
+        for(TaiKhoan t : tk)
+        {
+            if(name.equals(t.getTenDangNhap()) && pass.equals(t.getMatKhau()))
+            {
+                return t.getVaiTro();
+            }
+        }
+        return -1;
+    }
+    
+    public void getTK() throws IOException
+    {
+//        TaiKhoan a1 = new TaiKhoan("TK01","Admin","123",2);
+//        TaiKhoan a2 = new TaiKhoan("TK02","GV01","123",1);
+//        TaiKhoan a3 = new TaiKhoan("TK03","SV01","123",0);
+//        tk.add(a1);
+//        tk.add(a2);
+//        tk.add(a3);
+//        
+//        rw.WriteObject("src\\data\\TaiKhoan.txt", tk);
+        try {
+            tk = (ArrayList<TaiKhoan>) rw.ReadObject("src\\data\\TaiKhoan.txt");
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "danh sach hien tai rong");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,9 +72,9 @@ public class DangNhap extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        tf_name = new javax.swing.JTextField();
+        tf_pass = new javax.swing.JTextField();
+        bt_login = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTroGiup = new javax.swing.JMenu();
@@ -44,12 +87,17 @@ public class DangNhap extends javax.swing.JFrame {
 
         jLabel2.setText("Mật khẩu");
 
-        jTextField1.setText("Tên đăng nhập");
+        tf_name.setText("Tên đăng nhập");
 
-        jTextField2.setText("Mật khẩu");
+        tf_pass.setText("Mật khẩu");
 
-        jButton1.setText("Đăng nhập");
-        jButton1.setToolTipText("");
+        bt_login.setText("Đăng nhập");
+        bt_login.setToolTipText("");
+        bt_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_loginActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Quên mật khẩu?");
         jButton2.setToolTipText("");
@@ -66,10 +114,10 @@ public class DangNhap extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bt_login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_pass, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tf_name, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE))
                 .addContainerGap(139, Short.MAX_VALUE))
@@ -80,13 +128,13 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(bt_login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addContainerGap(110, Short.MAX_VALUE))
@@ -131,6 +179,32 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
+        // TODO add your handling code here:
+        String name = tf_name.getText();
+        String pass = tf_pass.getText();
+        int vaitro = checkTK(name, pass);
+            if (vaitro == -1) {
+                JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            } else if (vaitro == 0) {
+                TrangChuSinhVien frame = new TrangChuSinhVien();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+            }else if (vaitro == 1) {
+                TrangChuGiaoVien frame = new TrangChuGiaoVien();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+            }else if (vaitro == 2) {
+                TrangChuNguoiQuanTri frame = new TrangChuNguoiQuanTri();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+            }
+
+    }//GEN-LAST:event_bt_loginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -161,22 +235,26 @@ public class DangNhap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DangNhap().setVisible(true);
+                try {
+                    new DangNhap().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bt_login;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenuBar menu_gv;
+    private javax.swing.JTextField tf_name;
+    private javax.swing.JTextField tf_pass;
     // End of variables declaration//GEN-END:variables
 }
