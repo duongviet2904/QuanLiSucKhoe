@@ -46,14 +46,14 @@ public class DangNhap extends javax.swing.JFrame {
     
     public void getTK() throws IOException
     {
-//        TaiKhoan a1 = new TaiKhoan("TK01","Admin","123",2);
-//        TaiKhoan a2 = new TaiKhoan("TK02","GV01","123",1);
-//        TaiKhoan a3 = new TaiKhoan("TK03","SV01","123",0);
-//        tk.add(a1);
-//        tk.add(a2);
-//        tk.add(a3);
-//        
-//        rw.WriteObject("src\\data\\TaiKhoan.txt", tk);
+        TaiKhoan a1 = new TaiKhoan("TK01","Admin","123",2);
+        TaiKhoan a2 = new TaiKhoan("TK02","GV01","123",1);
+        TaiKhoan a3 = new TaiKhoan("TK03","SV01","123",0);
+        tk.add(a1);
+        tk.add(a2);
+        tk.add(a3);
+        
+        rw.WriteObject("src\\data\\TaiKhoan.txt", tk);
         try {
             tk = (ArrayList<TaiKhoan>) rw.ReadObject("src\\data\\TaiKhoan.txt");
         } catch (IOException | ClassNotFoundException ex) {
