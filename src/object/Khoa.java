@@ -4,11 +4,13 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author duongv
  */
-public class Khoa {
+public class Khoa implements Serializable{
     private String maKhoa;
     private String tenKhoa;
     

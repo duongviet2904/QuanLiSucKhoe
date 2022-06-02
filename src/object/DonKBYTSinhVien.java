@@ -4,11 +4,13 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author duongv
  */
-public class DonKBYTSinhVien {
+public class DonKBYTSinhVien implements Serializable{
     private String maSV;
     private String tenSV;
     private String lop;

@@ -4,11 +4,13 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author duongv
  */
-public class LopHoc {
+public class LopHoc implements Serializable{
     private String maLop;
     private String tenLop;
     private int soSV;

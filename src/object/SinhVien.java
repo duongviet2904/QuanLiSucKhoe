@@ -4,11 +4,13 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author duongv
  */
-public class SinhVien extends TaiKhoan{
+public class SinhVien extends TaiKhoan implements Serializable{
     private String maSV;
     private String tenSV;
     private String gioiTinh;

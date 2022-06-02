@@ -21,14 +21,6 @@ public class DocGhi {
         os.close();
     }
 
-    /**
-     *
-     * @param fileName
-     * @return
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
     public Object ReadObject(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
         Object kq = null;
         ObjectInputStream ois;
@@ -39,4 +31,5 @@ public class DocGhi {
         ois.close();
         return kq;
     }
+    
 }
