@@ -7,6 +7,9 @@ package quanlisuckhoe;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import object.Khoa;
+import object.LopHoc;
+import object.SinhVien;
 
 /**
  *
@@ -17,10 +20,26 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     /**
      * Creates new form TrangChuSinhVien
      */
+    SinhVien sv = new SinhVien();
+    LopHoc l = new LopHoc();
+    Khoa k = new Khoa();
     public TrangChuSinhVien() {
         initComponents();
     }
-
+    public TrangChuSinhVien(SinhVien s, LopHoc lh, Khoa kh) {
+        
+        sv=s;
+        l = lh;
+        k = kh;
+        initComponents();
+    }
+    public void loadData()
+    {
+        text_masv.setText(sv.getMaSV());
+        text_tensv.setText(sv.getTenSV());
+        text_lop.setText(l.getTenLop());
+        text_khoa.setText(k.getTenKhoa());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,11 +53,11 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        text_anh = new javax.swing.JLabel();
+        text_masv = new javax.swing.JLabel();
+        text_tensv = new javax.swing.JLabel();
+        text_khoa = new javax.swing.JLabel();
+        text_lop = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -62,15 +81,15 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
         jLabel4.setText("Lớp:");
 
-        jLabel5.setText("jLabel5");
+        text_anh.setText("jLabel5");
 
-        jLabel6.setText("maSV");
+        text_masv.setText(sv.getMaSV());
 
-        jLabel7.setText("tenSV");
+        text_tensv.setText(sv.getTenSV());
 
-        jLabel8.setText("khoa");
+        text_khoa.setText(k.getTenKhoa());
 
-        jLabel9.setText("lop");
+        text_lop.setText(k.getTenKhoa());
 
         jButton1.setText("Đăng kí nghỉ phép");
 
@@ -145,7 +164,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -154,7 +173,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel6))
+                                .addComponent(text_masv))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -162,15 +181,15 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7)))))
+                                    .addComponent(text_lop)
+                                    .addComponent(text_khoa)
+                                    .addComponent(text_tensv)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,22 +199,22 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel6))
+                            .addComponent(text_masv))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel7))
+                            .addComponent(text_tensv))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel8))
+                            .addComponent(text_khoa))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel9)))
+                            .addComponent(text_lop)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,11 +314,6 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu m_gvKhaiBao;
@@ -308,5 +322,10 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenu m_gvXinNghi;
     private javax.swing.JMenuBar menu_gv;
+    private javax.swing.JLabel text_anh;
+    private javax.swing.JLabel text_khoa;
+    private javax.swing.JLabel text_lop;
+    private javax.swing.JLabel text_masv;
+    private javax.swing.JLabel text_tensv;
     // End of variables declaration//GEN-END:variables
 }

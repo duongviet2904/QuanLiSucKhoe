@@ -17,6 +17,9 @@ public class Khoa implements Serializable{
     //giao vien truong khoa
     private String maGV;
 
+    public Khoa() {
+    }
+    
     public Khoa(String maKhoa, String tenKhoa, String maGV) {
         this.maKhoa = maKhoa;
         this.tenKhoa = tenKhoa;

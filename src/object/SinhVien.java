@@ -19,6 +19,9 @@ public class SinhVien extends TaiKhoan implements Serializable{
     private String ngaySinh;
     
     private String maLop;
+
+    public SinhVien() {
+    }
     
     public SinhVien(String maSV, String tenSV, String gioiTinh, String soDT, String email, String ngaySinh, String maLop, String maTK, String tenDangNhap, String matKhau, int vaiTro) {
         super(maTK, tenDangNhap, matKhau, vaiTro);

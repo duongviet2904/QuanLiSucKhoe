@@ -18,6 +18,9 @@ public class LopHoc implements Serializable{
     
     private String maKhoa;
 
+    public LopHoc() {
+    }
+
     public LopHoc(String maLop, String tenLop, int soSV, int khoa, String maKhoa) {
         this.maLop = maLop;
         this.tenLop = tenLop;

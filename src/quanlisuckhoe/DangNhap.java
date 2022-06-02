@@ -13,6 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import object.TaiKhoan;
 import object.DocGhi;
+import object.Database;
+import object.Khoa;
+import object.LopHoc;
+import object.SinhVien;
 
 /**
  *
@@ -24,13 +28,24 @@ public class DangNhap extends javax.swing.JFrame {
      * Creates new form DangNhap
      */
     ArrayList<TaiKhoan> tk = new ArrayList<>();
+    ArrayList<LopHoc> dslop = new ArrayList<>();
+    ArrayList<Khoa> dskhoa = new ArrayList<>();
     DocGhi rw = new DocGhi();
     public DangNhap() throws IOException {
         initComponents();
         getTK();
     }
     
-    
+    public void getLopKhoa()
+    {
+        try {
+            ArrayList<LopHoc> dslop = (ArrayList<LopHoc>) rw.ReadObject("src\\data\\Lop.txt");
+            ArrayList<Khoa> dskhoa = (ArrayList<Khoa>) rw.ReadObject("src\\data\\Khoa.txt");
+                 
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
+    }
     
     public int checkTK(String name, String pass)
     {
@@ -46,18 +61,10 @@ public class DangNhap extends javax.swing.JFrame {
     
     public void getTK() throws IOException
     {
-//        TaiKhoan a1 = new TaiKhoan("TK01","Admin","123",2);
-//        TaiKhoan a2 = new TaiKhoan("TK02","GV01","123",1);
-//        TaiKhoan a3 = new TaiKhoan("TK03","SV01","123",0);
-//        tk.add(a1);
-//        tk.add(a2);
-//        tk.add(a3);
-//        
-//        rw.WriteObject("src\\data\\TaiKhoan.txt", tk);
         try {
             tk = (ArrayList<TaiKhoan>) rw.ReadObject("src\\data\\TaiKhoan.txt");
         } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "danh sach hien tai rong");
+            JOptionPane.showMessageDialog(null, "Có lỗi xảy ra. Liên hệ với quản trị viên của bạn!");
         }
     }
     /**
@@ -186,11 +193,41 @@ public class DangNhap extends javax.swing.JFrame {
         int vaitro = checkTK(name, pass);
             if (vaitro == -1) {
                 JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            } else if (vaitro == 0) {
-                TrangChuSinhVien frame = new TrangChuSinhVien();
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                Container contentPane = frame.getContentPane();
-                frame.setVisible(true);
+            } else
+            {
+                getLopKhoa();
+                if (vaitro == 0) {
+                DocGhi rw = new DocGhi();
+                try {
+                    ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("src\\data\\SinhVien.txt");
+                    for(SinhVien s : dssv)
+                    {
+                        if (s.getMaSV().equals(name)) {
+                            for (LopHoc l : dslop) {
+                                if (s.getMaLop().equals(l.getMaLop())) {
+                                    for (Khoa k : dskhoa) {
+                                        if (k.getMaKhoa().equals(l.getMaKhoa())) {
+                                            TrangChuSinhVien frame = new TrangChuSinhVien(s, l, k);
+                                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                            Container contentPane = frame.getContentPane();
+                                            frame.setVisible(true);
+                                            break;
+                                        }
+                                    }
+                                break;
+                                }
+                            }
+                        break;
+                        }
+                    }
+                    
+                    
+                    
+                } catch (IOException | ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+                }
+                
+                
             }else if (vaitro == 1) {
                 TrangChuGiaoVien frame = new TrangChuGiaoVien();
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -201,6 +238,7 @@ public class DangNhap extends javax.swing.JFrame {
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 Container contentPane = frame.getContentPane();
                 frame.setVisible(true);
+            }
             }
 
     }//GEN-LAST:event_bt_loginActionPerformed

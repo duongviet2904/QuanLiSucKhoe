@@ -246,6 +246,20 @@ public class Database {
 //            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
 //        }
     }
+    public ArrayList<SinhVien> getSV()
+    {
+        DocGhi rw = new DocGhi();
+        try {
+            
+            ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("src\\data\\SinhVien.txt");
+            return dssv;
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
+        return null;
+    }
+    
     public static void main(String[] args) throws IOException {
         taoTK();
         taoGV();
