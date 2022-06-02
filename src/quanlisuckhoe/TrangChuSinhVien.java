@@ -4,6 +4,10 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Container;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author duongv
@@ -39,6 +43,14 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        menu_gv = new javax.swing.JMenuBar();
+        m_gvTrangChu = new javax.swing.JMenu();
+        m_gvKhaiBao = new javax.swing.JMenu();
+        m_gvXinNghi = new javax.swing.JMenu();
+        m_gvThongBao = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        m_gvTroGiup = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +84,54 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        m_gvTrangChu.setText("Trang Chủ");
+        m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTrangChuMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTrangChu);
+
+        m_gvKhaiBao.setText("Khai Báo Y Tế");
+        m_gvKhaiBao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvKhaiBaoMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvKhaiBao);
+
+        m_gvXinNghi.setText("Xin Nghỉ");
+        m_gvXinNghi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvXinNghiMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvXinNghi);
+
+        m_gvThongBao.setText("Thông Báo");
+        menu_gv.add(m_gvThongBao);
+
+        jMenu1.setText("Lịch sử");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        menu_gv.add(jMenu1);
+
+        m_gvTroGiup.setText("Trợ Giúp");
+        m_gvTroGiup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTroGiupMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTroGiup);
+
+        jMenu2.setText("Đăng Xuất");
+        menu_gv.add(jMenu2);
+
+        setJMenuBar(menu_gv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +170,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +204,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,6 +213,43 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
+        // TODO add your handling code here:
+        SwingUtilities.updateComponentTreeUI(this);
+    }//GEN-LAST:event_m_gvTrangChuMouseClicked
+
+    private void m_gvKhaiBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvKhaiBaoMouseClicked
+        // TODO add your handling code here:
+        SVKhaiBao frame = new SVKhaiBao();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_gvKhaiBaoMouseClicked
+
+    private void m_gvXinNghiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvXinNghiMouseClicked
+        // TODO add your handling code here:
+        SVXinNghi frame = new SVXinNghi();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_gvXinNghiMouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        LichSu frame = new LichSu();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void m_gvTroGiupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTroGiupMouseClicked
+        // TODO add your handling code here:
+        HoTro frame = new HoTro();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_gvTroGiupMouseClicked
 
     /**
      * @param args the command line arguments
@@ -203,5 +300,13 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu m_gvKhaiBao;
+    private javax.swing.JMenu m_gvThongBao;
+    private javax.swing.JMenu m_gvTrangChu;
+    private javax.swing.JMenu m_gvTroGiup;
+    private javax.swing.JMenu m_gvXinNghi;
+    private javax.swing.JMenuBar menu_gv;
     // End of variables declaration//GEN-END:variables
 }

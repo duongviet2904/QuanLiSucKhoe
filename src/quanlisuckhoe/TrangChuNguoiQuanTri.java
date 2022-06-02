@@ -4,6 +4,10 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Container;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author duongv
@@ -31,6 +35,13 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        menu_gv = new javax.swing.JMenuBar();
+        m_gvTrangChu = new javax.swing.JMenu();
+        m_gvThongKe = new javax.swing.JMenu();
+        m_gvThongBao = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        m_gvTroGiup = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +54,41 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         jButton2.setText("QLSK Giáo viên");
 
         jButton6.setText("Thống kê");
+
+        m_gvTrangChu.setText("Trang Chủ");
+        m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTrangChuMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTrangChu);
+
+        m_gvThongKe.setText("Thống Kê");
+        menu_gv.add(m_gvThongKe);
+
+        m_gvThongBao.setText("Thông Báo");
+        menu_gv.add(m_gvThongBao);
+
+        jMenu1.setText("Lịch sử");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        menu_gv.add(jMenu1);
+
+        m_gvTroGiup.setText("Trợ Giúp");
+        m_gvTroGiup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTroGiupMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTroGiup);
+
+        jMenu2.setText("Đăng Xuất");
+        menu_gv.add(jMenu2);
+
+        setJMenuBar(menu_gv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,11 +119,32 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
+        // TODO add your handling code here:
+        SwingUtilities.updateComponentTreeUI(this);
+    }//GEN-LAST:event_m_gvTrangChuMouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        LichSu frame = new LichSu();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void m_gvTroGiupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTroGiupMouseClicked
+        // TODO add your handling code here:
+        HoTro frame = new HoTro();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_gvTroGiupMouseClicked
 
     /**
      * @param args the command line arguments
@@ -121,5 +188,12 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu m_gvThongBao;
+    private javax.swing.JMenu m_gvThongKe;
+    private javax.swing.JMenu m_gvTrangChu;
+    private javax.swing.JMenu m_gvTroGiup;
+    private javax.swing.JMenuBar menu_gv;
     // End of variables declaration//GEN-END:variables
 }

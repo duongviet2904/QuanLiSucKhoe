@@ -4,9 +4,12 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Container;
+import javax.swing.JFrame;
+
 /**
  *
- * @author reis
+ * @author ducth
  */
 public class HoTro extends javax.swing.JFrame {
 
@@ -26,93 +29,33 @@ public class HoTro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        Address1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        Address2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        Address3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        Address4 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        Address3 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        Address1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
+        Address4 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        Address2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        menu_gv = new javax.swing.JMenuBar();
+        m_gvTrangChu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Address1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Address1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setText("Viện Huyết học - Truyền máu Trung ương");
-        Address1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 193, -1, -1));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlsk/images/huyethoc.jpeg"))); // NOI18N
-        jLabel10.setText("jLabel7");
-        Address1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 327, 155));
-
-        jLabel11.setText("Số 2, P. Phạm Văn Bạch, P, Cầu Giấy, Hà Nội");
-        Address1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
-
-        getContentPane().add(Address1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 400, 240));
-
-        Address2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Address2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlsk/images/minhkhai.jpeg"))); // NOI18N
-        Address2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 310, 155));
-
-        jLabel8.setText("Số 68 Đ. Ngoạ Long, Minh Khai, Bắc Từ Liêm, Hà Nội");
-        Address2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 215, -1, -1));
-
-        jLabel6.setText("Trạm y tế phường Minh Khai");
-        Address2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, 20));
-
-        getContentPane().add(Address2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 400, 240));
-
-        Address3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Address3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel12.setText("Phòng y tế Trường ĐHCN Hà Nội");
-        Address3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 193, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlsk/images/m76409.jpeg"))); // NOI18N
-        jLabel13.setText("jLabel7");
-        Address3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 32, 327, 155));
-
-        jLabel14.setText("Số 298 Đ. Cầu Diễn, Minh Khai, Bắc Từ Liêm, Hà Nội");
-        Address3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 215, -1, -1));
-
-        getContentPane().add(Address3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 400, 240));
-
-        Address4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Address4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel15.setText("Bệnh Viện Đa Khoa Y Học Cổ Truyền Hà Nội");
-        Address4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qlsk/images/cotruyen.jpeg"))); // NOI18N
-        Address4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 327, 155));
-
-        jLabel17.setText("Số 8 Phạm Hùng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội");
-        Address4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 215, -1, -1));
-
-        getContentPane().add(Address4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 400, 240));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setText("Thông tin hỗ trợ sức khoẻ sinh viên");
@@ -158,7 +101,69 @@ public class HoTro extends javax.swing.JFrame {
                 .addGap(68, 68, 68))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 880, 150));
+        Address3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel12.setText("Phòng y tế Trường ĐHCN Hà Nội");
+
+        jLabel14.setText("Số 298 Đ. Cầu Diễn, Minh Khai, Bắc Từ Liêm, Hà Nội");
+
+        javax.swing.GroupLayout Address3Layout = new javax.swing.GroupLayout(Address3);
+        Address3.setLayout(Address3Layout);
+        Address3Layout.setHorizontalGroup(
+            Address3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Address3Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel12))
+            .addGroup(Address3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel14))
+        );
+        Address3Layout.setVerticalGroup(
+            Address3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address3Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel12)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel14))
+        );
+
+        Address1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel9.setText("Viện Huyết học - Truyền máu Trung ương");
+
+        jLabel10.setText("jLabel7");
+
+        jLabel11.setText("Số 2, P. Phạm Văn Bạch, P, Cầu Giấy, Hà Nội");
+
+        javax.swing.GroupLayout Address1Layout = new javax.swing.GroupLayout(Address1);
+        Address1.setLayout(Address1Layout);
+        Address1Layout.setHorizontalGroup(
+            Address1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Address1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel9))
+            .addGroup(Address1Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(jLabel11))
+        );
+        Address1Layout.setVerticalGroup(
+            Address1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel9)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel11))
+        );
 
         jLabel18.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 0, 51));
@@ -171,20 +176,133 @@ public class HoTro extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(391, 391, 391)
                 .addComponent(jLabel18)
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel18)
                 .addGap(18, 18, 18))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 880, 60));
+        Address4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel15.setText("Bệnh Viện Đa Khoa Y Học Cổ Truyền Hà Nội");
+
+        jLabel17.setText("Số 8 Phạm Hùng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội");
+
+        javax.swing.GroupLayout Address4Layout = new javax.swing.GroupLayout(Address4);
+        Address4.setLayout(Address4Layout);
+        Address4Layout.setHorizontalGroup(
+            Address4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Address4Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel15))
+            .addGroup(Address4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel17))
+        );
+        Address4Layout.setVerticalGroup(
+            Address4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel15)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel17))
+        );
+
+        Address2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel8.setText("Số 68 Đ. Ngoạ Long, Minh Khai, Bắc Từ Liêm, Hà Nội");
+
+        jLabel6.setText("Trạm y tế phường Minh Khai");
+
+        javax.swing.GroupLayout Address2Layout = new javax.swing.GroupLayout(Address2);
+        Address2.setLayout(Address2Layout);
+        Address2Layout.setHorizontalGroup(
+            Address2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address2Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Address2Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jLabel6))
+            .addGroup(Address2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel8))
+        );
+        Address2Layout.setVerticalGroup(
+            Address2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Address2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel8))
+        );
+
+        m_gvTrangChu.setText("Trang Chủ");
+        m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTrangChuMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTrangChu);
+
+        setJMenuBar(menu_gv);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(Address3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(Address2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(Address4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(Address1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Address3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Address2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Address4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Address1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_m_gvTrangChuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -226,7 +344,6 @@ public class HoTro extends javax.swing.JFrame {
     private javax.swing.JPanel Address2;
     private javax.swing.JPanel Address3;
     private javax.swing.JPanel Address4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -246,5 +363,7 @@ public class HoTro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenu m_gvTrangChu;
+    private javax.swing.JMenuBar menu_gv;
     // End of variables declaration//GEN-END:variables
 }
