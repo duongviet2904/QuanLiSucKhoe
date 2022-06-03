@@ -213,8 +213,8 @@ public class Database {
     public static void taoXinNghiGV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",false));
-        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",false));
+        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-05-12","2022-05-13", "abc","abc","abc",false));
+        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-06-12","2022-06-13", "abc","abc","abc",false));
         rw.WriteObject("./src/data/DonXNGV.txt", xinnghigv);
 //        try {
 //            
@@ -265,20 +265,22 @@ public class Database {
     public static void taoLicSu() throws IOException
     {
         DocGhi rw = new DocGhi();
-        lichsu.add(new LichSu("1","SV01","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("2","SV01","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("3","SV02","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("4","SV01","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("5","SV02","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("6","SV01","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("7","SV02","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("8","SV01","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("9","SV01","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("10","SV02","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("11","SV01","Xin nghỉ", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("12","SV02","Khai báo y tế", "2022-06-12 18:00"));
-        lichsu.add(new LichSu("13","SV01","Khai báo y tế", "2022-06-12 18:00"));
-        
+        lichsu.add(new LichSu("1","SV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("2","SV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("3","SV02","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("4","SV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("5","SV02","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("6","SV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("7","SV02","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("8","SV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("9","SV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("10","SV02","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("11","SV01","Xin nghỉ", "2022-06-12"));
+        lichsu.add(new LichSu("12","SV02","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("13","GV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("14","GV02","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("15","GV01","Khai báo y tế", "2022-06-12"));
+        lichsu.add(new LichSu("16","GV01","Khai báo y tế", "2022-06-12"));
         rw.WriteObject("./src/data/LichSu.txt", lichsu);
         try {
             

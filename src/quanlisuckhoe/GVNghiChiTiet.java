@@ -26,61 +26,40 @@ import object.LichSu;
  *
  * @author ducth
  */
-public class GVNghi extends javax.swing.JFrame {
+public class GVNghiChiTiet extends javax.swing.JFrame {
     
-    private GiaoVien gv;
-    private Khoa khoa;
-    
-    private DonXinNghiGV gvxn = new DonXinNghiGV();
-    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-    Date date = new Date();
-    String ngayGui = df.format(date);
-    
-    DocGhi rw = new DocGhi();
-    
-    private ArrayList<DonXinNghiGV> dsgvxn;
+    DonXinNghiGV d = new DonXinNghiGV();
     /**
      * Creates new form GVNghi
      */
-    public GVNghi() {
+    public GVNghiChiTiet() {
         initComponents();
-        txtNgayGui.setText(ngayGui);
-        dsgvxn = new ArrayList<DonXinNghiGV>();
-        getDanhSach();
     }
 
-    public GVNghi(GiaoVien gv, Khoa khoa) {
-        this.gv = gv;
-        this.khoa = khoa;
+    public GVNghiChiTiet(DonXinNghiGV d) {
+        this.d = d;
         initComponents();
-        txtNgayGui.setText(ngayGui);
-        dsgvxn = new ArrayList<DonXinNghiGV>();
-        getDanhSach();
     }
 
-    public void getDanhSach(){
-        try {
-            dsgvxn = (ArrayList<DonXinNghiGV>) rw.ReadObject("./src/data/DonXNGV.txt");
-//            for(DonXinNghiGV i : dsgvxn){
-//                    System.out.println(i.getMaGV() + i.getTenGV());
-//                }
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
-        }
-    }
-    public void addLichSu(LichSu s)
+    public int getIndex()
     {
-        DocGhi rw = new DocGhi();
-        try {
-            
-            ArrayList<LichSu> dsls = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
-            s.setStt(Integer.toString(dsls.size()+1));
-            dsls.add(s);
-            rw.WriteObject("./src/data/LichSu.txt", dsls);
-            
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        if(d.getLyDo().equals("Ốm nhập viện"))
+        {
+            return 0;
         }
+        if(d.getLyDo().equals("Việc cá nhân"))
+        {
+            return 1;
+        }
+        if(d.getLyDo().equals("Mắc Covid-19"))
+        {
+            return 2;
+        }
+        if(d.getLyDo().equals("Khác"))
+        {
+            return 3;
+        }
+        return -1;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +72,6 @@ public class GVNghi extends javax.swing.JFrame {
 
         tieude_ngay6 = new javax.swing.JLabel();
         bt_gui = new javax.swing.JButton();
-        bt_file = new javax.swing.JButton();
         tieude_ngay2 = new javax.swing.JLabel();
         file_name = new javax.swing.JLabel();
         tieude_magv = new javax.swing.JLabel();
@@ -128,22 +106,17 @@ public class GVNghi extends javax.swing.JFrame {
             }
         });
 
-        bt_file.setText("Chọn file");
-        bt_file.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_fileActionPerformed(evt);
-            }
-        });
-
         tieude_ngay2.setText("Ngày bắt đầu");
 
-        file_name.setText("No file selected");
+        file_name.setText(d.getTaiLieuLienQuan());
+        file_name.setFocusable(false);
 
         tieude_magv.setText("Mã giáo viên");
 
         txtNgayBD.setEditable(false);
-        txtNgayBD.setText("dd/mm/yyyy");
+        txtNgayBD.setText(d.getNgayBatDau());
         txtNgayBD.setAutoscrolls(false);
+        txtNgayBD.setFocusable(false);
 
         tieude_tengv.setText("Tên giáo viên");
 
@@ -152,8 +125,9 @@ public class GVNghi extends javax.swing.JFrame {
         tieude_khoa.setText("Khoa");
 
         txtNgayKT.setEditable(false);
-        txtNgayKT.setText("dd/mm/yyyy");
+        txtNgayKT.setText(d.getNgayKetThuc());
         txtNgayKT.setAutoscrolls(false);
+        txtNgayKT.setFocusable(false);
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Đơn Xin Nghỉ Phép");
@@ -165,27 +139,34 @@ public class GVNghi extends javax.swing.JFrame {
         tieude_ngay4.setText("Lý do xin nghỉ");
 
         txtTenGV.setEditable(false);
-        txtTenGV.setText(gv.getTenGV());
+        txtTenGV.setText(d.getTenGV());
+        txtTenGV.setFocusable(false);
 
         cb_lydo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ốm nhập viện", "Việc cá nhân", "Mắc Covid-19", "Khác" }));
+        cb_lydo.setFocusable(false);
 
         tieude_ngay.setText("Ngày gửi");
 
         tieude_ngay5.setText("Mô tả chi tiết:");
 
         txtMaGV.setEditable(false);
-        txtMaGV.setText(gv.getMaGV());
+        txtMaGV.setText(d.getMaGV());
+        txtMaGV.setFocusable(false);
 
         txtChiTiet.setColumns(20);
         txtChiTiet.setRows(5);
+        txtChiTiet.setText(d.getChiTiet());
+        txtChiTiet.setFocusable(false);
         jScrollPane1.setViewportView(txtChiTiet);
 
         txtKhoa.setEditable(false);
-        txtKhoa.setText(khoa.getTenKhoa());
+        txtKhoa.setText(d.getKhoa());
         txtKhoa.setAutoscrolls(false);
+        txtKhoa.setFocusable(false);
 
         txtNgayGui.setEditable(false);
-        txtNgayGui.setText(ngayGui);
+        txtNgayGui.setText(d.getNgayGui());
+        txtNgayGui.setFocusable(false);
 
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -209,6 +190,23 @@ public class GVNghi extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tieude_tengv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tieude_magv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTenGV, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaGV, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tieude_khoa)
+                            .addComponent(tieude_ngay))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(tieude_ngay6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -233,34 +231,16 @@ public class GVNghi extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNgayBD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNgayKT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNgayGui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtKhoa)))
-                        .addGap(51, 51, 51))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(tieude_tengv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tieude_magv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtTenGV)
-                                .addComponent(txtMaGV, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tieude_khoa)
-                                .addComponent(tieude_ngay))
-                            .addContainerGap(214, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tieude_ngay6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(190, 190, 190)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(bt_gui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(bt_file, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(file_name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNgayGui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtKhoa))))
+                        .addGap(51, 51, 51))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +283,6 @@ public class GVNghi extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tieude_ngay6)
-                    .addComponent(bt_file)
                     .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,90 +293,8 @@ public class GVNghi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_guiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guiActionPerformed
-        try {
-            // TODO add your handling code here:
-            gvxn.setMaDon("DG".concat(String.valueOf((dsgvxn.size() + 1))));
-            gvxn.setMaGV(txtMaGV.getText());
-            gvxn.setTenGV(txtTenGV.getText());
-            gvxn.setKhoa(txtKhoa.getText());
-            gvxn.setNgayGui(ngayGui);
-            gvxn.setNgayBatDau(txtNgayBD.getText());
-            gvxn.setNgayKetThuc(txtNgayKT.getText());
-            gvxn.setChiTiet(txtChiTiet.getText());
-            gvxn.setLyDo(cb_lydo.getItemAt(cb_lydo.getSelectedIndex()));
-            gvxn.setTaiLieuLienQuan(bt_file.getText());
-            gvxn.setTrangThai(false);
-            dsgvxn.add(gvxn);
-            LichSu s = new LichSu(gvxn.getMaGV(),"Khai báo y tế", ngayGui, gvxn);
-            addLichSu(s);
-            rw.WriteObject("./src/data/DonXNGV.txt", dsgvxn);
-            dispose();
-        } catch (IOException ex) {
-            Logger.getLogger(GVNghi.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_bt_guiActionPerformed
-
-    private void bt_fileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fileActionPerformed
-        // TODO add your handling code here:
-        // if the user presses the save button show the save dialog
-        // if the user presses the save button show the save dialog
-        String com = evt.getActionCommand();
-
-        if (com.equals("Gửi")) {
-            // create an object of JFileChooser class
-            JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
-            // allow multiple file selection
-            j.setMultiSelectionEnabled(true);
-
-            // invoke the showsSaveDialog function to show the save dialog
-            int r = j.showSaveDialog(null);
-
-            if (r == JFileChooser.APPROVE_OPTION) {
-                // get the selelcted files
-                File files[] = j.getSelectedFiles();
-
-                int t = 0;
-                // set text to blank
-                file_name.setText("");
-
-                // set the label to the path of the selected files
-                while (t++ < files.length)
-                file_name.setText(file_name.getText() + "; " + files[t - 1].getName());
-            }
-            // if the user cancelled the operation
-            else
-            file_name.setText("the user cancelled the operation");
-        }
-
-        // if the user presses the open dialog show the open dialog
-        else {
-            // create an object of JFileChooser class
-            JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
-            // allow multiple file selection
-            j.setMultiSelectionEnabled(true);
-
-            // invoke the showsOpenDialog function to show the save dialog
-            int r = j.showOpenDialog(null);
-
-            if (r == JFileChooser.APPROVE_OPTION) {
-                // get the selelcted files
-                File files[] = j.getSelectedFiles();
-
-                // set text to blank
-                file_name.setText("");
-
-                int t = 0;
-                // set the label to the path of the selected files
-                while (t++ < files.length)
-                file_name.setText(file_name.getText() + " " + files[t - 1].getName());
-            }
-            // if the user cancelled the operation
-            else
-            file_name.setText("the user cancelled the operation");
-        }
-    }//GEN-LAST:event_bt_fileActionPerformed
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
         // TODO add your handling code here:
@@ -421,14 +318,18 @@ public class GVNghi extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GVNghi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVNghiChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GVNghi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVNghiChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GVNghi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVNghiChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GVNghi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVNghiChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -437,13 +338,12 @@ public class GVNghi extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GVNghi().setVisible(true);
+                new GVNghiChiTiet().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_file;
     private javax.swing.JButton bt_gui;
     private javax.swing.JComboBox<String> cb_lydo;
     private javax.swing.JLabel file_name;

@@ -109,6 +109,11 @@ public class DonKBYTGiaoVien implements Serializable{
         this.tiepXucNguoiBenhDauMua = tiepXucNguoiBenhDauMua;
     }
 
+    @Override
+    public String toString() {
+        return "DonKBYTGiaoVien{" + "maGV=" + maGV + ", tenGV=" + tenGV + ", khoa=" + khoa + ", ngayKhaiBao=" + ngayKhaiBao + ", coTrieuChung=" + coTrieuChung + ", tiepXucNguoiBenh=" + tiepXucNguoiBenh + ", tiepXucNguoiTuNuocCoBenh=" + tiepXucNguoiTuNuocCoBenh + ", tiepXucNguoiBenhCoBieuHien=" + tiepXucNguoiBenhCoBieuHien + ", tiepXucNguoiBenhDauMua=" + tiepXucNguoiBenhDauMua + '}';
+    }
+
     
 
 }

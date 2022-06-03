@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import object.DocGhi;
 import object.DonKBYTGiaoVien;
@@ -23,102 +22,18 @@ import object.LichSu;
  *
  * @author ducth
  */
-public class GVKhaiBao extends javax.swing.JFrame {
+public class GVKhaiBaoChiTiet extends javax.swing.JFrame {
     
-    private GiaoVien gv;
-    private Khoa khoa;
-    
-    
-//    private GiaoVien gv = new GiaoVien("GV01", "Nguyễn Văn Mạnh", "K01");
-//    private Khoa khoa = new Khoa("K01", "CNTT", "GV01");
-//    
-    
-    private DonKBYTGiaoVien kbyt = new DonKBYTGiaoVien();
-    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-    Date date = new Date();
-    String ngayKB = df.format(date);
-    
-    DocGhi rw = new DocGhi();
-    
-    ArrayList<DonKBYTGiaoVien> dskbgv = new ArrayList<>();
+    private DonKBYTGiaoVien d = new DonKBYTGiaoVien();
     /**
      * Creates new form GVKB
      */
-    public GVKhaiBao() {
+    public GVKhaiBaoChiTiet(DonKBYTGiaoVien d) {
+        this.d = d;
         initComponents();
-        groupBT();
-        txtNgay.setText(ngayKB);
-//        kbyt.setNgayKhaiBao(ngayKB);
-        getDanhSach();
     }
-    public void groupBT()
-    {
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(rb_14Co);
-        bg.add(rb_14Khong);
-        ButtonGroup bg1 = new ButtonGroup();
-        bg1.add(rb_14Co1);
-        bg1.add(rb_14Khong1);
-        ButtonGroup bg2 = new ButtonGroup();
-        bg2.add(rb_14Co2);
-        bg2.add(rb_14Khong2);
-        ButtonGroup bg3 = new ButtonGroup();
-        bg3.add(rb_14Co3);
-        bg3.add(rb_14Khong3);
-        ButtonGroup bg4 = new ButtonGroup();
-        bg4.add(rb_14Co4);
-        bg4.add(rb_14Khong4);
-    }
-    public void getDanhSach(){
-        try {
-            dskbgv = (ArrayList<DonKBYTGiaoVien>) rw.ReadObject("./src/data/KBYTGV.txt");
-//            for(DonKBYTGiaoVien i : dskbgv){
-//                    System.out.println(i.getMaGV() + i.getTenGV());
-//                }
-        } catch (IOException ex) {
-            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public GiaoVien getGv() {
-        return gv;
-    }
-
-    public void setGv(GiaoVien gv) {
-        this.gv = gv;
-    }
-
-    public Khoa getKhoa() {
-        return khoa;
-    }
-
-    public void setKhoa(Khoa khoa) {
-        this.khoa = khoa;
-    }
-
-    public GVKhaiBao(GiaoVien gv, Khoa khoa) {
-        this.gv = gv;
-        this.khoa = khoa;
-         initComponents();
-         kbyt.setNgayKhaiBao(ngayKB);
-         getDanhSach();
-    }
-    public void addLichSu(LichSu s)
-    {
-        DocGhi rw = new DocGhi();
-        ArrayList<LichSu> dsls;
-        try {
-            dsls = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
-            s.setStt(Integer.toString(dsls.size()+1));
-            dsls.add(s);
-            rw.WriteObject("./src/data/LichSu.txt", dsls);
-        } catch (IOException ex) {
-            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
+    public GVKhaiBaoChiTiet() {
+        initComponents();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,51 +78,76 @@ public class GVKhaiBao extends javax.swing.JFrame {
         m_gvTroGiup = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
 
         txtTenGV.setEditable(false);
-        txtTenGV.setText(gv.getTenGV());
+        txtTenGV.setText(d.getTenGV());
+        txtTenGV.setFocusable(false);
 
         tieude_ngay.setText("Ngày");
 
         txtMaGV.setEditable(false);
-        txtMaGV.setText(gv.getMaGV());
+        txtMaGV.setText(d.getMaGV());
+        txtMaGV.setFocusable(false);
 
         txtTenKhoa.setEditable(false);
-        txtTenKhoa.setText(khoa.getTenKhoa());
+        txtTenKhoa.setText(d.getKhoa());
+        txtTenKhoa.setFocusable(false);
 
         txtNgay.setEditable(false);
-        txtNgay.setText(ngayKB);
+        txtNgay.setText(d.getNgayKhaiBao());
+        txtNgay.setFocusable(false);
 
+        rb_14Co.setSelected(d.isTiepXucNguoiBenh());
         rb_14Co.setText("Có");
+        rb_14Co.setFocusable(false);
 
+        rb_14Khong.setSelected(!d.isTiepXucNguoiBenh());
         rb_14Khong.setText("Không");
+        rb_14Khong.setFocusable(false);
 
+        rb_14Khong1.setSelected(!d.isTiepXucNguoiBenhCoBieuHien());
         rb_14Khong1.setText("Không");
+        rb_14Khong1.setFocusable(false);
 
+        rb_14Co1.setSelected(d.isTiepXucNguoiBenhCoBieuHien());
         rb_14Co1.setText("Có");
+        rb_14Co1.setFocusable(false);
 
+        rb_14Co2.setSelected(d.isTiepXucNguoiTuNuocCoBenh());
         rb_14Co2.setText("Có");
+        rb_14Co2.setFocusable(false);
 
+        rb_14Khong2.setSelected(!d.isTiepXucNguoiTuNuocCoBenh());
         rb_14Khong2.setText("Không");
+        rb_14Khong2.setFocusable(false);
 
+        rb_14Co3.setSelected(d.isTiepXucNguoiBenhCoBieuHien());
         rb_14Co3.setText("Có");
+        rb_14Co3.setFocusable(false);
 
         tieude_magv.setText("Mã giáo viên");
 
         tieude_tengv.setText("Tên giáo viên");
 
+        rb_14Khong3.setSelected(!d.isTiepXucNguoiBenhCoBieuHien());
         rb_14Khong3.setText("Không");
+        rb_14Khong3.setFocusable(false);
 
+        rb_14Co4.setSelected(d.isTiepXucNguoiBenhDauMua());
         rb_14Co4.setText("Có");
+        rb_14Co4.setFocusable(false);
 
         tieude_khoa.setText("Khoa");
 
+        rb_14Khong4.setSelected(!d.isTiepXucNguoiBenhDauMua());
         rb_14Khong4.setText("Không");
+        rb_14Khong4.setFocusable(false);
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Khai Báo Y Tế");
 
-        bt_khaibao.setText("Khai Báo");
+        bt_khaibao.setText("Đóng");
         bt_khaibao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_khaibaoActionPerformed(evt);
@@ -273,7 +213,7 @@ public class GVKhaiBao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rb_14Khong, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rb_14Co, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -281,26 +221,6 @@ public class GVKhaiBao extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(70, 70, 70)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rb_14Co1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rb_14Khong1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rb_14Co2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rb_14Khong2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(54, 54, 54)
-                                .addComponent(rb_14Co4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_14Khong4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(tieude_tengv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,14 +242,26 @@ public class GVKhaiBao extends javax.swing.JFrame {
                                             .addComponent(txtNgay, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                                             .addComponent(txtTenKhoa)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))
-                                .addGap(44, 44, 44)
-                                .addComponent(rb_14Co3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7)))
                                 .addGap(18, 18, 18)
-                                .addComponent(rb_14Khong3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 3, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rb_14Co1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Co2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Co4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Co3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rb_14Khong1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Khong2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Khong4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Khong3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,59 +323,7 @@ public class GVKhaiBao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_khaibaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khaibaoActionPerformed
-        try {
-            kbyt.setMaGV(txtMaGV.getText());
-            kbyt.setTenGV(txtTenGV.getText());
-            kbyt.setKhoa(txtTenKhoa.getText());
-            kbyt.setNgayKhaiBao(ngayKB);
-            if(rb_14Co.isSelected()){
-                kbyt.setCoTrieuChung(true);
-            }
-            if(rb_14Khong.isSelected()){
-                kbyt.setCoTrieuChung(false);
-            }
-            if(rb_14Co1.isSelected()){
-                kbyt.setTiepXucNguoiBenh(true);
-            }
-            if(rb_14Khong1.isSelected()){
-                kbyt.setTiepXucNguoiBenh(false);
-            }
-            if(rb_14Co2.isSelected()){
-                kbyt.setTiepXucNguoiTuNuocCoBenh(true);
-            }
-            if(rb_14Khong2.isSelected()){
-                kbyt.setTiepXucNguoiTuNuocCoBenh(false);
-            }
-            if(rb_14Co3.isSelected()){
-                kbyt.setTiepXucNguoiBenhCoBieuHien(true);
-            }
-            if(rb_14Khong3.isSelected()){
-                kbyt.setTiepXucNguoiBenhCoBieuHien(false);
-            }
-            if(rb_14Co4.isSelected()){
-                kbyt.setTiepXucNguoiBenhDauMua(true);
-            }
-            if(rb_14Khong4.isSelected()){
-                kbyt.setTiepXucNguoiBenhDauMua(false);
-            }
-            dskbgv.add(kbyt);
-            LichSu s = new LichSu(kbyt.getMaGV(),"Khai báo y tế", kbyt.getNgayKhaiBao(), kbyt);
-            addLichSu(s);
-            rw.WriteObject("./src/data/KBYTGV.txt", dskbgv);
-//            try {
-//                ArrayList<DonKBYTGiaoVien> check = (ArrayList<DonKBYTGiaoVien>)rw.ReadObject("./src/data/KBYTGV.txt");
-//                for(DonKBYTGiaoVien i : check){
-//                    System.out.println(i.getMaGV() + i.getTenGV());
-//                }
-//            } catch (FileNotFoundException ex) {
-//                Logger.getLogger(GVNghi.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (ClassNotFoundException ex) {
-//                Logger.getLogger(GVNghi.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-            dispose();
-        } catch (IOException ex) {
-            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       dispose();
     }//GEN-LAST:event_bt_khaibaoActionPerformed
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
@@ -468,14 +348,22 @@ public class GVKhaiBao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GVKhaiBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVKhaiBaoChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GVKhaiBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVKhaiBaoChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GVKhaiBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVKhaiBaoChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GVKhaiBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GVKhaiBaoChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -488,7 +376,7 @@ public class GVKhaiBao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GVKhaiBao().setVisible(true);
+                new GVKhaiBaoChiTiet().setVisible(true);
             }
         });
     }

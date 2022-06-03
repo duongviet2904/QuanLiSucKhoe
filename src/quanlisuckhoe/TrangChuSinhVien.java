@@ -142,6 +142,11 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         });
 
         jButton4.setText("Lịch sử");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setText("Hỗ trợ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -312,7 +317,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void m_svLichSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svLichSuMouseClicked
         // TODO add your handling code here:
-        XemLichSu frame = new XemLichSu();
+        XemLichSu frame = new XemLichSu(sv);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -361,6 +366,14 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
             Logger.getLogger(TrangChuSinhVien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_m_dangXuatMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        XemLichSu frame = new XemLichSu(sv);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments

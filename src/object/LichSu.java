@@ -4,7 +4,10 @@
  */
 package object;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,14 +43,13 @@ public class LichSu implements Serializable{
         this.noiDung = noiDung;
         this.thơiGian = thơiGian;
     }
-    public LichSu(String stt,String taiKhoan ,String noiDung, String thơiGian, Object obj) {
-        this.stt = stt;
+    public LichSu(String taiKhoan ,String noiDung, String thơiGian, Object obj) {
         this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;
         this.thơiGian = thơiGian;
         this.chiTiet = obj;
     }
-
+    
     public String getStt() {
         return stt;
     }

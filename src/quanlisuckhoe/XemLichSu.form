@@ -104,7 +104,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="bt_chitiet">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Chi ti&#x1ebf;t"/>
+        <Property name="text" type="java.lang.String" value="&#x110;&#xf3;ng"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_chitietActionPerformed"/>

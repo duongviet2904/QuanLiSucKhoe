@@ -126,7 +126,7 @@ public class DonXinNghiSV implements Serializable{
     public void setNgayKetThuc(String ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
-
+    
     public String getLyDo() {
         return lyDo;
     }
@@ -155,6 +155,8 @@ public class DonXinNghiSV implements Serializable{
     public String toString() {
         return "DonXinNghiSV{" + "maDon=" + maDon + ", maSV=" + maSV + ", tenSV=" + tenSV + ", lop=" + lop + ", khoa=" + khoa + ", ngayGui=" + ngayGui + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", lyDo=" + lyDo + ", chiTiet=" + chiTiet + ", taiLieuLienQuan=" + taiLieuLienQuan + ", hocOnl=" + hocOnl + ", trangThai=" + trangThai + '}';
     }
+
+    
     
     
 }

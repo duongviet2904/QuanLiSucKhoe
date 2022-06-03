@@ -118,6 +118,11 @@ public class DonKBYTSinhVien implements Serializable{
     public void setTiepXucNguoiBenhDauMua(boolean tiepXucNguoiBenhDauMua) {
         this.tiepXucNguoiBenhDauMua = tiepXucNguoiBenhDauMua;
     }
+
+    @Override
+    public String toString() {
+        return "DonKBYTSinhVien{" + "maSV=" + maSV + ", tenSV=" + tenSV + ", lop=" + lop + ", khoa=" + khoa + ", ngayKhaiBao=" + ngayKhaiBao + ", coTrieuChung=" + coTrieuChung + ", tiepXucNguoiBenh=" + tiepXucNguoiBenh + ", tiepXucNguoiTuNuocCoBenh=" + tiepXucNguoiTuNuocCoBenh + ", tiepXucNguoiBenhCoBieuHien=" + tiepXucNguoiBenhCoBieuHien + ", tiepXucNguoiBenhDauMua=" + tiepXucNguoiBenhDauMua + '}';
+    }
     
     
 }

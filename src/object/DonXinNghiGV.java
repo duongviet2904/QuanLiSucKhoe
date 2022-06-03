@@ -15,6 +15,7 @@ public class DonXinNghiGV implements Serializable{
     private String maGV;
     private String tenGV;
     private String khoa;
+    private String ngayGui;
     private String ngayBatDau;
     private String ngayKetThuc;
     private String lyDo;
@@ -22,11 +23,12 @@ public class DonXinNghiGV implements Serializable{
     private String taiLieuLienQuan;
     private boolean trangThai;
 
-    public DonXinNghiGV(String maDon, String maGV, String tenGV, String khoa, String ngayBatDau, String ngayKetThuc, String lyDo, String chiTiet, String taiLieuLienQuan, boolean trangThai) {
+    public DonXinNghiGV(String maDon, String maGV, String tenGV, String khoa, String ngayGui , String ngayBatDau, String ngayKetThuc, String lyDo, String chiTiet, String taiLieuLienQuan, boolean trangThai) {
         this.maDon = maDon;
         this.maGV = maGV;
         this.tenGV = tenGV;
         this.khoa = khoa;
+        this.ngayGui = ngayGui;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
         this.lyDo = lyDo;
@@ -38,13 +40,20 @@ public class DonXinNghiGV implements Serializable{
     public DonXinNghiGV() {
     }
 
- 
-    public boolean isTrangThai() {
-        return trangThai;
+    public String getMaDon() {
+        return maDon;
     }
 
-    public void setTrangThai(boolean trangThai) {
-        this.trangThai = trangThai;
+    public void setMaDon(String maDon) {
+        this.maDon = maDon;
+    }
+
+    public String getNgayGui() {
+        return ngayGui;
+    }
+
+    public void setNgayGui(String ngayGui) {
+        this.ngayGui = ngayGui;
     }
 
     public String getMaGV() {
@@ -62,15 +71,6 @@ public class DonXinNghiGV implements Serializable{
     public void setTenGV(String tenGV) {
         this.tenGV = tenGV;
     }
-
-    public String getMaDon() {
-        return maDon;
-    }
-
-    public void setMaDon(String maDon) {
-        this.maDon = maDon;
-    }
-
 
     public String getKhoa() {
         return khoa;
@@ -119,6 +119,14 @@ public class DonXinNghiGV implements Serializable{
     public void setTaiLieuLienQuan(String taiLieuLienQuan) {
         this.taiLieuLienQuan = taiLieuLienQuan;
     }
-    
+
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
     
 }

@@ -45,7 +45,14 @@ public class TableLichSu extends AbstractTableModel{
              
             case 3: return dsLS.get(rowIndex).getThơiGian();
             
-            case 4: return dsLS.get(rowIndex).toString();
+            case 4: 
+            {
+                if(dsLS.get(rowIndex).getChiTiet() == null)
+                {
+                    return "Không thể xem lại";
+                }
+                return "Có thể xem lại";
+            }
             
             default : return null;
         }

@@ -5,12 +5,19 @@
 package quanlisuckhoe;
 
 
+import java.awt.Container;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import object.DocGhi;
+import object.DonKBYTGiaoVien;
+import object.DonKBYTSinhVien;
+import object.DonXinNghiGV;
+import object.DonXinNghiSV;
+import object.GiaoVien;
 import object.Khoa;
 import object.LichSu;
 import object.LopHoc;
@@ -26,39 +33,64 @@ public class XemLichSu extends javax.swing.JFrame {
     /**
      * Creates new form XemLichSu
      */
-    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
+//    private Object s = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
+//    private Object s = new GiaoVien("GV01", "Nguyễn Văn Mạnh", "K01");
+
     
-//    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
-//        
-//    private Khoa k = new Khoa("K01", "CNTT", "GV01");
-    
-//    private SinhVien sv;
-//    private LopHoc lh;
-//    private Khoa k;
+    private Object s;
+    private SinhVien sv;
+    private GiaoVien gv;
+    private int vaitro = -1;
     private int tongLS;
     ArrayList<LichSu> ls = new ArrayList<>();
     int dong = -1;
     public XemLichSu() {
+        try{
+            sv = (SinhVien)s;
+        }catch(Exception ex)
+        {
+            vaitro = 1;
+        }
+        try{
+            gv = (GiaoVien)s;
+        }catch(Exception ex)
+        {
+            vaitro = 0;
+        }
         initComponents();
-        getLicSu();
+        getLichSu();
         table_ls.setModel(new TableLichSu(ls));
     }
-    public XemLichSu(SinhVien s) {
-        sv = s;
+    public XemLichSu(Object s) {
+        this.s = s;
+        try{
+            sv = (SinhVien)s;
+        }catch(Exception ex)
+        {
+            vaitro = 1;
+        }
+        try{
+            gv = (GiaoVien)s;
+        }catch(Exception ex)
+        {
+            vaitro = 0;
+        }
         initComponents();
-        getLicSu();
+        getLichSu();
         table_ls.setModel(new TableLichSu(ls));
         
     }
-
-    public SinhVien getSv() {
-        return sv;
+    
+    public Object getSv() {
+        return s;
     }
 
-    public void setSv(SinhVien sv) {
-        this.sv = sv;
+    public void setSv(Object s) {
+        this.s = s;
     }
-    public void getLicSu()
+    
+
+    public void getLichSu()
     {
         DocGhi rw = new DocGhi();
         try {
@@ -67,10 +99,18 @@ public class XemLichSu extends javax.swing.JFrame {
             tongLS=DSLS.size();
             for(LichSu l : DSLS)
             {
-                if(l.getTaiKhoan().equals(sv.getMaSV()))
-                {
-                    ls.add(l);
+                if(vaitro == 0){
+                    if(l.getTaiKhoan().equals(sv.getMaSV()))
+                    {
+                        ls.add(l);
+                    }
+                }else{
+                    if(l.getTaiKhoan().equals(gv.getMaGV()))
+                    {
+                        ls.add(l);
+                    }
                 }
+            
             }
             
         } catch (IOException | ClassNotFoundException ex) {
@@ -106,7 +146,7 @@ public class XemLichSu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table_ls);
 
-        bt_chitiet.setText("Chi tiết");
+        bt_chitiet.setText("Đóng");
         bt_chitiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_chitietActionPerformed(evt);
@@ -167,17 +207,62 @@ public class XemLichSu extends javax.swing.JFrame {
 
     private void bt_chitietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chitietActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_bt_chitietActionPerformed
 
     private void table_lsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_lsMouseClicked
         // TODO add your handling code here:
         dong = table_ls.getSelectedRow();
+        if(table_ls.getValueAt(dong, 4).equals("Có thể xem lại"))
+        {
+            
+        
         if(dong != -1){
             LichSu l = ls.get(dong);
+            if(vaitro == 0){
             if(l.getNoiDung().equals("Khai báo y tế"))
             {
-                
+                DonKBYTSinhVien d = new DonKBYTSinhVien();
+                d = (DonKBYTSinhVien) l.getChiTiet();
+                System.out.println(d.toString());
+                SVKhaiBaoChiTiet frame = new SVKhaiBaoChiTiet(d);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
             }
+            if(l.getNoiDung().equals("Xin nghỉ"))
+            {
+                DonXinNghiSV d = new DonXinNghiSV();
+                d = (DonXinNghiSV) l.getChiTiet();
+                System.out.println(d.toString());
+                SVXinNghiChiTiet frame = new SVXinNghiChiTiet(d);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+            }
+            }else{
+            if(l.getNoiDung().equals("Khai báo y tế"))
+            {
+                DonKBYTGiaoVien d = new DonKBYTGiaoVien();
+                d = (DonKBYTGiaoVien) l.getChiTiet();
+                System.out.println(d.toString());
+                GVKhaiBaoChiTiet frame = new GVKhaiBaoChiTiet(d);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+            }
+            if(l.getNoiDung().equals("Xin nghỉ"))
+            {
+                DonXinNghiGV d = new DonXinNghiGV();
+                d = (DonXinNghiGV) l.getChiTiet();
+                System.out.println(d.toString());
+                GVNghiChiTiet frame = new GVNghiChiTiet(d);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+            }
+            }
+            
             
 //        sv = dsSV.get(dong);
 //        txtMaSV.setText(sv.getMasv()+"");
@@ -187,6 +272,7 @@ public class XemLichSu extends javax.swing.JFrame {
 //        txtDiem2.setText(sv.getDiem2()+"");
 //        txtDiemTB.setText(sv.getDiemtb()+"");
 //        txtKetQua.setText(sv.getKetqua()+"");
+        }
         }
     }//GEN-LAST:event_table_lsMouseClicked
 
