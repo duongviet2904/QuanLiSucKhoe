@@ -21,6 +21,7 @@ import object.DonXinNghiSV;
 import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
+import object.ThongBao;
 
 /**
  *
@@ -42,6 +43,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     public TrangChuGiaoVien() {
         initComponents();
         getDanhSach();
+        lstNoti.setModel(new ThongBao(chuaDuyet));
     }
 
     public TrangChuGiaoVien(GiaoVien gv, Khoa khoa, LopHoc lh) {
@@ -50,6 +52,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         this.lh = lh;
         initComponents();
         getDanhSach();
+        lstNoti.setModel(new ThongBao(chuaDuyet));
     }
     
     public void getDanhSach()
@@ -58,11 +61,12 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
             
             lstXN = (ArrayList<DonXinNghiSV>) rw.ReadObject("./src/data/DonXNSV.txt");
             for(DonXinNghiSV sv : lstXN){
-                if(sv.isTrangThai() == false){
+                if(sv.isTrangThai() == false && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     chuaDuyet.add(sv);
-                }else{
+                }else if(sv.isTrangThai() == true && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     daDuyet.add(sv);
                 }
+                
             }
             lstKBYT = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
                  
@@ -88,15 +92,15 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         txtTenGV = new javax.swing.JLabel();
         txtTenKhoa = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_kbyt = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstNoti = new javax.swing.JList<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtTenLop = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstNoti = new javax.swing.JTable();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
         m_gvKhaiBao = new javax.swing.JMenu();
@@ -124,8 +128,18 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         txtTenKhoa.setText(khoa.getTenKhoa());
 
         jButton1.setText("Đăng kí nghỉ phép");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Khai báo y tế");
+        btn_kbyt.setText("Khai báo y tế");
+        btn_kbyt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kbytActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Lịch sử");
 
@@ -137,19 +151,19 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         });
 
         jButton2.setText("Thống kê");
-
-        lstNoti.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
         });
-        jScrollPane1.setViewportView(lstNoti);
 
         jLabel10.setText("Thông báo");
 
         jLabel4.setText("Lớp phụ trách:");
 
         txtTenLop.setText(lh.getTenLop());
+
+        jScrollPane2.setViewportView(lstNoti);
 
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -176,6 +190,11 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         menu_gv.add(m_gvXinNghi);
 
         m_gvThongKe.setText("Thống Kê");
+        m_gvThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_gvThongKeActionPerformed(evt);
+            }
+        });
         menu_gv.add(m_gvThongKe);
 
         m_gvThongBao.setText("Thông Báo");
@@ -215,7 +234,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_kbyt, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -242,11 +261,11 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTenKhoa)
                                     .addComponent(txtTenGV))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(108, 108, 108))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +294,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_kbyt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,8 +306,8 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
         txtMaGV.getAccessibleContext().setAccessibleName("");
@@ -298,7 +317,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
 
     private void m_gvKhaiBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvKhaiBaoMouseClicked
         // TODO add your handling code here:
-        GVKhaiBao frame = new GVKhaiBao();
+        GVKhaiBao frame = new GVKhaiBao(gv, khoa);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -315,7 +334,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
 
     private void m_gvXinNghiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvXinNghiMouseClicked
         // TODO add your handling code here:
-        GVNghi frame = new GVNghi();
+        GVNghi frame = new GVNghi(gv, khoa);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -336,6 +355,37 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    //khai bao y te
+    private void btn_kbytActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kbytActionPerformed
+        GVKhaiBao frame = new GVKhaiBao(gv, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btn_kbytActionPerformed
+
+    private void m_gvThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_gvThongKeActionPerformed
+        ThongKe frame = new ThongKe(gv, lh, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_gvThongKeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ThongKe frame = new ThongKe(gv, lh, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        GVNghi frame = new GVNghi(gv, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,9 +427,9 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_kbyt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -390,8 +440,8 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> lstNoti;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable lstNoti;
     private javax.swing.JMenu m_gvKhaiBao;
     private javax.swing.JMenu m_gvThongBao;
     private javax.swing.JMenu m_gvThongKe;

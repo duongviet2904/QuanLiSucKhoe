@@ -212,8 +212,8 @@ public class Database {
     public static void taoXinNghiGV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",true));
-        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",true));
+        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",false));
+        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",false));
         rw.WriteObject("./src/data/DonXNGV.txt", xinnghigv);
 //        try {
 //            
@@ -231,8 +231,8 @@ public class Database {
     public static void taoXinNghiSV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",true));
-        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",true));
+        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",false));
+        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",false));
         rw.WriteObject("./src/data/DonXNSV.txt", xinnghisv);
 //        try {
 //            

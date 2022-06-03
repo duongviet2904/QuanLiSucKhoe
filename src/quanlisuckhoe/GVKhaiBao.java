@@ -4,19 +4,80 @@
  */
 package quanlisuckhoe;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import object.DocGhi;
+import object.DonKBYTGiaoVien;
+import object.GiaoVien;
+import object.Khoa;
 
 /**
  *
  * @author ducth
  */
 public class GVKhaiBao extends javax.swing.JFrame {
-
+    
+    private GiaoVien gv;
+    private Khoa khoa;
+    
+    private DonKBYTGiaoVien kbyt = new DonKBYTGiaoVien();
+    SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+    Date date = new Date();
+    String ngayKB = df.format(date);
+    
+    DocGhi rw = new DocGhi();
+    
+    ArrayList<DonKBYTGiaoVien> dskbgv = new ArrayList<>();
     /**
      * Creates new form GVKB
      */
     public GVKhaiBao() {
         initComponents();
+        txtNgay.setText(ngayKB);
+//        kbyt.setNgayKhaiBao(ngayKB);
+        getDanhSach();
+    }
+
+    public void getDanhSach(){
+        try {
+            dskbgv = (ArrayList<DonKBYTGiaoVien>) rw.ReadObject("./src/data/KBYTGV.txt");
+//            for(DonKBYTGiaoVien i : dskbgv){
+//                    System.out.println(i.getMaGV() + i.getTenGV());
+//                }
+        } catch (IOException ex) {
+            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public GiaoVien getGv() {
+        return gv;
+    }
+
+    public void setGv(GiaoVien gv) {
+        this.gv = gv;
+    }
+
+    public Khoa getKhoa() {
+        return khoa;
+    }
+
+    public void setKhoa(Khoa khoa) {
+        this.khoa = khoa;
+    }
+
+    public GVKhaiBao(GiaoVien gv, Khoa khoa) {
+        this.gv = gv;
+        this.khoa = khoa;
+         initComponents();
+         kbyt.setNgayKhaiBao(ngayKB);
+         getDanhSach();
     }
 
     /**
@@ -28,11 +89,11 @@ public class GVKhaiBao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        text_mgv = new javax.swing.JTextField();
+        txtTenGV = new javax.swing.JTextField();
         tieude_ngay = new javax.swing.JLabel();
-        text_mgv1 = new javax.swing.JTextField();
-        text_khoa = new javax.swing.JTextField();
-        text_ngay = new javax.swing.JTextField();
+        txtMaGV = new javax.swing.JTextField();
+        txtTenKhoa = new javax.swing.JTextField();
+        txtNgay = new javax.swing.JTextField();
         rb_14Co = new javax.swing.JRadioButton();
         rb_14Khong = new javax.swing.JRadioButton();
         rb_14Khong1 = new javax.swing.JRadioButton();
@@ -63,111 +124,45 @@ public class GVKhaiBao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        text_mgv.setEditable(false);
-        text_mgv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_mgvActionPerformed(evt);
-            }
-        });
+        txtTenGV.setEditable(false);
+        txtTenGV.setText(gv.getTenGV());
 
         tieude_ngay.setText("Ngày");
 
-        text_mgv1.setEditable(false);
-        text_mgv1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_mgv1ActionPerformed(evt);
-            }
-        });
+        txtMaGV.setEditable(false);
+        txtMaGV.setText(gv.getMaGV());
 
-        text_khoa.setEditable(false);
-        text_khoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_khoaActionPerformed(evt);
-            }
-        });
+        txtTenKhoa.setEditable(false);
+        txtTenKhoa.setText(khoa.getTenKhoa());
 
-        text_ngay.setEditable(false);
-        text_ngay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngayActionPerformed(evt);
-            }
-        });
+        txtNgay.setEditable(false);
+        txtNgay.setText(ngayKB);
 
         rb_14Co.setText("Có");
-        rb_14Co.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14CoActionPerformed(evt);
-            }
-        });
 
         rb_14Khong.setText("Không");
-        rb_14Khong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14KhongActionPerformed(evt);
-            }
-        });
 
         rb_14Khong1.setText("Không");
-        rb_14Khong1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong1ActionPerformed(evt);
-            }
-        });
 
         rb_14Co1.setText("Có");
-        rb_14Co1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co1ActionPerformed(evt);
-            }
-        });
 
         rb_14Co2.setText("Có");
-        rb_14Co2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co2ActionPerformed(evt);
-            }
-        });
 
         rb_14Khong2.setText("Không");
-        rb_14Khong2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong2ActionPerformed(evt);
-            }
-        });
 
         rb_14Co3.setText("Có");
-        rb_14Co3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co3ActionPerformed(evt);
-            }
-        });
 
         tieude_magv.setText("Mã giáo viên");
 
         tieude_tengv.setText("Tên giáo viên");
 
         rb_14Khong3.setText("Không");
-        rb_14Khong3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong3ActionPerformed(evt);
-            }
-        });
 
         rb_14Co4.setText("Có");
-        rb_14Co4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co4ActionPerformed(evt);
-            }
-        });
 
         tieude_khoa.setText("Khoa");
 
         rb_14Khong4.setText("Không");
-        rb_14Khong4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong4ActionPerformed(evt);
-            }
-        });
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Khai Báo Y Tế");
@@ -276,16 +271,16 @@ public class GVKhaiBao extends javax.swing.JFrame {
                                         .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(text_mgv, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                            .addComponent(text_mgv1))
+                                            .addComponent(txtTenGV, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                            .addComponent(txtMaGV))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(tieude_khoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(tieude_ngay, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(text_ngay, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                                            .addComponent(text_khoa)))))
+                                            .addComponent(txtNgay, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                            .addComponent(txtTenKhoa)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,20 +299,20 @@ public class GVKhaiBao extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(text_mgv1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMaGV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
-                        .addComponent(text_mgv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTenGV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tieude_magv)
                             .addComponent(tieude_khoa)
-                            .addComponent(text_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTenKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tieude_tengv)
                             .addComponent(tieude_ngay)
-                            .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,71 +350,64 @@ public class GVKhaiBao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void text_khoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_khoaActionPerformed
-
-    private void text_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngayActionPerformed
-
-    private void rb_14CoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14CoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14CoActionPerformed
-
-    private void rb_14KhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14KhongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14KhongActionPerformed
-
-    private void rb_14Khong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong1ActionPerformed
-
-    private void rb_14Co1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co1ActionPerformed
-
-    private void rb_14Co2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co2ActionPerformed
-
-    private void rb_14Khong2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong2ActionPerformed
-
-    private void rb_14Co3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co3ActionPerformed
-
-    private void rb_14Khong3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong3ActionPerformed
-
-    private void rb_14Co4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co4ActionPerformed
-
-    private void rb_14Khong4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong4ActionPerformed
-
     private void bt_khaibaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khaibaoActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        try {
+            kbyt.setMaGV(txtMaGV.getText());
+            kbyt.setTenGV(txtTenGV.getText());
+            kbyt.setKhoa(txtTenKhoa.getText());
+            kbyt.setNgayKhaiBao(ngayKB);
+            if(rb_14Co.isSelected()){
+                kbyt.setCoTrieuChung(true);
+            }
+            if(rb_14Khong.isSelected()){
+                kbyt.setCoTrieuChung(false);
+            }
+            if(rb_14Co1.isSelected()){
+                kbyt.setTiepXucNguoiBenh(true);
+            }
+            if(rb_14Khong1.isSelected()){
+                kbyt.setTiepXucNguoiBenh(false);
+            }
+            if(rb_14Co2.isSelected()){
+                kbyt.setTiepXucNguoiTuNuocCoBenh(true);
+            }
+            if(rb_14Khong2.isSelected()){
+                kbyt.setTiepXucNguoiTuNuocCoBenh(false);
+            }
+            if(rb_14Co3.isSelected()){
+                kbyt.setTiepXucNguoiBenhCoBieuHien(true);
+            }
+            if(rb_14Khong3.isSelected()){
+                kbyt.setTiepXucNguoiBenhCoBieuHien(false);
+            }
+            if(rb_14Co4.isSelected()){
+                kbyt.setTiepXucNguoiBenhDauMua(true);
+            }
+            if(rb_14Khong4.isSelected()){
+                kbyt.setTiepXucNguoiBenhDauMua(false);
+            }
+            dskbgv.add(kbyt);
+            rw.WriteObject("./src/data/KBYTGV.txt", dskbgv);
+//            try {
+//                ArrayList<DonKBYTGiaoVien> check = (ArrayList<DonKBYTGiaoVien>)rw.ReadObject("./src/data/KBYTGV.txt");
+//                for(DonKBYTGiaoVien i : check){
+//                    System.out.println(i.getMaGV() + i.getTenGV());
+//                }
+//            } catch (FileNotFoundException ex) {
+//                Logger.getLogger(GVNghi.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (ClassNotFoundException ex) {
+//                Logger.getLogger(GVNghi.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bt_khaibaoActionPerformed
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
-
-    private void text_mgvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_mgvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_mgvActionPerformed
-
-    private void text_mgv1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_mgv1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_mgv1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -487,14 +475,14 @@ public class GVKhaiBao extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_14Khong2;
     private javax.swing.JRadioButton rb_14Khong3;
     private javax.swing.JRadioButton rb_14Khong4;
-    private javax.swing.JTextField text_khoa;
-    private javax.swing.JTextField text_mgv;
-    private javax.swing.JTextField text_mgv1;
-    private javax.swing.JTextField text_ngay;
     private javax.swing.JLabel tieude;
     private javax.swing.JLabel tieude_khoa;
     private javax.swing.JLabel tieude_magv;
     private javax.swing.JLabel tieude_ngay;
     private javax.swing.JLabel tieude_tengv;
+    private javax.swing.JTextField txtMaGV;
+    private javax.swing.JTextField txtNgay;
+    private javax.swing.JTextField txtTenGV;
+    private javax.swing.JTextField txtTenKhoa;
     // End of variables declaration//GEN-END:variables
 }

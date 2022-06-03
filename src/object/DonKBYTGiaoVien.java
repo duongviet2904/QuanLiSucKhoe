@@ -22,6 +22,9 @@ public class DonKBYTGiaoVien implements Serializable{
     private boolean tiepXucNguoiBenhCoBieuHien;
     private boolean tiepXucNguoiBenhDauMua;
 
+    public DonKBYTGiaoVien() {
+    }
+
     public DonKBYTGiaoVien(String maGV, String tenGV, String khoa, String ngayKhaiBao, boolean coTrieuChung, boolean tiepXucNguoiBenh, boolean tiepXucNguoiTuNuocCoBenh, boolean tiepXucNguoiBenhCoBieuHien, boolean tiepXucNguoiBenhDauMua) {
         this.maGV = maGV;
         this.tenGV = tenGV;
