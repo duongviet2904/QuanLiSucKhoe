@@ -198,29 +198,31 @@ public class DangNhap extends javax.swing.JFrame {
                     rw = new DocGhi();
                 try {
                     ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("./src/data/SinhVien.txt");
-                    for(SinhVien s : dssv)
-                    {
-                        if (s.getTenDangNhap().equals(name)) {
-                            for (LopHoc l : dslop) {
-                                if (s.getMaLop().equals(l.getMaLop())) {
-                                    for (Khoa k : dskhoa) {
-                                        if (k.getMaKhoa().equals(l.getMaKhoa())) {
-                                            TrangChuSinhVien frame = new TrangChuSinhVien(s, l, k);
-                                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                                            Container contentPane = frame.getContentPane();
-                                            frame.setVisible(true);
-                                            this.setVisible(false);
+                    for(TaiKhoan t :tk){
+                        if(t.getTenDangNhap().equals(name)){
+                            for(SinhVien s : dssv)
+                                {
+                                    if (s.getMaSV().equals(t.getMaDoiTuong())) {
+                                        for (LopHoc l : dslop) {
+                                            if (s.getMaLop().equals(l.getMaLop())) {
+                                                for (Khoa k : dskhoa) {
+                                                    if (k.getMaKhoa().equals(l.getMaKhoa())) {
+                                                        TrangChuSinhVien frame = new TrangChuSinhVien(s, l, k);
+                                                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                                        Container contentPane = frame.getContentPane();
+                                                        frame.setVisible(true);
+                                                        this.setVisible(false);
+                                                        break;
+                                                    }
+                                                }
                                             break;
+                                            }
                                         }
+                                    break;
                                     }
-                                break;
                                 }
-                            }
-                        break;
                         }
                     }
-                    
-                    
                     
                 } catch (IOException | ClassNotFoundException ex) {
                     JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
@@ -231,25 +233,29 @@ public class DangNhap extends javax.swing.JFrame {
                 rw = new DocGhi();
                 try {
                     ArrayList<GiaoVien> dsgv = (ArrayList<GiaoVien>) rw.ReadObject("./src/data/GiaoVien.txt");
-                    for(GiaoVien s : dsgv)
-                    {
-                        if (s.getTenDangNhap().equals(name)) {
-                            for (LopHoc l : dslop) {
-                                if (s.getMaGV().equals(l.getMaGV())) {
-                                    for (Khoa k : dskhoa) {
-                                        if (k.getMaKhoa().equals(l.getMaKhoa())) {
-                                            TrangChuGiaoVien frame = new TrangChuGiaoVien(s, k, l);
-                                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                                            Container contentPane = frame.getContentPane();
-                                            frame.setVisible(true);
-                                            this.setVisible(false);
+                    for(TaiKhoan t : tk){
+                        if(t.getTenDangNhap().equals(name)){
+                            for(GiaoVien s : dsgv)
+                                {
+                                    if (s.getMaGV().equals(t.getMaDoiTuong())) {
+                                        for (LopHoc l : dslop) {
+                                            if (s.getMaGV().equals(l.getMaGV())) {
+                                                for (Khoa k : dskhoa) {
+                                                    if (k.getMaKhoa().equals(l.getMaKhoa())) {
+                                                        TrangChuGiaoVien frame = new TrangChuGiaoVien(s, k, l);
+                                                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                                        Container contentPane = frame.getContentPane();
+                                                        frame.setVisible(true);
+                                                        this.setVisible(false);
+                                                        break;
+                                                    }
+                                                }
                                             break;
+                                            }
                                         }
+                                    break;
                                     }
-                                break;
                                 }
-                            }
-                        break;
                         }
                     }
                     
@@ -263,25 +269,29 @@ public class DangNhap extends javax.swing.JFrame {
                 rw = new DocGhi();
                 try {
                     ArrayList<GiaoVien> dsgv = (ArrayList<GiaoVien>) rw.ReadObject("./src/data/GiaoVien.txt");
-                    for(GiaoVien s : dsgv)
-                    {
-                        if (s.getTenDangNhap().equals(name)) {
-                            for (LopHoc l : dslop) {
-                                if (s.getMaGV().equals(l.getMaGV())) {
-                                    for (Khoa k : dskhoa) {
-                                        if (k.getMaKhoa().equals(l.getMaKhoa())) {
-                                            TrangChuNguoiQuanTri frame = new TrangChuNguoiQuanTri(s, k);
-                                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                                            Container contentPane = frame.getContentPane();
-                                            frame.setVisible(true);
-                                            this.setVisible(false);
+                    for(TaiKhoan t : tk){
+                        if(t.getTenDangNhap().equals(name)){
+                            for(GiaoVien s : dsgv)
+                                {
+                                    if (s.getMaGV().equals(t.getMaDoiTuong())) {
+                                        for (LopHoc l : dslop) {
+                                            if (s.getMaGV().equals(l.getMaGV())) {
+                                                for (Khoa k : dskhoa) {
+                                                    if (k.getMaKhoa().equals(l.getMaKhoa())) {
+                                                        TrangChuNguoiQuanTri frame = new TrangChuNguoiQuanTri(s, k);
+                                                        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                                        Container contentPane = frame.getContentPane();
+                                                        frame.setVisible(true);
+                                                        this.setVisible(false);
+                                                        break;
+                                                    }
+                                                }
                                             break;
+                                            }
                                         }
+                                    break;
                                     }
-                                break;
                                 }
-                            }
-                        break;
                         }
                     }
                     
