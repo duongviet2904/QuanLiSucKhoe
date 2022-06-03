@@ -230,8 +230,8 @@ public class Database {
     public static void taoXinNghiSV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",true));
-        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",true));
+        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-10","2022-05-12","2022-05-13", "abc","abc","abc",false,true));
+        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-10","2022-06-12","2022-06-13", "abc","abc","abc",false,true));
         rw.WriteObject("./src/data/DonXNSV.txt", xinnghisv);
 //        try {
 //            
