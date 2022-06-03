@@ -23,15 +23,15 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     /**
      * Creates new form TrangChuSinhVien
      */
-    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
+//    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
+//    
+//    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
+//        
+//    private Khoa k = new Khoa("K01", "CNTT", "GV01");
     
-    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
-        
-    private Khoa k = new Khoa("K01", "CNTT", "GV01");
-    
-//    private SinhVien sv;
-//    private LopHoc lh;
-//    private Khoa k;
+    private SinhVien sv;
+    private LopHoc lh;
+    private Khoa k;
     
 
     public SinhVien getSv() {
@@ -312,7 +312,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void m_svLichSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svLichSuMouseClicked
         // TODO add your handling code here:
-        LichSu frame = new LichSu();
+        XemLichSu frame = new XemLichSu();
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);

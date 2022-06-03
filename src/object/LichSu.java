@@ -4,11 +4,13 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ducth
  */
-public class LichSu {
+public class LichSu implements Serializable{
     private String stt;
     private String taiKhoan;
     private String noiDung;
@@ -17,8 +19,14 @@ public class LichSu {
     
     }
 
-    public LichSu(String stt, String noiDung, String thơiGian) {
+    @Override
+    public String toString() {
+        return "LichSu{" + "stt=" + stt + ", taiKhoan=" + taiKhoan + ", noiDung=" + noiDung + ", th\u01a1iGian=" + thơiGian + '}';
+    }
+
+    public LichSu(String stt,String taiKhoan ,String noiDung, String thơiGian) {
         this.stt = stt;
+        this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;
         this.thơiGian = thơiGian;
     }

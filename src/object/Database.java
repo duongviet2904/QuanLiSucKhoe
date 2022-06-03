@@ -24,29 +24,29 @@ public class Database {
     static ArrayList<DonXinNghiSV> xinnghisv = new ArrayList<>();
     static ArrayList<SinhVien> sinhvien = new ArrayList<>();
     static ArrayList<ThongBao> thongbao = new ArrayList<>();
-    
+    static ArrayList<LichSu> lichsu = new ArrayList<>();
     
     
     public static void taoTK() throws IOException
     {
         DocGhi rw = new DocGhi();
-        tk.add(new TaiKhoan("TK00", "admin", "123", 2));
-        tk.add(new TaiKhoan("TK01", "GV01", "123", 1));
-        tk.add(new TaiKhoan("TK02", "GV02", "123", 1));
-        tk.add(new TaiKhoan("TK03", "GV03", "123", 1));
-        tk.add(new TaiKhoan("TK04", "GV04", "123", 1));
-        tk.add(new TaiKhoan("TK05", "SV01", "123", 0));
-        tk.add(new TaiKhoan("TK06", "SV02", "123", 0));
-        tk.add(new TaiKhoan("TK07", "SV03", "123", 0));
-        tk.add(new TaiKhoan("TK08", "SV04", "123", 0));
-        tk.add(new TaiKhoan("TK09", "SV05", "123", 0));
-        tk.add(new TaiKhoan("TK10", "SV06", "123", 0));
-        tk.add(new TaiKhoan("TK11", "SV07", "123", 0));
-        tk.add(new TaiKhoan("TK12", "SV08", "123", 0));
-        tk.add(new TaiKhoan("TK13", "SV09", "123", 0));
-        tk.add(new TaiKhoan("TK14", "SV10", "123", 0));
-        tk.add(new TaiKhoan("TK15", "SV11", "123", 0));
-        tk.add(new TaiKhoan("TK16", "SV12", "123", 0));
+        tk.add(new TaiKhoan("TK00", "admin", "123", 2, "GV05"));
+        tk.add(new TaiKhoan("TK01", "GV01", "123", 1, "GV01"));
+        tk.add(new TaiKhoan("TK02", "GV02", "123", 1, "GV02"));
+        tk.add(new TaiKhoan("TK03", "GV03", "123", 1, "GV03"));
+        tk.add(new TaiKhoan("TK04", "GV04", "123", 1, "GV04"));
+        tk.add(new TaiKhoan("TK05", "SV01", "123", 0, "SV01"));
+        tk.add(new TaiKhoan("TK06", "SV02", "123", 0, "SV02"));
+        tk.add(new TaiKhoan("TK07", "SV03", "123", 0, "SV03"));
+        tk.add(new TaiKhoan("TK08", "SV04", "123", 0, "SV04"));
+        tk.add(new TaiKhoan("TK09", "SV05", "123", 0, "SV05"));
+        tk.add(new TaiKhoan("TK10", "SV06", "123", 0, "SV06"));
+        tk.add(new TaiKhoan("TK11", "SV07", "123", 0, "SV07"));
+        tk.add(new TaiKhoan("TK12", "SV08", "123", 0, "SV08"));
+        tk.add(new TaiKhoan("TK13", "SV09", "123", 0, "SV09"));
+        tk.add(new TaiKhoan("TK14", "SV10", "123", 0, "SV10"));
+        tk.add(new TaiKhoan("TK15", "SV11", "123", 0, "SV11"));
+        tk.add(new TaiKhoan("TK16", "SV12", "123", 0, "SV12"));
         
         rw.WriteObject("./src/data/TaiKhoan.txt", tk);
 //        try {
@@ -246,19 +246,39 @@ public class Database {
 //            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
 //        }
     }
-    public ArrayList<SinhVien> getSV()
+    
+    public static void taoLicSu() throws IOException
     {
         DocGhi rw = new DocGhi();
+        lichsu.add(new LichSu("1","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("2","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("3","SV02","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("4","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("5","SV02","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("6","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("7","SV02","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("8","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("9","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("10","SV02","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("11","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("12","SV02","Khai báo y tế", "2022-06-12 18:00"));
+        lichsu.add(new LichSu("13","SV01","Khai báo y tế", "2022-06-12 18:00"));
+        
+        rw.WriteObject("./src/data/LichSu.txt", lichsu);
         try {
             
-            ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("./src/data/SinhVien.txt");
-            return dssv;
+            ArrayList<LichSu> khoa10 = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
+            for(LichSu gv1 : khoa10)
+            {
+                System.out.println(gv1.toString());
+                
+            }
             
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
         }
-        return null;
     }
+    
     
     public static void main(String[] args) throws IOException {
         taoTK();
@@ -270,6 +290,7 @@ public class Database {
         taoKBYTSV();
         taoXinNghiGV();
         taoXinNghiSV();
+        taoLicSu();
         System.out.println("Đã tạo dữ liệu thành công!");
     }
 }
