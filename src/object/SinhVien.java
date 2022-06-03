@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author duongv
  */
-public class SinhVien extends TaiKhoan implements Serializable{
+public class SinhVien implements Serializable{
     private String maSV;
     private String tenSV;
     private String gioiTinh;
@@ -23,8 +23,8 @@ public class SinhVien extends TaiKhoan implements Serializable{
     public SinhVien() {
     }
     
-    public SinhVien(String maSV, String tenSV, String gioiTinh, String soDT, String email, String ngaySinh, String maLop, String maTK, String tenDangNhap, String matKhau, int vaiTro) {
-        super(maTK, tenDangNhap, matKhau, vaiTro);
+    public SinhVien(String maSV, String tenSV, String gioiTinh, String soDT, String email, String ngaySinh, String maLop) {
+        
         this.maSV = maSV;
         this.tenSV = tenSV;
         this.gioiTinh = gioiTinh;
