@@ -25,15 +25,15 @@ public class SVKhaiBao extends javax.swing.JFrame {
     /**
      * Creates new form SVKhaiBao
      */
-//    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
+    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
+    
+    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
+        
+    private Khoa k = new Khoa("K01", "CNTT", "GV01");
 //    
-//    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
-//        
-//    private Khoa k = new Khoa("K01", "CNTT", "GV01");
-//    
-    private SinhVien sv;
-    private LopHoc lh;
-    private Khoa k;
+//    private SinhVien sv;
+//    private LopHoc lh;
+//    private Khoa k;
 
     public SinhVien getSv() {
         return sv;
