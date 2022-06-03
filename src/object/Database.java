@@ -32,23 +32,23 @@ public class Database {
         DocGhi rw = new DocGhi();
         tk.add(new TaiKhoan("TK00", "admin", "123", 2));
         tk.add(new TaiKhoan("TK01", "GV01", "123", 1));
-        tk.add(new TaiKhoan("TK02", "GV02", "123", 0));
+        tk.add(new TaiKhoan("TK02", "GV02", "123", 1));
         tk.add(new TaiKhoan("TK03", "GV03", "123", 1));
-        tk.add(new TaiKhoan("TK04", "GV04", "123", 0));
-        tk.add(new TaiKhoan("TK05", "SV01", "123", 1));
+        tk.add(new TaiKhoan("TK04", "GV04", "123", 1));
+        tk.add(new TaiKhoan("TK05", "SV01", "123", 0));
         tk.add(new TaiKhoan("TK06", "SV02", "123", 0));
-        tk.add(new TaiKhoan("TK07", "SV03", "123", 1));
+        tk.add(new TaiKhoan("TK07", "SV03", "123", 0));
         tk.add(new TaiKhoan("TK08", "SV04", "123", 0));
-        tk.add(new TaiKhoan("TK09", "SV05", "123", 1));
+        tk.add(new TaiKhoan("TK09", "SV05", "123", 0));
         tk.add(new TaiKhoan("TK10", "SV06", "123", 0));
-        tk.add(new TaiKhoan("TK11", "SV07", "123", 1));
+        tk.add(new TaiKhoan("TK11", "SV07", "123", 0));
         tk.add(new TaiKhoan("TK12", "SV08", "123", 0));
-        tk.add(new TaiKhoan("TK13", "SV09", "123", 1));
+        tk.add(new TaiKhoan("TK13", "SV09", "123", 0));
         tk.add(new TaiKhoan("TK14", "SV10", "123", 0));
-        tk.add(new TaiKhoan("TK15", "SV11", "123", 1));
+        tk.add(new TaiKhoan("TK15", "SV11", "123", 0));
         tk.add(new TaiKhoan("TK16", "SV12", "123", 0));
         
-        rw.WriteObject("src\\data\\TaiKhoan.txt", tk);
+        rw.WriteObject("./src/data/TaiKhoan.txt", tk);
 //        try {
 //          ArrayList<TaiKhoan> tk1 = (ArrayList<TaiKhoan>) rw.ReadObject("src\\data\\TaiKhoan.txt");
 ////          for(TaiKhoan t : tk1)
@@ -70,7 +70,7 @@ public class Database {
         gv.add(new GiaoVien("GV02", "Phạm Thị Hạnh", "K01", "TK02", "GV02", "123", 1));
         gv.add(new GiaoVien("GV03", "Nguyễn Văn Nam", "K02", "TK03", "GV03", "123", 1));
         gv.add(new GiaoVien("GV04", "Nguyễn Minh Trung", "K02", "TK04", "GV04", "123", 1));
-        rw.WriteObject("src\\data\\GiaoVien.txt", gv);
+        rw.WriteObject("./src/data/GiaoVien.txt", gv);
 //        
 //        
 //        try {
@@ -91,7 +91,7 @@ public class Database {
         DocGhi rw = new DocGhi();
         khoa.add(new Khoa("K01", "CNTT", "GV01"));
         khoa.add(new Khoa("K02", "Du lịch", "GV02"));
-        rw.WriteObject("src\\data\\Khoa.txt", khoa);
+        rw.WriteObject("./src/data/Khoa.txt", khoa);
 //        try {
 //            
 //            ArrayList<Khoa> khoa1 = (ArrayList<Khoa>) rw.ReadObject("src\\data\\Khoa.txt");
@@ -109,11 +109,11 @@ public class Database {
     public static void taoLop() throws IOException
     {
         DocGhi rw = new DocGhi();
-        lop.add(new LopHoc("L01", "IT01", 4, 14, "K01"));
-        lop.add(new LopHoc("L02", "IT02", 4, 14, "K01"));
-        lop.add(new LopHoc("L03", "DL01", 4, 14, "K02"));
-        lop.add(new LopHoc("L04", "DL01", 4, 14, "K02"));
-        rw.WriteObject("src\\data\\Lop.txt", lop);
+        lop.add(new LopHoc("L01", "IT01", 4, 14, "K01", "GV01"));
+        lop.add(new LopHoc("L02", "IT02", 4, 14, "K01", "GV02"));
+        lop.add(new LopHoc("L03", "DL01", 4, 14, "K02", "GV03"));
+        lop.add(new LopHoc("L04", "DL01", 4, 14, "K02", "GV04"));
+        rw.WriteObject("./src/data/Lop.txt", lop);
 //        try {
 //            
 //            ArrayList<LopHoc> lop1 = (ArrayList<LopHoc>) rw.ReadObject("src\\data\\Lop.txt");
@@ -144,7 +144,7 @@ public class Database {
         sinhvien.add(new SinhVien("SV11", "Nguyễn Văn Dũng", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L03", "TK15", "SV11", "123", 0));
         sinhvien.add(new SinhVien("SV12", "Nguyễn Minh Nga", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L02", "TK16", "SV12", "123", 0));
         
-        rw.WriteObject("src\\data\\SinhVien.txt", sinhvien);
+        rw.WriteObject("./src/data/SinhVien.txt", sinhvien);
 //        try {
 //            
 //            ArrayList<SinhVien> sv1 = (ArrayList<SinhVien>) rw.ReadObject("src\\data\\SinhVien.txt");
@@ -175,7 +175,7 @@ public class Database {
         khaibaogv.add(new DonKBYTGiaoVien("GV03", "Nguyễn Văn Nam", "Du lịch", "2022-06-15", false, false, false, false, false));
         khaibaogv.add(new DonKBYTGiaoVien("GV04", "Nguyễn Minh Trung", "Du lịch", "2022-06-15", true, false, false, false, false));
         
-        rw.WriteObject("src\\data\\KBYTGV.txt", khaibaogv);
+        rw.WriteObject("./src/data/KBYTGV.txt", khaibaogv);
 //        try {
 //            
 //            ArrayList<DonKBYTGiaoVien> khoa1 = (ArrayList<DonKBYTGiaoVien>) rw.ReadObject("src\\data\\KBYTGV.txt");
@@ -194,7 +194,7 @@ public class Database {
         DocGhi rw = new DocGhi();
         khaibaosv.add(new DonKBYTSinhVien("SV01", "Nguyễn Minh Anh","L01", "CNTT", "2022-06-12", false, false, false, false, false));
         khaibaosv.add(new DonKBYTSinhVien("SV01", "Nguyễn Minh Anh","L01", "CNTT", "2022-06-13", false, true, false, false, false));
-        rw.WriteObject("src\\data\\KBYTSV.txt", khaibaosv);
+        rw.WriteObject("./src/data/KBYTSV.txt", khaibaosv);
 //        try {
 //            
 //            ArrayList<DonKBYTSinhVien> khoa1 = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("src\\data\\KBYTSV.txt");
@@ -213,7 +213,7 @@ public class Database {
         DocGhi rw = new DocGhi();
         xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",true));
         xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",true));
-        rw.WriteObject("src\\data\\DonXNGV.txt", xinnghigv);
+        rw.WriteObject("./src/data/DonXNGV.txt", xinnghigv);
 //        try {
 //            
 //            ArrayList<DonXinNghiGV> khoa1 = (ArrayList<DonXinNghiGV>) rw.ReadObject("src\\data\\DonXNGV.txt");
@@ -232,7 +232,7 @@ public class Database {
         DocGhi rw = new DocGhi();
         xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",true));
         xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",true));
-        rw.WriteObject("src\\data\\DonXNSV.txt", xinnghisv);
+        rw.WriteObject("./src/data/DonXNSV.txt", xinnghisv);
 //        try {
 //            
 //            ArrayList<DonXinNghiSV> khoa10 = (ArrayList<DonXinNghiSV>) rw.ReadObject("src\\data\\DonXNSV.txt");
@@ -251,7 +251,7 @@ public class Database {
         DocGhi rw = new DocGhi();
         try {
             
-            ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("src\\data\\SinhVien.txt");
+            ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("./src/data/SinhVien.txt");
             return dssv;
             
         } catch (IOException | ClassNotFoundException ex) {

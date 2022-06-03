@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import object.TaiKhoan;
 import object.DocGhi;
 import object.Database;
+import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
 import object.SinhVien;
@@ -39,8 +40,8 @@ public class DangNhap extends javax.swing.JFrame {
     public void getLopKhoa()
     {
         try {
-            ArrayList<LopHoc> dslop = (ArrayList<LopHoc>) rw.ReadObject("src\\data\\Lop.txt");
-            ArrayList<Khoa> dskhoa = (ArrayList<Khoa>) rw.ReadObject("src\\data\\Khoa.txt");
+            dslop = (ArrayList<LopHoc>) rw.ReadObject("./src/data/Lop.txt");
+            dskhoa = (ArrayList<Khoa>) rw.ReadObject("./src/data/Khoa.txt");
                  
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
@@ -62,7 +63,7 @@ public class DangNhap extends javax.swing.JFrame {
     public void getTK() throws IOException
     {
         try {
-            tk = (ArrayList<TaiKhoan>) rw.ReadObject("src\\data\\TaiKhoan.txt");
+            tk = (ArrayList<TaiKhoan>) rw.ReadObject("./src/data/TaiKhoan.txt");
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra. Liên hệ với quản trị viên của bạn!");
         }
@@ -93,10 +94,6 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel1.setText("Tên đăng nhập");
 
         jLabel2.setText("Mật khẩu");
-
-        tf_name.setText("Tên đăng nhập");
-
-        tf_pass.setText("Mật khẩu");
 
         bt_login.setText("Đăng nhập");
         bt_login.setToolTipText("");
@@ -190,19 +187,20 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = tf_name.getText();
         String pass = tf_pass.getText();
+        getLopKhoa();
+        DocGhi rw;
         int vaitro = checkTK(name, pass);
             if (vaitro == -1) {
                 JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             } else
             {
-                getLopKhoa();
                 if (vaitro == 0) {
-                DocGhi rw = new DocGhi();
+                    rw = new DocGhi();
                 try {
-                    ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("src\\data\\SinhVien.txt");
+                    ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("./src/data/SinhVien.txt");
                     for(SinhVien s : dssv)
                     {
-                        if (s.getMaSV().equals(name)) {
+                        if (s.getTenDangNhap().equals(name)) {
                             for (LopHoc l : dslop) {
                                 if (s.getMaLop().equals(l.getMaLop())) {
                                     for (Khoa k : dskhoa) {
@@ -211,6 +209,7 @@ public class DangNhap extends javax.swing.JFrame {
                                             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                                             Container contentPane = frame.getContentPane();
                                             frame.setVisible(true);
+                                            this.setVisible(false);
                                             break;
                                         }
                                     }
@@ -229,15 +228,69 @@ public class DangNhap extends javax.swing.JFrame {
                 
                 
             }else if (vaitro == 1) {
-                TrangChuGiaoVien frame = new TrangChuGiaoVien();
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                Container contentPane = frame.getContentPane();
-                frame.setVisible(true);
+                rw = new DocGhi();
+                try {
+                    ArrayList<GiaoVien> dsgv = (ArrayList<GiaoVien>) rw.ReadObject("./src/data/GiaoVien.txt");
+                    for(GiaoVien s : dsgv)
+                    {
+                        if (s.getTenDangNhap().equals(name)) {
+                            for (LopHoc l : dslop) {
+                                if (s.getMaGV().equals(l.getMaGV())) {
+                                    for (Khoa k : dskhoa) {
+                                        if (k.getMaKhoa().equals(l.getMaKhoa())) {
+                                            TrangChuGiaoVien frame = new TrangChuGiaoVien(s, k, l);
+                                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                            Container contentPane = frame.getContentPane();
+                                            frame.setVisible(true);
+                                            this.setVisible(false);
+                                            break;
+                                        }
+                                    }
+                                break;
+                                }
+                            }
+                        break;
+                        }
+                    }
+                    
+                    
+                    
+                } catch (IOException | ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+                }
+                
             }else if (vaitro == 2) {
-                TrangChuNguoiQuanTri frame = new TrangChuNguoiQuanTri();
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                Container contentPane = frame.getContentPane();
-                frame.setVisible(true);
+                rw = new DocGhi();
+                try {
+                    ArrayList<GiaoVien> dsgv = (ArrayList<GiaoVien>) rw.ReadObject("./src/data/GiaoVien.txt");
+                    for(GiaoVien s : dsgv)
+                    {
+                        if (s.getTenDangNhap().equals(name)) {
+                            for (LopHoc l : dslop) {
+                                if (s.getMaGV().equals(l.getMaGV())) {
+                                    for (Khoa k : dskhoa) {
+                                        if (k.getMaKhoa().equals(l.getMaKhoa())) {
+                                            TrangChuNguoiQuanTri frame = new TrangChuNguoiQuanTri(s, k);
+                                            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                                            Container contentPane = frame.getContentPane();
+                                            frame.setVisible(true);
+                                            this.setVisible(false);
+                                            break;
+                                        }
+                                    }
+                                break;
+                                }
+                            }
+                        break;
+                        }
+                    }
+                    
+                    
+                    
+                } catch (IOException | ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+                }
+                
             }
             }
 

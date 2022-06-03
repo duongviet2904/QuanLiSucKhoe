@@ -15,7 +15,7 @@ public class GiaoVien extends TaiKhoan implements Serializable{
     private String tenGV;
     
     private String maKhoa;
-
+    
     public GiaoVien(String maGV, String tenGV, String maKhoa, String maTK, String tenDangNhap, String matKhau, int vaiTro) {
         super(maTK, tenDangNhap, matKhau, vaiTro);
         this.maGV = maGV;

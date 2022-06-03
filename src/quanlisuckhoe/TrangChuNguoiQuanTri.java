@@ -7,13 +7,17 @@ package quanlisuckhoe;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import object.GiaoVien;
+import object.Khoa;
 
 /**
  *
  * @author duongv
  */
 public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
-
+    
+    private GiaoVien gv;
+    private Khoa khoa;
     /**
      * Creates new form TrangChuSinhVien
      */
@@ -21,6 +25,29 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         initComponents();
     }
 
+    public TrangChuNguoiQuanTri(GiaoVien gv, Khoa khoa) {
+        this.gv = gv;
+        this.khoa = khoa;
+        initComponents();
+    }
+
+    public GiaoVien getGv() {
+        return gv;
+    }
+
+    public void setGv(GiaoVien gv) {
+        this.gv = gv;
+    }
+
+    public Khoa getKhoa() {
+        return khoa;
+    }
+
+    public void setKhoa(Khoa khoa) {
+        this.khoa = khoa;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
