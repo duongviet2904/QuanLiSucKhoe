@@ -4,11 +4,13 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author duongv
  */
-public class SinhVien extends TaiKhoan{
+public class SinhVien extends TaiKhoan implements Serializable{
     private String maSV;
     private String tenSV;
     private String gioiTinh;
@@ -17,6 +19,9 @@ public class SinhVien extends TaiKhoan{
     private String ngaySinh;
     
     private String maLop;
+
+    public SinhVien() {
+    }
     
     public SinhVien(String maSV, String tenSV, String gioiTinh, String soDT, String email, String ngaySinh, String maLop, String maTK, String tenDangNhap, String matKhau, int vaiTro) {
         super(maTK, tenDangNhap, matKhau, vaiTro);

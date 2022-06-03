@@ -4,17 +4,22 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author duongv
  */
-public class LopHoc {
+public class LopHoc implements Serializable{
     private String maLop;
     private String tenLop;
     private int soSV;
     private int khoa;
     
     private String maKhoa;
+
+    public LopHoc() {
+    }
 
     public LopHoc(String maLop, String tenLop, int soSV, int khoa, String maKhoa) {
         this.maLop = maLop;

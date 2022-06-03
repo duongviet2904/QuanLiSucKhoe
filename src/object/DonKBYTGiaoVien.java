@@ -4,11 +4,13 @@
  */
 package object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author duongv
  */
-public class DonKBYTGiaoVien {
+public class DonKBYTGiaoVien implements Serializable{
     private String maGV;
     private String tenGV;
     private String khoa;
