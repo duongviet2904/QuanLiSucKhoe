@@ -10,14 +10,13 @@ import java.io.Serializable;
  *
  * @author duongv
  */
-public class GiaoVien extends TaiKhoan implements Serializable{
+public class GiaoVien implements Serializable{
     private String maGV;
     private String tenGV;
     
     private String maKhoa;
     
-    public GiaoVien(String maGV, String tenGV, String maKhoa, String maTK, String tenDangNhap, String matKhau, int vaiTro) {
-        super(maTK, tenDangNhap, matKhau, vaiTro);
+    public GiaoVien(String maGV, String tenGV, String maKhoa) {
         this.maGV = maGV;
         this.tenGV = tenGV;
         this.maKhoa = maKhoa;

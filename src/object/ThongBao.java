@@ -8,80 +8,60 @@ package object;
  *
  * @author ducth
  */
-public class ThongBao {
-    private String stt;
-    private String taiKhoan;
-    private String noiDung;
-    private String thơiGian;
-    private String nguoiGui;
-    private String maDon;
 
-    public ThongBao() {
+import java.util.ArrayList;
+import javax.swing.table.AbstractTableModel;
+
+public class ThongBao extends AbstractTableModel{
+ 
+    private String Name[] = {"Ma SV","Ten sv","Lop" ,"ly do","Chi Tiet", "Ngay bat dau", "Ngay ket thuc"};
+    
+    private Class classess[]  = {String.class,String.class,String.class,String.class,String.class, String.class, String.class};
+    
+    ArrayList<DonXinNghiSV> dsXinNghi = new ArrayList<DonXinNghiSV>();
+
+    public ThongBao(ArrayList<DonXinNghiSV> dsXinNghi) {
+        this.dsXinNghi = dsXinNghi;
     }
 
-    public ThongBao(String stt, String taiKhoan, String noiDung, String thơiGian, String nguoiGui, String maDon) {
-        this.stt = stt;
-        this.taiKhoan = taiKhoan;
-        this.noiDung = noiDung;
-        this.thơiGian = thơiGian;
-        this.nguoiGui = nguoiGui;
-        this.maDon = maDon;
+    @Override
+    public int getRowCount() {
+        return dsXinNghi.size();
     }
 
-    public ThongBao(String stt, String taiKhoan, String noiDung, String thơiGian, String nguoiGui) {
-        this.stt = stt;
-        this.taiKhoan = taiKhoan;
-        this.noiDung = noiDung;
-        this.thơiGian = thơiGian;
-        this.nguoiGui = nguoiGui;
+    @Override
+    public int getColumnCount() {
+        return Name.length;
     }
 
-    public String getStt() {
-        return stt;
-    }
-
-    public void setStt(String stt) {
-        this.stt = stt;
-    }
-
-    public String getTaiKhoan() {
-        return taiKhoan;
-    }
-
-    public void setTaiKhoan(String taiKhoan) {
-        this.taiKhoan = taiKhoan;
-    }
-
-    public String getNoiDung() {
-        return noiDung;
-    }
-
-    public void setNoiDung(String noiDung) {
-        this.noiDung = noiDung;
-    }
-
-    public String getThơiGian() {
-        return thơiGian;
-    }
-
-    public void setThơiGian(String thơiGian) {
-        this.thơiGian = thơiGian;
-    }
-
-    public String getNguoiGui() {
-        return nguoiGui;
-    }
-
-    public void setNguoiGui(String nguoiGui) {
-        this.nguoiGui = nguoiGui;
-    }
-
-    public String getMaDon() {
-        return maDon;
-    }
-
-    public void setMaDon(String maDon) {
-        this.maDon = maDon;
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        switch(columnIndex){
+            case 0: return dsXinNghi.get(rowIndex).getMaSV();
+            
+            case 1: return dsXinNghi.get(rowIndex).getTenSV();
+            
+            case 2: return dsXinNghi.get(rowIndex).getLop();
+             
+            case 3: return dsXinNghi.get(rowIndex).getLyDo();
+            
+            case 4: return dsXinNghi.get(rowIndex).getChiTiet();
+            
+            case 5: return dsXinNghi.get(rowIndex).getNgayBatDau();
+            
+            case 6: return dsXinNghi.get(rowIndex).getNgayKetThuc();
+            
+            default : return null;
+        }
     }
     
+    public Class getColumnClass(int columnIndex){
+        return classess[columnIndex];
+    }
+    
+    public String getColumnName(int column){
+        return Name[column];
+    }
+    
+
 }

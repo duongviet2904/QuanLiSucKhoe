@@ -15,6 +15,7 @@ import object.Khoa;
 import object.LichSu;
 import object.LopHoc;
 import object.SinhVien;
+import object.TableLichSu;
 
 /**
  *
@@ -25,7 +26,7 @@ public class XemLichSu extends javax.swing.JFrame {
     /**
      * Creates new form XemLichSu
      */
-    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
+    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
     
 //    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
 //        
@@ -36,17 +37,17 @@ public class XemLichSu extends javax.swing.JFrame {
 //    private Khoa k;
     private int tongLS;
     ArrayList<LichSu> ls = new ArrayList<>();
-    
+    int dong = -1;
     public XemLichSu() {
         initComponents();
         getLicSu();
-        loadData();
+        table_ls.setModel(new TableLichSu(ls));
     }
     public XemLichSu(SinhVien s) {
         sv = s;
         initComponents();
         getLicSu();
-        loadData();
+        table_ls.setModel(new TableLichSu(ls));
         
     }
 
@@ -76,28 +77,6 @@ public class XemLichSu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
         }
     }
-    public void loadData()
-    {
-        Vector name = new Vector();
-        Vector data = new Vector();
-        name.add("STT");
-        name.add("Người gửi");
-        name.add("Nội Dung");
-        name.add("Thời Gian");
-        name.add("");
-        int i=0;
-        for(LichSu l : ls)
-        {
-            i++;
-            Vector d = new Vector();
-            d.add(i);
-            d.add(l.getTaiKhoan());
-            d.add(l.getNoiDung());
-            d.add(l.getThơiGian());
-            data.add(d);
-        }
-        table_ls.setModel(new DefaultTableModel(name, data));
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,8 +88,9 @@ public class XemLichSu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         table_ls = new javax.swing.JTable();
+        bt_chitiet = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
 
@@ -119,33 +99,19 @@ public class XemLichSu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("Lịch sử hoạt động");
 
-        table_ls.setAutoCreateColumnsFromModel(false);
-        table_ls.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "STT", "Người gửi", "Nội dung", "Ngày gửi", "Chức năng"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        table_ls.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_lsMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table_ls);
+        jScrollPane2.setViewportView(table_ls);
+
+        bt_chitiet.setText("Chi tiết");
+        bt_chitiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_chitietActionPerformed(evt);
+            }
+        });
 
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -164,21 +130,31 @@ public class XemLichSu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(194, 194, 194)
-                        .addComponent(jLabel2)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(bt_chitiet)))
+                .addContainerGap(234, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
+                .addComponent(bt_chitiet)
+                .addGap(30, 30, 30))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(65, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(78, 78, 78)))
         );
 
         pack();
@@ -188,6 +164,31 @@ public class XemLichSu extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
+
+    private void bt_chitietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chitietActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_chitietActionPerformed
+
+    private void table_lsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_lsMouseClicked
+        // TODO add your handling code here:
+        dong = table_ls.getSelectedRow();
+        if(dong != -1){
+            LichSu l = ls.get(dong);
+            if(l.getNoiDung().equals("Khai báo y tế"))
+            {
+                
+            }
+            
+//        sv = dsSV.get(dong);
+//        txtMaSV.setText(sv.getMasv()+"");
+//        txtHoTen.setText(sv.getHoten()+"");
+//        cbMaLop.setSelectedItem(sv.getMalop());
+//        txtDiem1.setText(sv.getDiem1()+"");
+//        txtDiem2.setText(sv.getDiem2()+"");
+//        txtDiemTB.setText(sv.getDiemtb()+"");
+//        txtKetQua.setText(sv.getKetqua()+"");
+        }
+    }//GEN-LAST:event_table_lsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -226,8 +227,9 @@ public class XemLichSu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_chitiet;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenu m_gvTrangChu;
     private javax.swing.JMenuBar menu_gv;
     private javax.swing.JTable table_ls;

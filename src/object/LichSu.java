@@ -15,6 +15,16 @@ public class LichSu implements Serializable{
     private String taiKhoan;
     private String noiDung;
     private String thơiGian;
+    private Object chiTiet;
+
+    public Object getChiTiet() {
+        return chiTiet;
+    }
+
+    public void setChiTiet(Object chiTiet) {
+        this.chiTiet = chiTiet;
+    }
+    
     public LichSu(){
     
     }
@@ -29,6 +39,13 @@ public class LichSu implements Serializable{
         this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;
         this.thơiGian = thơiGian;
+    }
+    public LichSu(String stt,String taiKhoan ,String noiDung, String thơiGian, Object obj) {
+        this.stt = stt;
+        this.taiKhoan = taiKhoan;
+        this.noiDung = noiDung;
+        this.thơiGian = thơiGian;
+        this.chiTiet = obj;
     }
 
     public String getStt() {

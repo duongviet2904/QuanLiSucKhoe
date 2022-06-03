@@ -5,10 +5,14 @@
 package quanlisuckhoe;
 
 import java.awt.Container;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import object.GiaoVien;
 import object.Khoa;
+import object.LichSu;
 
 /**
  *
@@ -113,6 +117,11 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         menu_gv.add(m_gvTroGiup);
 
         jMenu2.setText("Đăng Xuất");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         menu_gv.add(jMenu2);
 
         setJMenuBar(menu_gv);
@@ -172,6 +181,20 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
     }//GEN-LAST:event_m_gvTroGiupMouseClicked
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+        DangNhap frame;
+        try {
+            frame = new DangNhap();
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            Container contentPane = frame.getContentPane();
+            frame.setVisible(true);
+            this.setVisible(false);
+        } catch (IOException ex) {
+            Logger.getLogger(TrangChuNguoiQuanTri.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments

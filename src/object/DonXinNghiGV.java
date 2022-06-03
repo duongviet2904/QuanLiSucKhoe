@@ -35,6 +35,9 @@ public class DonXinNghiGV implements Serializable{
         this.trangThai = trangThai;
     }
 
+    public DonXinNghiGV() {
+    }
+
  
     public boolean isTrangThai() {
         return trangThai;
