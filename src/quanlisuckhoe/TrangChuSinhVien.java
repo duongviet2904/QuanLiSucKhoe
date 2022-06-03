@@ -20,24 +20,48 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     /**
      * Creates new form TrangChuSinhVien
      */
-    SinhVien sv = new SinhVien();
-    LopHoc l = new LopHoc();
-    Khoa k = new Khoa();
+    private SinhVien sv;
+    private LopHoc lh;
+
+    public SinhVien getSv() {
+        return sv;
+    }
+
+    public void setSv(SinhVien sv) {
+        this.sv = sv;
+    }
+
+    public LopHoc getLh() {
+        return lh;
+    }
+
+    public void setLh(LopHoc lh) {
+        this.lh = lh;
+    }
+
+    public Khoa getK() {
+        return k;
+    }
+
+    public void setK(Khoa k) {
+        this.k = k;
+    }
+    private Khoa k;
     public TrangChuSinhVien() {
         initComponents();
     }
     public TrangChuSinhVien(SinhVien s, LopHoc lh, Khoa kh) {
         
-        sv=s;
-        l = lh;
-        k = kh;
+        this.sv =s;
+        this.lh = lh;
+        this.k = kh;
         initComponents();
     }
     public void loadData()
     {
         text_masv.setText(sv.getMaSV());
         text_tensv.setText(sv.getTenSV());
-        text_lop.setText(l.getTenLop());
+        text_lop.setText(lh.getTenLop());
         text_khoa.setText(k.getTenKhoa());
     }
     /**

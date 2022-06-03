@@ -17,16 +17,18 @@ public class LopHoc implements Serializable{
     private int khoa;
     
     private String maKhoa;
-
+    private String maGV;
+    
     public LopHoc() {
     }
 
-    public LopHoc(String maLop, String tenLop, int soSV, int khoa, String maKhoa) {
+    public LopHoc(String maLop, String tenLop, int soSV, int khoa, String maKhoa, String maGV) {
         this.maLop = maLop;
         this.tenLop = tenLop;
         this.soSV = soSV;
         this.khoa = khoa;
         this.maKhoa = maKhoa;
+        this.maGV = maGV;
     }
 
     public String getMaLop() {
@@ -35,6 +37,14 @@ public class LopHoc implements Serializable{
 
     public void setMaLop(String maLop) {
         this.maLop = maLop;
+    }
+
+    public String getMaGV() {
+        return maGV;
+    }
+
+    public void setMaGV(String maGV) {
+        this.maGV = maGV;
     }
 
     public String getTenLop() {
