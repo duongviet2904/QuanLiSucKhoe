@@ -4,55 +4,59 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menu_gv">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="m_gvTrangChu">
+        <Menu class="javax.swing.JMenu" name="m_svTrangChu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Trang Ch&#x1ee7;"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_gvTrangChuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_svTrangChuMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="m_gvKhaiBao">
+        <Menu class="javax.swing.JMenu" name="m_svKhaiBao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Khai B&#xe1;o Y T&#x1ebf;"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_gvKhaiBaoMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_svKhaiBaoMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="m_gvXinNghi">
+        <Menu class="javax.swing.JMenu" name="m_svXinNghi">
           <Properties>
             <Property name="text" type="java.lang.String" value="Xin Ngh&#x1ec9;"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_gvXinNghiMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_svXinNghiMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="m_gvThongBao">
+        <Menu class="javax.swing.JMenu" name="m_svThongBao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#xf4;ng B&#xe1;o"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="m_svLichSu">
           <Properties>
             <Property name="text" type="java.lang.String" value="L&#x1ecb;ch s&#x1eed;"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_svLichSuMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="m_gvTroGiup">
+        <Menu class="javax.swing.JMenu" name="m_svTroGiup">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tr&#x1ee3; Gi&#xfa;p"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_gvTroGiupMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_svTroGiupMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="m_dangXuat">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Xu&#x1ea5;t"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_dangXuatMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="m_dangXuatActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
@@ -90,7 +94,7 @@
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="text_anh" min="-2" pref="116" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="bt_khaibao" min="-2" pref="158" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -122,11 +126,11 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton5" min="-2" pref="158" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="bt_xinnghi" min="-2" pref="158" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -163,8 +167,8 @@
               </Group>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="bt_xinnghi" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="bt_khaibao" alignment="3" min="-2" pref="75" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -230,15 +234,21 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="bt_xinnghi">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng k&#xed; ngh&#x1ec9; ph&#xe9;p"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_xinnghiActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="bt_khaibao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Khai b&#xe1;o y t&#x1ebf;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_khaibaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>

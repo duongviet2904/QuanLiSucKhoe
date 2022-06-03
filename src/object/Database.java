@@ -30,23 +30,23 @@ public class Database {
     public static void taoTK() throws IOException
     {
         DocGhi rw = new DocGhi();
-        tk.add(new TaiKhoan("TK00", "admin", "123", 2, "GV05"));
-        tk.add(new TaiKhoan("TK01", "GV01", "123", 1, "GV01"));
-        tk.add(new TaiKhoan("TK02", "GV02", "123", 1, "GV02"));
-        tk.add(new TaiKhoan("TK03", "GV03", "123", 1, "GV03"));
-        tk.add(new TaiKhoan("TK04", "GV04", "123", 1, "GV04"));
-        tk.add(new TaiKhoan("TK05", "SV01", "123", 0, "SV01"));
-        tk.add(new TaiKhoan("TK06", "SV02", "123", 0, "SV02"));
-        tk.add(new TaiKhoan("TK07", "SV03", "123", 0, "SV03"));
-        tk.add(new TaiKhoan("TK08", "SV04", "123", 0, "SV04"));
-        tk.add(new TaiKhoan("TK09", "SV05", "123", 0, "SV05"));
-        tk.add(new TaiKhoan("TK10", "SV06", "123", 0, "SV06"));
-        tk.add(new TaiKhoan("TK11", "SV07", "123", 0, "SV07"));
-        tk.add(new TaiKhoan("TK12", "SV08", "123", 0, "SV08"));
-        tk.add(new TaiKhoan("TK13", "SV09", "123", 0, "SV09"));
-        tk.add(new TaiKhoan("TK14", "SV10", "123", 0, "SV10"));
-        tk.add(new TaiKhoan("TK15", "SV11", "123", 0, "SV11"));
-        tk.add(new TaiKhoan("TK16", "SV12", "123", 0, "SV12"));
+        tk.add(new TaiKhoan("TK00", "admin", "123", 2));
+        tk.add(new TaiKhoan("TK01", "GV01", "123", 1));
+        tk.add(new TaiKhoan("TK02", "GV02", "123", 1));
+        tk.add(new TaiKhoan("TK03", "GV03", "123", 1));
+        tk.add(new TaiKhoan("TK04", "GV04", "123", 1));
+        tk.add(new TaiKhoan("TK05", "SV01", "123", 0));
+        tk.add(new TaiKhoan("TK06", "SV02", "123", 0));
+        tk.add(new TaiKhoan("TK07", "SV03", "123", 0));
+        tk.add(new TaiKhoan("TK08", "SV04", "123", 0));
+        tk.add(new TaiKhoan("TK09", "SV05", "123", 0));
+        tk.add(new TaiKhoan("TK10", "SV06", "123", 0));
+        tk.add(new TaiKhoan("TK11", "SV07", "123", 0));
+        tk.add(new TaiKhoan("TK12", "SV08", "123", 0));
+        tk.add(new TaiKhoan("TK13", "SV09", "123", 0));
+        tk.add(new TaiKhoan("TK14", "SV10", "123", 0));
+        tk.add(new TaiKhoan("TK15", "SV11", "123", 0));
+        tk.add(new TaiKhoan("TK16", "SV12", "123", 0));
         
         rw.WriteObject("./src/data/TaiKhoan.txt", tk);
 //        try {
@@ -66,11 +66,10 @@ public class Database {
     public static void taoGV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        gv.add(new GiaoVien("GV01", "Nguyễn Văn Mạnh", "K01"));
-        gv.add(new GiaoVien("GV02", "Phạm Thị Hạnh", "K01"));
-        gv.add(new GiaoVien("GV03", "Nguyễn Văn Nam", "K02"));
-        gv.add(new GiaoVien("GV04", "Nguyễn Minh Trung", "K02"));
-        gv.add(new GiaoVien("GV05", "Nguyễn Minh Hiếu", "K02"));
+        gv.add(new GiaoVien("GV01", "Nguyễn Văn Mạnh", "K01", "TK01", "GV01", "123", 1));
+        gv.add(new GiaoVien("GV02", "Phạm Thị Hạnh", "K01", "TK02", "GV02", "123", 1));
+        gv.add(new GiaoVien("GV03", "Nguyễn Văn Nam", "K02", "TK03", "GV03", "123", 1));
+        gv.add(new GiaoVien("GV04", "Nguyễn Minh Trung", "K02", "TK04", "GV04", "123", 1));
         rw.WriteObject("./src/data/GiaoVien.txt", gv);
 //        
 //        
@@ -132,18 +131,18 @@ public class Database {
     public static void taoSinhVien() throws IOException
     {
         DocGhi rw = new DocGhi();
-        sinhvien.add(new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01"));
-        sinhvien.add(new SinhVien("SV02", "Nguyễn Văn Minh", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L02"));
-        sinhvien.add(new SinhVien("SV03", "Nguyễn Văn Bá", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L03"));
-        sinhvien.add(new SinhVien("SV04", "Nguyễn Văn Cao", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L04"));
-        sinhvien.add(new SinhVien("SV05", "Nguyễn Minh Nguyệt", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01"));
-        sinhvien.add(new SinhVien("SV06", "Nguyễn Minh Thảo", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L02"));
-        sinhvien.add(new SinhVien("SV07", "Nguyễn Văn Cường", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L03"));
-        sinhvien.add(new SinhVien("SV08", "Nguyễn Văn Dương", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L04"));
-        sinhvien.add(new SinhVien("SV09", "Nguyễn Minh Thảo", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01"));
-        sinhvien.add(new SinhVien("SV10", "Nguyễn Minh Hiền", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L04"));
-        sinhvien.add(new SinhVien("SV11", "Nguyễn Văn Dũng", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L03"));
-        sinhvien.add(new SinhVien("SV12", "Nguyễn Minh Nga", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L02"));
+        sinhvien.add(new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0));
+        sinhvien.add(new SinhVien("SV02", "Nguyễn Văn Minh", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L02", "TK06", "SV02", "123", 0));
+        sinhvien.add(new SinhVien("SV03", "Nguyễn Văn Bá", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L03", "TK07", "SV03", "123", 0));
+        sinhvien.add(new SinhVien("SV04", "Nguyễn Văn Cao", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L04", "TK08", "SV04", "123", 0));
+        sinhvien.add(new SinhVien("SV05", "Nguyễn Minh Nguyệt", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK09", "SV05", "123", 0));
+        sinhvien.add(new SinhVien("SV06", "Nguyễn Minh Thảo", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L02", "TK10", "SV06", "123", 0));
+        sinhvien.add(new SinhVien("SV07", "Nguyễn Văn Cường", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L03", "TK11", "SV07", "123", 0));
+        sinhvien.add(new SinhVien("SV08", "Nguyễn Văn Dương", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L04", "TK12", "SV08", "123", 0));
+        sinhvien.add(new SinhVien("SV09", "Nguyễn Minh Thảo", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK13", "SV09", "123", 0));
+        sinhvien.add(new SinhVien("SV10", "Nguyễn Minh Hiền", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L04", "TK14", "SV10", "123", 0));
+        sinhvien.add(new SinhVien("SV11", "Nguyễn Văn Dũng", "Nam", "012345678", "abc@gmail.com", "2001-01-16", "L03", "TK15", "SV11", "123", 0));
+        sinhvien.add(new SinhVien("SV12", "Nguyễn Minh Nga", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L02", "TK16", "SV12", "123", 0));
         
         rw.WriteObject("./src/data/SinhVien.txt", sinhvien);
 //        try {
@@ -231,8 +230,8 @@ public class Database {
     public static void taoXinNghiSV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-12","2022-05-13", "abc","abc","abc",true));
-        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-12","2022-06-13", "abc","abc","abc",true));
+        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-10","2022-05-12","2022-05-13", "abc","abc","abc",false,true));
+        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-10","2022-06-12","2022-06-13", "abc","abc","abc",false,true));
         rw.WriteObject("./src/data/DonXNSV.txt", xinnghisv);
 //        try {
 //            

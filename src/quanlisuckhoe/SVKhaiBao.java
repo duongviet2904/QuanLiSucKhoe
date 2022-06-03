@@ -4,6 +4,18 @@
  */
 package quanlisuckhoe;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import object.LopHoc;
+import object.SinhVien;
+import object.Khoa;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import object.DocGhi;
+import object.DonKBYTSinhVien;
+import javax.swing.ButtonGroup;
 /**
  *
  * @author ducth
@@ -13,10 +25,62 @@ public class SVKhaiBao extends javax.swing.JFrame {
     /**
      * Creates new form SVKhaiBao
      */
-    public SVKhaiBao() {
-        initComponents();
+    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
+    
+    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
+        
+    private Khoa k = new Khoa("K01", "CNTT", "GV01");
+//    
+//    private SinhVien sv;
+//    private LopHoc lh;
+//    private Khoa k;
+
+    public SinhVien getSv() {
+        return sv;
     }
 
+    public void setSv(SinhVien sv) {
+        this.sv = sv;
+    }
+
+    public LopHoc getLh() {
+        return lh;
+    }
+
+    public void setLh(LopHoc lh) {
+        this.lh = lh;
+    }
+    
+    public SVKhaiBao() {
+        initComponents();
+        groupBT();
+    }
+    public SVKhaiBao(SinhVien s, LopHoc lh, Khoa kh) {
+        
+        this.sv =s;
+        this.lh = lh;
+        this.k = kh;
+        initComponents();
+        groupBT();
+    }
+    public void groupBT()
+    {
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(rb_14Co);
+        bg.add(rb_14Khong);
+        ButtonGroup bg1 = new ButtonGroup();
+        bg1.add(rb_14Co1);
+        bg1.add(rb_14Khong1);
+        ButtonGroup bg2 = new ButtonGroup();
+        bg2.add(rb_14Co2);
+        bg2.add(rb_14Khong2);
+        ButtonGroup bg3 = new ButtonGroup();
+        bg3.add(rb_14Co3);
+        bg3.add(rb_14Khong3);
+        ButtonGroup bg4 = new ButtonGroup();
+        bg4.add(rb_14Co4);
+        bg4.add(rb_14Khong4);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,6 +131,7 @@ public class SVKhaiBao extends javax.swing.JFrame {
         tieude.setText("Khai Báo Y Tế");
 
         text_ngay.setEditable(false);
+        text_ngay.setText(java.time.LocalDate.now().toString());
         text_ngay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 text_ngayActionPerformed(evt);
@@ -80,6 +145,7 @@ public class SVKhaiBao extends javax.swing.JFrame {
         tieude_tensv.setText("Tên sinh viên");
 
         text_lop.setEditable(false);
+        text_lop.setText(lh.getTenLop());
         text_lop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 text_lopActionPerformed(evt);
@@ -89,6 +155,7 @@ public class SVKhaiBao extends javax.swing.JFrame {
         tieude_khoa.setText("Khoa");
 
         text_tensv.setEditable(false);
+        text_tensv.setText(sv.getTenSV());
         text_tensv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 text_tensvActionPerformed(evt);
@@ -98,6 +165,7 @@ public class SVKhaiBao extends javax.swing.JFrame {
         tieude_ngay.setText("Ngày gửi");
 
         text_msv.setEditable(false);
+        text_msv.setText(sv.getMaSV());
         text_msv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 text_msvActionPerformed(evt);
@@ -105,6 +173,7 @@ public class SVKhaiBao extends javax.swing.JFrame {
         });
 
         text_khoa.setEditable(false);
+        text_khoa.setText(k.getTenKhoa());
         text_khoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 text_khoaActionPerformed(evt);
@@ -443,7 +512,105 @@ public class SVKhaiBao extends javax.swing.JFrame {
 
     private void bt_khaibaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khaibaoActionPerformed
         // TODO add your handling code here:
+        DocGhi rw = new DocGhi();
+        int err = 0;
+        ArrayList<DonKBYTSinhVien> kb;
+        try {
+            kb = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
+                 
+        } catch (IOException | ClassNotFoundException ex) {
+            kb = new ArrayList<>();
+        }
+        DonKBYTSinhVien d = new DonKBYTSinhVien();
+        d.setMaSV(sv.getMaSV());
+        d.setTenSV(sv.getTenSV());
+        d.setKhoa(k.getTenKhoa());
+        d.setLop(lh.getTenLop());
+        d.setNgayKhaiBao(text_ngay.getText());
+        if(rb_14Co.isSelected())
+        {
+            d.setCoTrieuChung(true);
+            
+        }else if(rb_14Khong.isSelected())
+        {
+            d.setCoTrieuChung(false);
+        }
+        else
+        {
+            err = 1;
+        }
+        if(rb_14Co1.isSelected())
+        {
+            d.setTiepXucNguoiBenh(true);
+            
+        }else if(rb_14Khong1.isSelected())
+        {
+            d.setTiepXucNguoiBenh(false);
+        }
+        else
+        {
+            err = 1;
+        }
+        if(rb_14Co2.isSelected())
+        {
+            d.setTiepXucNguoiTuNuocCoBenh(true);
+            
+        }else if(rb_14Khong2.isSelected())
+        {
+            d.setTiepXucNguoiTuNuocCoBenh(false);
+        }
+        else
+        {
+            err = 1;
+        }
+        if(rb_14Co3.isSelected())
+        {
+            d.setTiepXucNguoiBenhCoBieuHien(true);
+            
+        }else if(rb_14Khong3.isSelected())
+        {
+            d.setTiepXucNguoiBenhCoBieuHien(false);
+        }
+        else
+        {
+            err = 1;
+        }
+        if(rb_14Co4.isSelected())
+        {
+            d.setTiepXucNguoiBenhDauMua(true);
+            
+        }else if(rb_14Khong4.isSelected())
+        {
+            d.setTiepXucNguoiBenhDauMua(false);
+        }
+        else
+        {
+            err = 1;
+        }
+        if(err == 1)
+            JOptionPane.showMessageDialog(null, "Bạn cần chọn Có hoặc Không");
+        else
+        {
+            kb.add(d);
+        try {
+            rw.WriteObject("./src/data/KBYTSV.txt", kb);
+        } catch (IOException ex) {
+            Logger.getLogger(SVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            
+            ArrayList<DonKBYTSinhVien> khoa1 = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("src\\data\\KBYTSV.txt");
+            for(DonKBYTSinhVien gv : khoa1)
+            {
+                System.out.println(gv.toString());
+                
+            }
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
         dispose();
+        }
     }//GEN-LAST:event_bt_khaibaoActionPerformed
 
     /**

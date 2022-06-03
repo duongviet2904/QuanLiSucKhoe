@@ -15,26 +15,16 @@ public class TaiKhoan implements Serializable{
     private String tenDangNhap;
     private String matKhau;
     private int vaiTro; //0: sinh vien, 1: giao vien, 2; admin
-    private String maDoiTuong;
-    
+
     public TaiKhoan() {
     }
 
     
-    public TaiKhoan(String maTK, String tenDangNhap, String matKhau, int vaiTro, String maDoiTuong) {
+    public TaiKhoan(String maTK, String tenDangNhap, String matKhau, int vaiTro) {
         this.maTK = maTK;
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
         this.vaiTro = vaiTro;
-        this.maDoiTuong = maDoiTuong;
-    }
-
-    public String getMaDoiTuong() {
-        return maDoiTuong;
-    }
-
-    public void setMaDoiTuong(String maDoiTuong) {
-        this.maDoiTuong = maDoiTuong;
     }
 
     public String getMaTK() {

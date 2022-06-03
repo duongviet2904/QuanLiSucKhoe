@@ -8,32 +8,19 @@ package object;
  *
  * @author ducth
  */
-public class ThongBao {
+public class LichSu {
     private String stt;
     private String taiKhoan;
     private String noiDung;
     private String thơiGian;
-    private String nguoiGui;
-    private String maDon;
-
-    public ThongBao() {
+    public LichSu(){
+    
     }
 
-    public ThongBao(String stt, String taiKhoan, String noiDung, String thơiGian, String nguoiGui, String maDon) {
+    public LichSu(String stt, String noiDung, String thơiGian) {
         this.stt = stt;
-        this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;
         this.thơiGian = thơiGian;
-        this.nguoiGui = nguoiGui;
-        this.maDon = maDon;
-    }
-
-    public ThongBao(String stt, String taiKhoan, String noiDung, String thơiGian, String nguoiGui) {
-        this.stt = stt;
-        this.taiKhoan = taiKhoan;
-        this.noiDung = noiDung;
-        this.thơiGian = thơiGian;
-        this.nguoiGui = nguoiGui;
     }
 
     public String getStt() {
@@ -67,21 +54,4 @@ public class ThongBao {
     public void setThơiGian(String thơiGian) {
         this.thơiGian = thơiGian;
     }
-
-    public String getNguoiGui() {
-        return nguoiGui;
-    }
-
-    public void setNguoiGui(String nguoiGui) {
-        this.nguoiGui = nguoiGui;
-    }
-
-    public String getMaDon() {
-        return maDon;
-    }
-
-    public void setMaDon(String maDon) {
-        this.maDon = maDon;
-    }
-    
 }

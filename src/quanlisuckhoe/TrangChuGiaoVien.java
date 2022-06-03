@@ -6,18 +6,9 @@ package quanlisuckhoe;
 
 import java.awt.Container;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import object.DocGhi;
-import object.DonKBYTSinhVien;
-import object.DonXinNghiSV;
 import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
@@ -31,17 +22,11 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     private GiaoVien gv;
     private Khoa khoa;
     private LopHoc lh;
-    DocGhi rw = new DocGhi();
-    private ArrayList<DonXinNghiSV> lstXN = new ArrayList<>();
-    private ArrayList<DonXinNghiSV> chuaDuyet = new ArrayList<>();
-    private ArrayList<DonXinNghiSV> daDuyet = new ArrayList<>();
-    private ArrayList<DonKBYTSinhVien> lstKBYT = new ArrayList<>();
     /**
      * Creates new form TrangChuSinhVien
      */
     public TrangChuGiaoVien() {
         initComponents();
-        getDanhSach();
     }
 
     public TrangChuGiaoVien(GiaoVien gv, Khoa khoa, LopHoc lh) {
@@ -49,27 +34,16 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         this.khoa = khoa;
         this.lh = lh;
         initComponents();
-        getDanhSach();
     }
     
-    public void getDanhSach()
+    public void loadData()
     {
-        try {
-            
-            lstXN = (ArrayList<DonXinNghiSV>) rw.ReadObject("./src/data/DonXNSV.txt");
-            for(DonXinNghiSV sv : lstXN){
-                if(sv.isTrangThai() == false){
-                    chuaDuyet.add(sv);
-                }else{
-                    daDuyet.add(sv);
-                }
-            }
-            lstKBYT = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
-                 
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
-        }
+        txtMaGV.setText(gv.getMaGV());
+        txtTenGV.setText(gv.getTenGV());
+        txtTenLop.setText(lh.getTenLop());
+        txtTenKhoa.setText(khoa.getTenKhoa());
     }
+    
     /**
      * 
      * This method is called from within the constructor to initialize the form.
@@ -219,17 +193,8 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTenLop))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
@@ -241,12 +206,23 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTenKhoa)
-                                    .addComponent(txtTenGV))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                                    .addComponent(txtTenGV)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTenLop)
+                        .addGap(12, 12, 12)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(108, 108, 108))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,9 +262,9 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap())
         );
 
         txtMaGV.getAccessibleContext().setAccessibleName("");
@@ -368,7 +344,6 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
                 new TrangChuGiaoVien().setVisible(true);
                 
             }
