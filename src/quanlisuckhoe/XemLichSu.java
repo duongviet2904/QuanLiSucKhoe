@@ -245,7 +245,7 @@ public class XemLichSu extends javax.swing.JFrame {
             {
                 DonKBYTGiaoVien d = new DonKBYTGiaoVien();
                 d = (DonKBYTGiaoVien) l.getChiTiet();
-                System.out.println(d.toString());
+//                System.out.println(d.toString());
                 GVKhaiBaoChiTiet frame = new GVKhaiBaoChiTiet(d);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 Container contentPane = frame.getContentPane();
@@ -255,7 +255,7 @@ public class XemLichSu extends javax.swing.JFrame {
             {
                 DonXinNghiGV d = new DonXinNghiGV();
                 d = (DonXinNghiGV) l.getChiTiet();
-                System.out.println(d.toString());
+//                System.out.println(d.toString());
                 GVNghiChiTiet frame = new GVNghiChiTiet(d);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 Container contentPane = frame.getContentPane();

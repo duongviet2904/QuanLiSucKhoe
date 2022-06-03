@@ -4,23 +4,9 @@
  */
 package quanlisuckhoe;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileSystemView;
-import object.DocGhi;
-import object.DonKBYTGiaoVien;
 import object.DonXinNghiGV;
-import object.GiaoVien;
-import object.Khoa;
-import object.LichSu;
+
+
 
 /**
  *
@@ -99,7 +85,7 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
 
         tieude_ngay6.setText("Các tài liệu/hình ảnh liên quan:");
 
-        bt_gui.setText("Gửi");
+        bt_gui.setText("Đóng");
         bt_gui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_guiActionPerformed(evt);
@@ -293,7 +279,7 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_guiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guiActionPerformed
-        
+        dispose();
     }//GEN-LAST:event_bt_guiActionPerformed
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked

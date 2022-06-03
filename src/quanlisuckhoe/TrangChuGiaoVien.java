@@ -68,7 +68,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                 }else if(sv.isTrangThai() == true && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     daDuyet.add(sv);
                 }
-                
+            
             }
             lstKBYT = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
                  

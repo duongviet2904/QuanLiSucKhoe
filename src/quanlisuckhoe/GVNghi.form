@@ -226,7 +226,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNgayBD">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="dd/mm/yyyy"/>
         <Property name="autoscrolls" type="boolean" value="false"/>
       </Properties>
@@ -248,7 +247,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNgayKT">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="dd/mm/yyyy"/>
         <Property name="autoscrolls" type="boolean" value="false"/>
       </Properties>

@@ -26,7 +26,6 @@ public class DonXinNghiSV implements Serializable{
     private boolean trangThai;
 
     public DonXinNghiSV() {
-        this.trangThai = false;
     }
 
     public DonXinNghiSV(String maDon, String maSV, String tenSV, String lop, String khoa, String ngayGui, String ngayBatDau, String ngayKetThuc, String lyDo, String chiTiet, String taiLieuLienQuan, boolean hocOnl,boolean trangThai) {

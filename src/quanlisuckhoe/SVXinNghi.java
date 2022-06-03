@@ -131,11 +131,6 @@ public class SVXinNghi extends javax.swing.JFrame {
 
         text_ngay.setEditable(false);
         text_ngay.setText(ngayGui);
-        text_ngay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngayActionPerformed(evt);
-            }
-        });
 
         tieude_ngay6.setText("Các tài liệu/hình ảnh liên quan:");
 
@@ -165,11 +160,6 @@ public class SVXinNghi extends javax.swing.JFrame {
         tieude_masv.setText("Mã sinh viên");
 
         text_ngaybd.setText("dd/mm/yyyy");
-        text_ngaybd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngaybdActionPerformed(evt);
-            }
-        });
 
         tieude_khoa1.setText("Lớp");
 
@@ -179,21 +169,11 @@ public class SVXinNghi extends javax.swing.JFrame {
 
         text_lop.setEditable(false);
         text_lop.setText(lh.getTenLop());
-        text_lop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_lopActionPerformed(evt);
-            }
-        });
 
         tieude_khoa.setText("Khoa");
 
         text_ngaykt.setText("dd/mm/yyyy");
         text_ngaykt.setToolTipText("");
-        text_ngaykt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngayktActionPerformed(evt);
-            }
-        });
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Đơn Xin Nghỉ Phép");
@@ -202,18 +182,8 @@ public class SVXinNghi extends javax.swing.JFrame {
 
         text_tensv.setEditable(false);
         text_tensv.setText(sv.getTenSV());
-        text_tensv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_tensvActionPerformed(evt);
-            }
-        });
 
         cb_lydo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ốm nhập viện", "Việc cá nhân", "Mắc Covid-19", "Khác" }));
-        cb_lydo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_lydoActionPerformed(evt);
-            }
-        });
 
         tieude_ngay.setText("Ngày gửi");
 
@@ -221,11 +191,6 @@ public class SVXinNghi extends javax.swing.JFrame {
 
         text_msv.setEditable(false);
         text_msv.setText(sv.getMaSV());
-        text_msv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_msvActionPerformed(evt);
-            }
-        });
 
         text_chitiet.setColumns(20);
         text_chitiet.setRows(5);
@@ -233,27 +198,12 @@ public class SVXinNghi extends javax.swing.JFrame {
 
         text_khoa.setEditable(false);
         text_khoa.setText(k.getTenKhoa());
-        text_khoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_khoaActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Bạn có muốn tham gia lớp học trực tuyến không?");
 
         rb_co.setText("Có");
-        rb_co.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_coActionPerformed(evt);
-            }
-        });
 
         rb_khong.setText("Không");
-        rb_khong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_khongActionPerformed(evt);
-            }
-        });
 
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -593,18 +543,6 @@ public class SVXinNghi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_fileActionPerformed
 
-    private void text_tensvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tensvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_tensvActionPerformed
-
-    private void cb_lydoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_lydoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_lydoActionPerformed
-
-    private void text_msvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_msvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_msvActionPerformed
-
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
         // TODO add your handling code here:
         dispose();
@@ -614,34 +552,6 @@ public class SVXinNghi extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_bt_guiMouseClicked
-
-    private void rb_coActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_coActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_coActionPerformed
-
-    private void rb_khongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_khongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_khongActionPerformed
-
-    private void text_ngayktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayktActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngayktActionPerformed
-
-    private void text_ngaybdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngaybdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngaybdActionPerformed
-
-    private void text_lopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_lopActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_lopActionPerformed
-
-    private void text_khoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_khoaActionPerformed
-
-    private void text_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngayActionPerformed
 
     /**
      * @param args the command line arguments

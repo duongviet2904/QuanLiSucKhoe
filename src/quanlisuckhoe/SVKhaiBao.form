@@ -236,12 +236,9 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="java.time.LocalDate.now().toString()" type="code"/>
+          <Connection code="ngayGui" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_ngayActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_masv">
       <Properties>
@@ -265,9 +262,6 @@
           <Connection code="lh.getTenLop()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_lopActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_khoa">
       <Properties>
@@ -281,9 +275,6 @@
           <Connection code="sv.getTenSV()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_tensvActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_ngay">
       <Properties>
@@ -297,9 +288,6 @@
           <Connection code="sv.getMaSV()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_msvActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="text_khoa">
       <Properties>
@@ -308,25 +296,16 @@
           <Connection code="k.getTenKhoa()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_khoaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Co">
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14CoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Khong">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14KhongActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -347,41 +326,26 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Khong1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Co1">
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Co1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Co2">
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Co2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Khong2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Khong2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Co3">
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Co3ActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
@@ -441,25 +405,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Khong3ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Co4">
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Co4ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_14Khong4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_14Khong4ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bt_khaibao">
       <Properties>

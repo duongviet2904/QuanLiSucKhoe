@@ -5,11 +5,13 @@
 package quanlisuckhoe;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import object.LopHoc;
 import object.SinhVien;
 import object.Khoa;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -35,7 +37,9 @@ public class SVKhaiBao extends javax.swing.JFrame {
     private SinhVien sv;
     private LopHoc lh;
     private Khoa k;
-
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    Date date = new Date();
+    String ngayGui = df.format(date);
     public SinhVien getSv() {
         return sv;
     }
@@ -146,12 +150,7 @@ public class SVKhaiBao extends javax.swing.JFrame {
         tieude.setText("Khai Báo Y Tế");
 
         text_ngay.setEditable(false);
-        text_ngay.setText(java.time.LocalDate.now().toString());
-        text_ngay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngayActionPerformed(evt);
-            }
-        });
+        text_ngay.setText(ngayGui);
 
         tieude_masv.setText("Mã sinh viên");
 
@@ -161,53 +160,23 @@ public class SVKhaiBao extends javax.swing.JFrame {
 
         text_lop.setEditable(false);
         text_lop.setText(lh.getTenLop());
-        text_lop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_lopActionPerformed(evt);
-            }
-        });
 
         tieude_khoa.setText("Khoa");
 
         text_tensv.setEditable(false);
         text_tensv.setText(sv.getTenSV());
-        text_tensv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_tensvActionPerformed(evt);
-            }
-        });
 
         tieude_ngay.setText("Ngày gửi");
 
         text_msv.setEditable(false);
         text_msv.setText(sv.getMaSV());
-        text_msv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_msvActionPerformed(evt);
-            }
-        });
 
         text_khoa.setEditable(false);
         text_khoa.setText(k.getTenKhoa());
-        text_khoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_khoaActionPerformed(evt);
-            }
-        });
 
         rb_14Co.setText("Có");
-        rb_14Co.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14CoActionPerformed(evt);
-            }
-        });
 
         rb_14Khong.setText("Không");
-        rb_14Khong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14KhongActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Người từ nước có bệnh Covid-19");
 
@@ -216,39 +185,14 @@ public class SVKhaiBao extends javax.swing.JFrame {
         jLabel8.setText("Người bệnh hoặc nghi ngờ mắc bệnh đậu mùa khỉ");
 
         rb_14Khong1.setText("Không");
-        rb_14Khong1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong1ActionPerformed(evt);
-            }
-        });
 
         rb_14Co1.setText("Có");
-        rb_14Co1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co1ActionPerformed(evt);
-            }
-        });
 
         rb_14Co2.setText("Có");
-        rb_14Co2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co2ActionPerformed(evt);
-            }
-        });
 
         rb_14Khong2.setText("Không");
-        rb_14Khong2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong2ActionPerformed(evt);
-            }
-        });
 
         rb_14Co3.setText("Có");
-        rb_14Co3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co3ActionPerformed(evt);
-            }
-        });
 
         jPanel1.setRequestFocusEnabled(false);
         jPanel1.setVerifyInputWhenFocusTarget(false);
@@ -282,25 +226,10 @@ public class SVKhaiBao extends javax.swing.JFrame {
         jLabel5.setText("Người bệnh hoặc nghi ngờ mắc bệnh Covid-19");
 
         rb_14Khong3.setText("Không");
-        rb_14Khong3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong3ActionPerformed(evt);
-            }
-        });
 
         rb_14Co4.setText("Có");
-        rb_14Co4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co4ActionPerformed(evt);
-            }
-        });
 
         rb_14Khong4.setText("Không");
-        rb_14Khong4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong4ActionPerformed(evt);
-            }
-        });
 
         bt_khaibao.setText("Khai Báo");
         bt_khaibao.addActionListener(new java.awt.event.ActionListener() {
@@ -472,66 +401,6 @@ public class SVKhaiBao extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
 
-    private void text_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngayActionPerformed
-
-    private void text_lopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_lopActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_lopActionPerformed
-
-    private void text_tensvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tensvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_tensvActionPerformed
-
-    private void text_msvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_msvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_msvActionPerformed
-
-    private void text_khoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_khoaActionPerformed
-
-    private void rb_14CoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14CoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14CoActionPerformed
-
-    private void rb_14KhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14KhongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14KhongActionPerformed
-
-    private void rb_14Khong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong1ActionPerformed
-
-    private void rb_14Co1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co1ActionPerformed
-
-    private void rb_14Co2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co2ActionPerformed
-
-    private void rb_14Khong2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong2ActionPerformed
-
-    private void rb_14Co3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co3ActionPerformed
-
-    private void rb_14Khong3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong3ActionPerformed
-
-    private void rb_14Co4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co4ActionPerformed
-
-    private void rb_14Khong4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong4ActionPerformed
-
     private void bt_khaibaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khaibaoActionPerformed
         // TODO add your handling code here:
         DocGhi rw = new DocGhi();
@@ -617,9 +486,9 @@ public class SVKhaiBao extends javax.swing.JFrame {
             LichSu s = new LichSu(d.getMaSV(),"Khai báo y tế", d.getNgayKhaiBao(), d);
             addLichSu(s);
             try {
-                rw.WriteObject("./src/data/DonXNSV.txt", kb);
+                rw.WriteObject("./src/data/KBYTSV.txt", kb);
             } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(SVXinNghi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                Logger.getLogger(SVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         try {

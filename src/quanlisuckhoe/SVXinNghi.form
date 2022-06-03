@@ -222,9 +222,6 @@
           <Connection code="ngayGui" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_ngayActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_ngay6">
       <Properties>
@@ -267,9 +264,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="dd/mm/yyyy"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_ngaybdActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_khoa1">
       <Properties>
@@ -293,9 +287,6 @@
           <Connection code="lh.getTenLop()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_lopActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_khoa">
       <Properties>
@@ -307,9 +298,6 @@
         <Property name="text" type="java.lang.String" value="dd/mm/yyyy"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_ngayktActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude">
       <Properties>
@@ -331,9 +319,6 @@
           <Connection code="sv.getTenSV()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_tensvActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cb_lydo">
       <Properties>
@@ -346,9 +331,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_lydoActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -370,9 +352,6 @@
           <Connection code="sv.getMaSV()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_msvActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -396,9 +375,6 @@
           <Connection code="k.getTenKhoa()" type="code"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_khoaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -409,17 +385,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="C&#xf3;"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_coActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rb_khong">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kh&#xf4;ng"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_khongActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -200,9 +200,9 @@ public class Database {
 //        try {
 //            
 //            ArrayList<DonKBYTSinhVien> khoa1 = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("src\\data\\KBYTSV.txt");
-//            for(DonKBYTSinhVien gv : khoa1)
+//            for(DonKBYTSinhVien svtt : khoa1)
 //            {
-//                System.out.println(gv.getTenSV());
+//                System.out.println(svtt.toString());
 //                
 //            }
 //            
@@ -248,19 +248,6 @@ public class Database {
 //            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
 //        }
     }
-    public ArrayList<SinhVien> getSV()
-    {
-        DocGhi rw = new DocGhi();
-        try {
-            
-            ArrayList<SinhVien> dssv = (ArrayList<SinhVien>) rw.ReadObject("./src/data/SinhVien.txt");
-            return dssv;
-            
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
-        }
-        return null;
-    }
     
     public static void taoLicSu() throws IOException
     {
@@ -282,18 +269,18 @@ public class Database {
         lichsu.add(new LichSu("15","GV01","Khai báo y tế", "2022-06-12"));
         lichsu.add(new LichSu("16","GV01","Khai báo y tế", "2022-06-12"));
         rw.WriteObject("./src/data/LichSu.txt", lichsu);
-        try {
-            
-            ArrayList<LichSu> khoa10 = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
-            for(LichSu gv1 : khoa10)
-            {
-                System.out.println(gv1.toString());
-                
-            }
-            
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
-        }
+//        try {
+//            
+//            ArrayList<LichSu> khoa10 = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
+//            for(LichSu gv1 : khoa10)
+//            {
+//                System.out.println(gv1.toString());
+//                
+//            }
+//            
+//        } catch (IOException | ClassNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+//        }
     }
     
     public static void main(String[] args) throws IOException {

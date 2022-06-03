@@ -141,7 +141,6 @@ public class GVNghi extends javax.swing.JFrame {
 
         tieude_magv.setText("Mã giáo viên");
 
-        txtNgayBD.setEditable(false);
         txtNgayBD.setText("dd/mm/yyyy");
         txtNgayBD.setAutoscrolls(false);
 
@@ -151,7 +150,6 @@ public class GVNghi extends javax.swing.JFrame {
 
         tieude_khoa.setText("Khoa");
 
-        txtNgayKT.setEditable(false);
         txtNgayKT.setText("dd/mm/yyyy");
         txtNgayKT.setAutoscrolls(false);
 
@@ -328,7 +326,7 @@ public class GVNghi extends javax.swing.JFrame {
             gvxn.setTaiLieuLienQuan(bt_file.getText());
             gvxn.setTrangThai(false);
             dsgvxn.add(gvxn);
-            LichSu s = new LichSu(gvxn.getMaGV(),"Khai báo y tế", ngayGui, gvxn);
+            LichSu s = new LichSu(gvxn.getMaGV(),"Xin nghỉ", ngayGui, gvxn);
             addLichSu(s);
             rw.WriteObject("./src/data/DonXNGV.txt", dsgvxn);
             dispose();
