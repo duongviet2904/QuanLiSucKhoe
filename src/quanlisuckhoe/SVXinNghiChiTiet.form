@@ -26,7 +26,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menu_gv"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -49,16 +49,6 @@
                       <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                              <Component id="tieude_ngay6" min="-2" pref="182" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="file_name" min="-2" pref="308" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
-                              <Component id="bt_gui" min="-2" pref="83" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel5" min="-2" pref="302" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="rb_co" min="-2" pref="55" max="-2" attributes="0"/>
@@ -67,6 +57,19 @@
                           </Group>
                           <Component id="tieude_ngay5" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="506" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                              <Component id="tieude_ngay6" min="-2" pref="182" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="bt_gui1" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="bt_xem" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="file_name" min="-2" pref="222" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -113,7 +116,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -196,11 +199,14 @@
                       <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                       <Component id="tieude_ngay6" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="file_name" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="file_name" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="bt_xem" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
-              <Component id="bt_gui" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="bt_gui1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -226,12 +232,12 @@
         <Property name="text" type="java.lang.String" value="C&#xe1;c t&#xe0;i li&#x1ec7;u/h&#xec;nh &#x1ea3;nh li&#xea;n quan:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="bt_gui">
+    <Component class="javax.swing.JButton" name="bt_xem">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x110;&#xf3;ng"/>
+        <Property name="text" type="java.lang.String" value="M&#x1edf; file"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_guiMouseClicked"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_xemMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_ngaybd">
@@ -454,6 +460,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_khongActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bt_gui1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;&#xf3;ng"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_gui1MouseClicked"/>
       </Events>
     </Component>
   </SubComponents>

@@ -5,9 +5,18 @@
 package quanlisuckhoe;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,19 +44,19 @@ public class SVXinNghi extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-//    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
+    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
+    
+    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
+        
+    private Khoa k = new Khoa("K01", "CNTT", "GV01");
 //    
-//    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
-//        
-//    private Khoa k = new Khoa("K01", "CNTT", "GV01");
-//    
-    private SinhVien sv;
-    private LopHoc lh;
-    private Khoa k;
+//    private SinhVien sv;
+//    private LopHoc lh;
+//    private Khoa k;
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
     String ngayGui = df.format(date);
-
+    ArrayList<String> filePath = new ArrayList<>();
     public SinhVien getSv() {
         return sv;
     }
@@ -349,6 +358,7 @@ public class SVXinNghi extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_guiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guiActionPerformed
@@ -363,6 +373,7 @@ public class SVXinNghi extends javax.swing.JFrame {
             kb = new ArrayList<>();
         }
         DonXinNghiSV d = new DonXinNghiSV();
+        d.setTrangThai("Chờ"); 
         d.setMaSV(sv.getMaSV());
         d.setTenSV(sv.getTenSV());
         d.setKhoa(k.getTenKhoa());
@@ -395,7 +406,7 @@ public class SVXinNghi extends javax.swing.JFrame {
         {
             err = 3;
         }
-        if(d1.after(d2) || d1.before(date))
+        if(d1.after(d2) || !date.before(d1))
         {
             err = 2;
         }
@@ -435,16 +446,36 @@ public class SVXinNghi extends javax.swing.JFrame {
         else
         {
             kb.add(d);
-            LichSu s = new LichSu(d.getMaSV(),"Xin nghỉ", d.getNgayGui(), d);
-            addLichSu(s);
-            ThongBao t = new ThongBao(d.getMaSV(),lh.getMaGV(),"Xin nghỉ", d.getNgayGui(), d);
-            addThongBao(t);
-            
+          
             try {
                 rw.WriteObject("./src/data/DonXNSV.txt", kb);
             } catch (IOException ex) {
                 java.util.logging.Logger.getLogger(SVXinNghi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
+            LichSu s = new LichSu(d.getMaSV(),"Xin nghỉ", d.getNgayGui(), d);
+            addLichSu(s);
+            ThongBao t = new ThongBao(d.getMaSV(),lh.getMaGV(),"Xin nghỉ", d.getNgayGui(), d);
+            addThongBao(t);
+            
+            
+            for(String sourceFile : filePath)
+            {
+                sourceFile=sourceFile.replace("\\","/");
+                sourceFile=sourceFile.replace(d.getTaiLieuLienQuan(),"");
+                sourceFile=sourceFile.trim();
+                System.out.println(sourceFile);
+                // sourceFolder: thu muc nguon duoc copy
+                Path sourceFolder = Paths.get(sourceFile);
+                // targetFolder: thu muc dich duoc copy den
+                Path targetFolder = Paths.get("./src/images/"+d.getTaiLieuLienQuan());
+                try {
+                    // goi phuong thuc copy
+                    copyFolder(sourceFolder, targetFolder);
+                } catch (IOException ex) {
+                    java.util.logging.Logger.getLogger(SVXinNghi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+            }
+            
             
             //console check
 //            ArrayList<DonXinNghiSV> ds01;
@@ -465,6 +496,14 @@ public class SVXinNghi extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_bt_guiActionPerformed
+    private static void copyFolder(Path sourcePath, Path targetPath) throws IOException 
+    {
+        
+            // copy file tu thuc muc nguon den thu muc dich
+            Files.copy(sourcePath, targetPath,StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("File da duoc copy ");
+        
+    }
     public void addLichSu(LichSu s)
     {
         DocGhi rw = new DocGhi();
@@ -497,37 +536,37 @@ public class SVXinNghi extends javax.swing.JFrame {
         // TODO add your handling code here:
         // if the user presses the save button show the save dialog
         // if the user presses the save button show the save dialog
-        String com = evt.getActionCommand();
+//        String com = evt.getActionCommand();
 
-        if (com.equals("Gửi")) {
-            // create an object of JFileChooser class
-            JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
-            // allow multiple file selection
-            j.setMultiSelectionEnabled(true);
-
-            // invoke the showsSaveDialog function to show the save dialog
-            int r = j.showSaveDialog(null);
-
-            if (r == JFileChooser.APPROVE_OPTION) {
-                // get the selelcted files
-                File files[] = j.getSelectedFiles();
-
-                int t = 0;
-                // set text to blank
-                file_name.setText("");
-
-                // set the label to the path of the selected files
-                while (t++ < files.length)
-                file_name.setText(file_name.getText() + "; " + files[t - 1].getName());
-            }
-            // if the user cancelled the operation
-            else
-            file_name.setText("Bạn chưa chọn file");
-        }
-
-        // if the user presses the open dialog show the open dialog
-        else {
+//        if (com.equals("Gửi")) {
+//            // create an object of JFileChooser class
+//            JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+//
+//            // allow multiple file selection
+//            j.setMultiSelectionEnabled(true);
+//
+//            // invoke the showsSaveDialog function to show the save dialog
+//            int r = j.showSaveDialog(null);
+//
+//            if (r == JFileChooser.APPROVE_OPTION) {
+//                // get the selelcted files
+//                File files[] = j.getSelectedFiles();
+//
+//                int t = 0;
+//                // set text to blank
+//                file_name.setText("");
+//
+//                // set the label to the path of the selected files
+//                while (t++ < files.length)
+//                file_name.setText(file_name.getText() + "; " + files[t - 1].getName());
+//            }
+//            // if the user cancelled the operation
+//            else
+//            file_name.setText("Bạn chưa chọn file");
+//        }
+//
+//        // if the user presses the open dialog show the open dialog
+//        else {
             // create an object of JFileChooser class
             JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
@@ -546,13 +585,16 @@ public class SVXinNghi extends javax.swing.JFrame {
 
                 int t = 0;
                 // set the label to the path of the selected files
-                while (t++ < files.length)
-                file_name.setText(file_name.getText() + " " + files[t - 1].getName());
+                while (t++ < files.length){
+                    file_name.setText(file_name.getText() + " " + files[t - 1].getName());
+                    filePath.add(file_name.getText() + " " + files[t - 1].getAbsolutePath());
+                }
+                
             }
             // if the user cancelled the operation
             else
             file_name.setText("Bạn chưa chọn file");
-        }
+//        }
     }//GEN-LAST:event_bt_fileActionPerformed
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked

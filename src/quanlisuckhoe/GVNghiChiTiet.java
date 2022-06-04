@@ -4,6 +4,9 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import object.DonXinNghiGV;
 
 
@@ -77,6 +80,7 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
         txtChiTiet = new javax.swing.JTextArea();
         txtKhoa = new javax.swing.JTextField();
         txtNgayGui = new javax.swing.JTextField();
+        bt_xem = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
         m_gvTroGiup = new javax.swing.JMenu();
@@ -154,6 +158,13 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
         txtNgayGui.setText(d.getNgayGui());
         txtNgayGui.setFocusable(false);
 
+        bt_xem.setText("Mở file");
+        bt_xem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_xemMouseClicked(evt);
+            }
+        });
+
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -189,10 +200,6 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(tieude_ngay6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -221,12 +228,16 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNgayGui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtKhoa))))
+                                    .addComponent(txtKhoa)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tieude_ngay6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bt_gui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bt_xem, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(51, 51, 51))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,13 +280,15 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tieude_ngay6)
-                    .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_xem))
+                .addGap(18, 18, 18)
                 .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_guiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guiActionPerformed
@@ -286,6 +299,27 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
+
+    private void bt_xemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_xemMouseClicked
+        // TODO add your handling code here:
+
+        if (Desktop.isDesktopSupported()) {
+
+            // TODO add your handling code here:
+            File file = new File("./src/images/"+d.getTaiLieuLienQuan());//đường dẫn file
+            Desktop dt = Desktop.getDesktop();
+            try {
+                dt.open(file);
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(SVXinNghiChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+
+        }
+        else {
+            throw new UnsupportedOperationException("Browser not supported.");
+
+        }
+    }//GEN-LAST:event_bt_xemMouseClicked
 
     /**
      * @param args the command line arguments
@@ -331,6 +365,7 @@ public class GVNghiChiTiet extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_gui;
+    private javax.swing.JButton bt_xem;
     private javax.swing.JComboBox<String> cb_lydo;
     private javax.swing.JLabel file_name;
     private javax.swing.JScrollPane jScrollPane1;

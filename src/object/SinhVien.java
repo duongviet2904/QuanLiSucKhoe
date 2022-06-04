@@ -17,6 +17,8 @@ public class SinhVien implements Serializable{
     private String soDT;
     private String email;
     private String ngaySinh;
+    private String anhSV;
+    
     
     private String maLop;
 
@@ -32,6 +34,15 @@ public class SinhVien implements Serializable{
         this.email = email;
         this.ngaySinh = ngaySinh;
         this.maLop = maLop;
+        this.anhSV = "haui.png";
+    }
+
+    public String getAnhSV() {
+        return anhSV;
+    }
+
+    public void setAnhSV(String anhSV) {
+        this.anhSV = anhSV;
     }
 
     public String getMaSV() {

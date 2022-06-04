@@ -5,9 +5,16 @@
 package quanlisuckhoe;
 
 import java.awt.Container;
+import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import object.Khoa;
@@ -28,12 +35,11 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 //    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
 //        
 //    private Khoa k = new Khoa("K01", "CNTT", "GV01");
-    
     private SinhVien sv;
     private LopHoc lh;
     private Khoa k;
     
-
+    
     public SinhVien getSv() {
         return sv;
     }
@@ -59,15 +65,19 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     }
     
     
-    public TrangChuSinhVien() {
+    public TrangChuSinhVien() throws IOException{
+        
         initComponents();
+        getAnh();
     }
-    public TrangChuSinhVien(SinhVien s, LopHoc lh, Khoa kh) {
+    public TrangChuSinhVien(SinhVien s, LopHoc lh, Khoa kh) throws IOException{
         
         this.sv =s;
         this.lh = lh;
         this.k = kh;
+        
         initComponents();
+        getAnh();
     }
     public void loadData()
     {
@@ -75,6 +85,12 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         text_tensv.setText(sv.getTenSV());
         text_lop.setText(lh.getTenLop());
         text_khoa.setText(k.getTenKhoa());
+    }
+    public void getAnh() throws IOException
+    {
+        Image image = ImageIO.read(new File("./src/images/"+sv.getAnhSV()));
+        Icon icon = new ImageIcon(image);
+        text_anh.setIcon(icon);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,7 +133,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
         jLabel4.setText("Lớp:");
 
-        text_anh.setText("jLabel5");
+        text_anh.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cotruyen.jpeg"))); // NOI18N
 
         text_masv.setText(sv.getMaSV());
 
@@ -230,11 +246,16 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_xinnghi, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -249,20 +270,15 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(text_lop)
                                     .addComponent(text_khoa)
-                                    .addComponent(text_tensv)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_xinnghi, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                                    .addComponent(text_tensv))))))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(text_masv))
@@ -277,11 +293,11 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(text_lop)))
+                            .addComponent(text_lop))
+                        .addGap(58, 58, 58))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(51, 51, 51)
+                        .addComponent(text_anh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_xinnghi, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,6 +309,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -418,7 +435,11 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangChuSinhVien().setVisible(true);
+                try {
+                    new TrangChuSinhVien().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(TrangChuSinhVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

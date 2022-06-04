@@ -50,6 +50,13 @@ public class XemLichSu extends javax.swing.JFrame {
         getLichSu();
         table_ls.setModel(new TableLichSu(ls));
     }
+    public XemLichSu(int vt) {
+        this.vaitro = vt;
+        System.out.println(vaitro);
+        initComponents();
+        getLichSu();
+        table_ls.setModel(new TableLichSu(ls));
+    }
     public XemLichSu(Object s, int vt) {
         this.s = s;
         this.vaitro = vt;
@@ -102,8 +109,14 @@ public class XemLichSu extends javax.swing.JFrame {
                     {
                         ls.add(l);
                     }
-                }else{
+                }else if(vaitro == 1){
                     if(l.getTaiKhoan().equals(gv.getMaGV()))
+                    {
+                        ls.add(l);
+                    }
+                }
+                else if(vaitro == 2){
+                    if(l.getTaiKhoan().equals("Admin"))
                     {
                         ls.add(l);
                     }
@@ -196,6 +209,7 @@ public class XemLichSu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
@@ -238,7 +252,7 @@ public class XemLichSu extends javax.swing.JFrame {
                 Container contentPane = frame.getContentPane();
                 frame.setVisible(true);
             }
-            }else{
+            }else if(vaitro == 1){
             if(l.getNoiDung().equals("Khai báo y tế"))
             {
                 DonKBYTGiaoVien d = new DonKBYTGiaoVien();
@@ -259,6 +273,8 @@ public class XemLichSu extends javax.swing.JFrame {
                 Container contentPane = frame.getContentPane();
                 frame.setVisible(true);
             }
+            }else if(vaitro == 2){
+            
             }
             
             

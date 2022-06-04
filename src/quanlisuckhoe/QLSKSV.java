@@ -19,6 +19,7 @@ import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
 import table.TableKBYTSV;
+import table.TableSV;
 import table.TableSVXN;
 
 /**
@@ -34,7 +35,7 @@ public class QLSKSV extends javax.swing.JFrame {
     private Khoa khoa;
     
     
-    SimpleDateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
     String ngayKB = df.format(date);
     
@@ -49,7 +50,10 @@ public class QLSKSV extends javax.swing.JFrame {
     
     private ArrayList<DonKBYTSinhVien> lstKBYT = new ArrayList<>();
     private ArrayList<DonKBYTSinhVien> lstCovid = new ArrayList<>();
-    private ArrayList<DonKBYTSinhVien> lstOther = new ArrayList<>();
+    private ArrayList<DonKBYTSinhVien> lst1 = new ArrayList<>();
+    private ArrayList<DonKBYTSinhVien> lst2 = new ArrayList<>();
+    private ArrayList<DonKBYTSinhVien> lst3 = new ArrayList<>();
+    private ArrayList<DonKBYTSinhVien> lst4 = new ArrayList<>();
     public QLSKSV() {
         initComponents();
         try {
@@ -101,7 +105,7 @@ public class QLSKSV extends javax.swing.JFrame {
 
     public void getDanhSach() throws ParseException
     {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String dateNow1 = df.format(new Date());
         Date dateNow = df.parse(dateNow1);
         
@@ -115,10 +119,10 @@ public class QLSKSV extends javax.swing.JFrame {
                     daDuyet.add(sv);
                 }
                 
-//                if(dateNow.compareTo(df.parse(sv.getNgayBatDau())) > 0 && dateNow.compareTo(df.parse(sv.getNgayKetThuc())) < 0 && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
-//                    lstDangNghi.add(sv);
-//                }
-                if(sv.isHocOnl()== true && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                if(!"Chờ".equals(sv.getTrangThai()) && dateNow.compareTo(df.parse(sv.getNgayBatDau())) > 0 && dateNow.compareTo(df.parse(sv.getNgayKetThuc())) < 0 && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                    lstDangNghi.add(sv);
+                }
+                if(!"Chờ".equals(sv.getTrangThai()) && sv.isHocOnl()== true && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     lstHocTT.add(sv);
                 }
                 
@@ -129,16 +133,16 @@ public class QLSKSV extends javax.swing.JFrame {
                     lstCovid.add(item);
                 }
                 if(item.isTiepXucNguoiBenh() == true && getMaKhoa_byMaSV(item.getMaSV()).equals(khoa.getMaKhoa())){
-                    lstOther.add(item);
+                    lst1.add(item);
                 }
                 if(item.isTiepXucNguoiBenhCoBieuHien()== true && getMaKhoa_byMaSV(item.getMaSV()).equals(khoa.getMaKhoa())){
-                    lstOther.add(item);
+                    lst2.add(item);
                 }
                 if(item.isTiepXucNguoiBenhDauMua()== true && getMaKhoa_byMaSV(item.getMaSV()).equals(khoa.getMaKhoa())){
-                    lstOther.add(item);
+                    lst3.add(item);
                 }
                 if(item.isTiepXucNguoiTuNuocCoBenh()== true && getMaKhoa_byMaSV(item.getMaSV()).equals(khoa.getMaKhoa())){
-                    lstOther.add(item);
+                    lst4.add(item);
                 }
             }
                  
@@ -155,47 +159,21 @@ public class QLSKSV extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnHocTT = new javax.swing.JButton();
-        btnNghi = new javax.swing.JButton();
-        btnDaDuyet = new javax.swing.JButton();
-        btnChuaDuyet = new javax.swing.JButton();
         tblThongKe = new javax.swing.JScrollPane();
         tableThongKe = new javax.swing.JTable();
         btnCovid = new javax.swing.JButton();
+        btnKhac1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnKhac2 = new javax.swing.JButton();
         btnKhac = new javax.swing.JButton();
+        btnKhac3 = new javax.swing.JButton();
+        btnKhac4 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnHocTT.setText("Có học trực tuyến");
-        btnHocTT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHocTTActionPerformed(evt);
-            }
-        });
-
-        btnNghi.setText("Đang nghỉ");
-        btnNghi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNghiActionPerformed(evt);
-            }
-        });
-
-        btnDaDuyet.setText("Đã duyệt");
-        btnDaDuyet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDaDuyetActionPerformed(evt);
-            }
-        });
-
-        btnChuaDuyet.setText("Chưa duyệt");
-        btnChuaDuyet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChuaDuyetActionPerformed(evt);
-            }
-        });
 
         tableThongKe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -217,10 +195,47 @@ public class QLSKSV extends javax.swing.JFrame {
             }
         });
 
-        btnKhac.setText("Khác");
+        btnKhac1.setText("Đóng");
+        btnKhac1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhac1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Tiếp xúc: ");
+
+        btnKhac2.setText("Người bệnh");
+        btnKhac2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhac2ActionPerformed(evt);
+            }
+        });
+
+        btnKhac.setText("Người bệnh có triệu chứng");
         btnKhac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhacActionPerformed(evt);
+            }
+        });
+
+        btnKhac3.setText("Người đến từ vùng dịch");
+        btnKhac3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhac3ActionPerformed(evt);
+            }
+        });
+
+        btnKhac4.setText("Người bị bệnh đậu mùa");
+        btnKhac4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhac4ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Tất cả");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -239,19 +254,26 @@ public class QLSKSV extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+                    .addComponent(tblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 1135, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnKhac1))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNghi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnHocTT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDaDuyet)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnChuaDuyet)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCovid)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnKhac)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnKhac2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnKhac)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnKhac3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnKhac4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCovid)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -260,49 +282,60 @@ public class QLSKSV extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHocTT)
-                    .addComponent(btnNghi)
-                    .addComponent(btnDaDuyet)
-                    .addComponent(btnChuaDuyet)
                     .addComponent(btnCovid)
-                    .addComponent(btnKhac))
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnKhac)
+                    .addComponent(btnKhac2)
+                    .addComponent(btnKhac3)
+                    .addComponent(btnKhac4))
+                .addGap(11, 11, 11)
                 .addComponent(tblThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnKhac1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnHocTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHocTTActionPerformed
-        // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(lstHocTT));
-    }//GEN-LAST:event_btnHocTTActionPerformed
-
-    private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
-        // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(lstDangNghi));
-    }//GEN-LAST:event_btnNghiActionPerformed
-
-    private void btnDaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaDuyetActionPerformed
-        // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(daDuyet));
-    }//GEN-LAST:event_btnDaDuyetActionPerformed
-
-    private void btnChuaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyetActionPerformed
-        // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(chuaDuyet));
-    }//GEN-LAST:event_btnChuaDuyetActionPerformed
 
     private void btnCovidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCovidActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new TableKBYTSV(lstCovid));
+        tableThongKe.setModel(new TableSV(lstCovid));
     }//GEN-LAST:event_btnCovidActionPerformed
+
+    private void btnKhac1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhac1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnKhac1ActionPerformed
+
+    private void btnKhac2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhac2ActionPerformed
+        // TODO add your handling code here:
+        tableThongKe.setModel(new TableSV(lst1));
+    }//GEN-LAST:event_btnKhac2ActionPerformed
 
     private void btnKhacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhacActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new TableKBYTSV(lstOther));
+        tableThongKe.setModel(new TableSV(lst2));
     }//GEN-LAST:event_btnKhacActionPerformed
+
+    private void btnKhac3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhac3ActionPerformed
+        // TODO add your handling code here:
+        tableThongKe.setModel(new TableSV(lst3));
+    }//GEN-LAST:event_btnKhac3ActionPerformed
+
+    private void btnKhac4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhac4ActionPerformed
+        // TODO add your handling code here:
+        tableThongKe.setModel(new TableSV(lst4));
+    }//GEN-LAST:event_btnKhac4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        tableThongKe.setModel(new TableKBYTSV(lstKBYT));
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,6 +363,13 @@ public class QLSKSV extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(QLSKSV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -340,12 +380,14 @@ public class QLSKSV extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChuaDuyet;
     private javax.swing.JButton btnCovid;
-    private javax.swing.JButton btnDaDuyet;
-    private javax.swing.JButton btnHocTT;
     private javax.swing.JButton btnKhac;
-    private javax.swing.JButton btnNghi;
+    private javax.swing.JButton btnKhac1;
+    private javax.swing.JButton btnKhac2;
+    private javax.swing.JButton btnKhac3;
+    private javax.swing.JButton btnKhac4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

@@ -4,30 +4,28 @@
  */
 package table;
 
-/**
- *
- * @author ducth
- */
-
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import object.ThongBao;
+import object.DonKBYTSinhVien;
 
-public class TableThongBao extends AbstractTableModel{
- 
-    private String Name[] = {"STT","Người Gửi","Nội Dung" ,"Thời Gian"};
+/**
+ *
+ * @author duongv
+ */
+public class TableSV extends AbstractTableModel{
+    private String Name[] = {"Ma SV","Ten sv","Lop" ,"Khoa","Ngay gui"};
     
-    private Class classess[]  = {String.class,String.class,String.class,String.class};
+    private Class classess[]  = {String.class,String.class,String.class,String.class,String.class};
     
-    ArrayList<ThongBao> dsLS = new ArrayList<ThongBao>();
+    ArrayList<DonKBYTSinhVien> dsKBYT = new ArrayList<DonKBYTSinhVien>();
 
-    public TableThongBao(ArrayList<ThongBao> dsLS) {
-        this.dsLS = dsLS;
+    public TableSV(ArrayList<DonKBYTSinhVien> dsKBYT) {
+        this.dsKBYT = dsKBYT;
     }
 
     @Override
     public int getRowCount() {
-        return dsLS.size();
+        return dsKBYT.size();
     }
 
     @Override
@@ -38,14 +36,15 @@ public class TableThongBao extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex){
-            case 0: return (rowIndex+1);
+            case 0: return dsKBYT.get(rowIndex).getMaSV();
             
-            case 1: return dsLS.get(rowIndex).getNguoiGui();
+            case 1: return dsKBYT.get(rowIndex).getTenSV();
             
-            case 2: return dsLS.get(rowIndex).getNoiDung();
+            case 2: return dsKBYT.get(rowIndex).getLop();
              
-            case 3: return dsLS.get(rowIndex).getThoiGian();
+            case 3: return dsKBYT.get(rowIndex).getKhoa();
             
+            case 4: return dsKBYT.get(rowIndex).getNgayKhaiBao();
             
             default : return null;
         }
@@ -59,5 +58,4 @@ public class TableThongBao extends AbstractTableModel{
         return Name[column];
     }
     
-
 }

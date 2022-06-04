@@ -65,6 +65,16 @@ public class XemThongBao extends javax.swing.JFrame {
         table_ls.setModel(new TableThongBao(tb));
         
     }
+    public XemThongBao(int vt) {
+        
+        this.vaitro = vt;
+        System.out.println(vaitro);
+        initComponents();
+        convertObj();
+        getThongBao();
+        table_ls.setModel(new TableThongBao(tb));
+        
+    }
     public XemThongBao(Object s, int vt, LopHoc l, Khoa k) {
         this.s = s;
         this.vaitro = vt;
@@ -118,8 +128,13 @@ public class XemThongBao extends javax.swing.JFrame {
                     {
                         tb.add(l);
                     }
-                }else{
+                }else if(vaitro == 1){
                     if(l.getNguoiNhan().equals(gv.getMaGV()))
+                    {
+                        tb.add(l);
+                    }
+                }else if(vaitro == 2){
+                    if(l.getNguoiNhan().equals("admin"))
                     {
                         tb.add(l);
                     }
@@ -212,6 +227,7 @@ public class XemThongBao extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked

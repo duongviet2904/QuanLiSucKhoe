@@ -5,7 +5,9 @@
 package quanlisuckhoe;
 
 import java.awt.Container;
+import java.awt.Image;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,6 +16,9 @@ import java.util.Collections;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -31,9 +36,18 @@ import table.TableSVXN;
  */
 public class TrangChuGiaoVien extends javax.swing.JFrame {
 
+//   private GiaoVien gv = new GiaoVien("GV01", "Nguyễn Văn Mạnh", "K01");
+//   
+//    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
+//        
+//    private Khoa khoa = new Khoa("K01", "CNTT", "GV01");
+    
+    
     private GiaoVien gv;
     private Khoa khoa;
     private LopHoc lh;
+    
+    
     DocGhi rw = new DocGhi();
     private ArrayList<DonXinNghiSV> lstXN = new ArrayList<>();
     private ArrayList<DonXinNghiSV> chuaDuyet = new ArrayList<>();
@@ -42,21 +56,28 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     /**
      * Creates new form TrangChuSinhVien
      */
-    public TrangChuGiaoVien() {
+    public TrangChuGiaoVien() throws IOException {
         initComponents();
+        getAnh();
         getDanhSach();
         lstNoti.setModel(new TableSVXN(chuaDuyet));
     }
 
-    public TrangChuGiaoVien(GiaoVien gv, Khoa khoa, LopHoc lh) {
+    public TrangChuGiaoVien(GiaoVien gv, Khoa khoa, LopHoc lh) throws IOException {
         this.gv = gv;
         this.khoa = khoa;
         this.lh = lh;
         initComponents();
+        getAnh();
         getDanhSach();
         lstNoti.setModel(new TableSVXN(chuaDuyet));
     }
-    
+    public void getAnh() throws IOException
+    {
+        Image image = ImageIO.read(new File("./src/images/"+gv.getAnhGV()));
+        Icon icon = new ImageIcon(image);
+        text_anh.setIcon(icon);
+    }
     public void getDanhSach()
     {
         try {
@@ -89,7 +110,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        text_anh = new javax.swing.JLabel();
         txtMaGV = new javax.swing.JLabel();
         txtTenGV = new javax.swing.JLabel();
         txtTenKhoa = new javax.swing.JLabel();
@@ -120,8 +141,6 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         jLabel2.setText("Khoa: ");
 
         jLabel3.setText("Tên giáo viên");
-
-        jLabel5.setText("jLabel5");
 
         txtMaGV.setText(gv.getMaGV());
 
@@ -197,9 +216,9 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         menu_gv.add(m_gvXinNghi);
 
         m_gvThongKe.setText("Thống Kê");
-        m_gvThongKe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                m_gvThongKeActionPerformed(evt);
+        m_gvThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvThongKeMouseClicked(evt);
             }
         });
         menu_gv.add(m_gvThongKe);
@@ -250,7 +269,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_kbyt, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,8 +326,8 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
                             .addComponent(txtTenLop)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(51, 51, 51)
+                        .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_kbyt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -330,6 +349,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         txtMaGV.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_gvKhaiBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvKhaiBaoMouseClicked
@@ -381,13 +401,6 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_btn_kbytActionPerformed
 
-    private void m_gvThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_gvThongKeActionPerformed
-        ThongKe frame = new ThongKe(gv, lh, khoa);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        Container contentPane = frame.getContentPane();
-        frame.setVisible(true);
-    }//GEN-LAST:event_m_gvThongKeActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ThongKe frame = new ThongKe(gv, lh, khoa);
@@ -434,6 +447,14 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_m_gvThongBaoMouseClicked
 
+    private void m_gvThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvThongKeMouseClicked
+        // TODO add your handling code here:
+        ThongKe frame = new ThongKe(gv, lh, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_gvThongKeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -466,7 +487,11 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new TrangChuGiaoVien().setVisible(true);
+                try {
+                    new TrangChuGiaoVien().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(TrangChuGiaoVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             }
         });
@@ -484,7 +509,6 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JScrollPane jScrollPane2;
@@ -496,6 +520,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenu m_gvXinNghi;
     private javax.swing.JMenuBar menu_gv;
+    private javax.swing.JLabel text_anh;
     private javax.swing.JLabel txtMaGV;
     private javax.swing.JLabel txtTenGV;
     private javax.swing.JLabel txtTenKhoa;

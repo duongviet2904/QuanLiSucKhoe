@@ -13,23 +13,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import object.DocGhi;
-import object.DonKBYTGiaoVien;
 import object.DonKBYTSinhVien;
+import object.DonXinNghiGV;
 import object.DonXinNghiSV;
 import object.GiaoVien;
 import object.Khoa;
+import object.LichSu;
 import object.LopHoc;
 import object.ThongBao;
+import table.TableGVXN;
+import table.TableKBYTSV;
 import table.TableSVXN;
 
 /**
  *
  * @author duongv
  */
-public class ThongKe extends javax.swing.JFrame {
+public class QLDonXinNghiGV extends javax.swing.JFrame {
 
+    /**
+     * Creates new form QLSKSV
+     */
     private GiaoVien gv;
-    private LopHoc lh;
     private Khoa khoa;
     
     
@@ -40,60 +45,81 @@ public class ThongKe extends javax.swing.JFrame {
     private int x = -1;
     DocGhi rw = new DocGhi();
     
-    private ArrayList<DonXinNghiSV> lst = new ArrayList<>();
-    private ArrayList<DonXinNghiSV> chuaDuyet = new ArrayList<>();
-    private ArrayList<DonXinNghiSV> daDuyet = new ArrayList<>();
-    private ArrayList<DonKBYTSinhVien> lstKBYT = new ArrayList<>();
-    private ArrayList<DonXinNghiSV> lstDangNghi = new ArrayList<>();
-    private ArrayList<DonXinNghiSV> lstHocTT = new ArrayList<>();
-    /**
-     * Creates new form ThongKe
-     */
-    public ThongKe() {
+    private ArrayList<DonXinNghiGV> lst = new ArrayList<>();
+    private ArrayList<DonXinNghiGV> chuaDuyet = new ArrayList<>();
+    private ArrayList<DonXinNghiGV> daDuyet = new ArrayList<>();
+    private ArrayList<DonXinNghiGV> lstDangNghi = new ArrayList<>();
+    private ArrayList<DonXinNghiGV> lstHocTT = new ArrayList<>();
+    
+    public QLDonXinNghiGV() {
         initComponents();
         try {
             getDanhSach();
         } catch (ParseException ex) {
-            Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QLDonXinNghiGV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public ThongKe(GiaoVien gv, LopHoc lh, Khoa khoa) {
+    public QLDonXinNghiGV(GiaoVien gv, Khoa khoa) {
         this.gv = gv;
-        this.lh = lh;
         this.khoa = khoa;
         initComponents();
         try {
             getDanhSach();
         } catch (ParseException ex) {
-            Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QLDonXinNghiGV.class.getName()).log(Level.SEVERE, null, ex);
         }
-        tableThongKe.setModel(new TableSVXN(chuaDuyet));
     }
-
     
+//    public String getMaKhoa_byMaSV(String maSV){
+//        try {
+//            lstKBYT = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
+//            ArrayList<LopHoc> lstLH = new ArrayList<>();
+//            ArrayList<Khoa> lstKhoa = new ArrayList<>();
+//            lstLH = (ArrayList<LopHoc>) rw.ReadObject("./src/data/Lop.txt");
+//            lstKhoa = (ArrayList<Khoa>) rw.ReadObject("./src/data/Khoa.txt");
+//            for(DonKBYTSinhVien item : lstKBYT){
+//                if(maSV.equals(item.getMaSV())){
+//                    for(LopHoc lh : lstLH){
+//                        if(lh.getTenLop().equals(item.getLop())){
+//                            for(Khoa k : lstKhoa){
+//                                if(k.getTenKhoa().equals(item.getKhoa())){
+//                                    return k.getMaKhoa();
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            return "";
+//        } catch (IOException ex) {
+//            Logger.getLogger(QLDonXinNghiSV.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(QLDonXinNghiSV.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return "";
+//    }
+
     public void getDanhSach() throws ParseException
     {
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String dateNow1 = df.format(new Date());
         Date dateNow = df.parse(dateNow1);
         
         try {
             
-            lst = (ArrayList<DonXinNghiSV>) rw.ReadObject("./src/data/DonXNSV.txt");
-            for(DonXinNghiSV sv : lst){
-                if("Chờ".equals(sv.getTrangThai()) && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+            lst = (ArrayList<DonXinNghiGV>) rw.ReadObject("./src/data/DonXNGV.txt");
+            for(DonXinNghiGV sv : lst){
+                if("Chờ".equals(sv.getTrangThai()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     chuaDuyet.add(sv);
-                }else if(!"Chờ".equals(sv.getTrangThai()) && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                }else if(!"Chờ".equals(sv.getTrangThai()) &&  sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     daDuyet.add(sv);
                 }
                 
-//                if(dateNow.compareTo(df.parse(sv.getNgayBatDau())) > 0 && dateNow.compareTo(df.parse(sv.getNgayKetThuc())) < 0 && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
-//                    lstDangNghi.add(sv);
-//                }
-                if(sv.isHocOnl()== true && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
-                    lstHocTT.add(sv);
+                if(dateNow.after(df.parse(sv.getNgayBatDau())) && dateNow.before(df.parse(sv.getNgayKetThuc())) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                    lstDangNghi.add(sv);
                 }
+                
                 
             }
             
@@ -111,18 +137,38 @@ public class ThongKe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnNghi = new javax.swing.JButton();
+        btnDaDuyet = new javax.swing.JButton();
+        btnChuaDuyet = new javax.swing.JButton();
         tblThongKe = new javax.swing.JScrollPane();
         tableThongKe = new javax.swing.JTable();
-        btnHocTT = new javax.swing.JButton();
-        btnDuyet = new javax.swing.JButton();
-        btnNghi = new javax.swing.JButton();
-        btnChuaDuyet = new javax.swing.JButton();
-        btnDaDuyet = new javax.swing.JButton();
+        btnChuaDuyet1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnNghi.setText("Đang nghỉ");
+        btnNghi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNghiActionPerformed(evt);
+            }
+        });
+
+        btnDaDuyet.setText("Đã duyệt");
+        btnDaDuyet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaDuyetActionPerformed(evt);
+            }
+        });
+
+        btnChuaDuyet.setText("Chưa duyệt");
+        btnChuaDuyet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChuaDuyetActionPerformed(evt);
+            }
+        });
 
         tableThongKe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,38 +183,10 @@ public class ThongKe extends javax.swing.JFrame {
         ));
         tblThongKe.setViewportView(tableThongKe);
 
-        btnHocTT.setText("Có học trực tuyến");
-        btnHocTT.addActionListener(new java.awt.event.ActionListener() {
+        btnChuaDuyet1.setText("Duyệt");
+        btnChuaDuyet1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHocTTActionPerformed(evt);
-            }
-        });
-
-        btnDuyet.setText("Duyệt");
-        btnDuyet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDuyetActionPerformed(evt);
-            }
-        });
-
-        btnNghi.setText("Đang nghỉ");
-        btnNghi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNghiActionPerformed(evt);
-            }
-        });
-
-        btnChuaDuyet.setText("Chưa duyệt");
-        btnChuaDuyet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChuaDuyetActionPerformed(evt);
-            }
-        });
-
-        btnDaDuyet.setText("Đã duyệt");
-        btnDaDuyet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDaDuyetActionPerformed(evt);
+                btnChuaDuyet1ActionPerformed(evt);
             }
         });
 
@@ -187,18 +205,15 @@ public class ThongKe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
+                    .addComponent(tblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDuyet)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNghi)
-                        .addGap(8, 8, 8)
-                        .addComponent(btnHocTT)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDaDuyet)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnChuaDuyet)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnChuaDuyet1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -206,60 +221,61 @@ public class ThongKe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHocTT)
-                    .addComponent(btnDuyet)
                     .addComponent(btnNghi)
                     .addComponent(btnDaDuyet)
-                    .addComponent(btnChuaDuyet))
+                    .addComponent(btnChuaDuyet)
+                    .addComponent(btnChuaDuyet1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tblThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
+        // TODO add your handling code here:
+        tableThongKe.setModel(new TableGVXN(lstDangNghi));
+    }//GEN-LAST:event_btnNghiActionPerformed
+
     private void btnDaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaDuyetActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(daDuyet));
+        tableThongKe.setModel(new TableGVXN(daDuyet));
     }//GEN-LAST:event_btnDaDuyetActionPerformed
 
     private void btnChuaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyetActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(chuaDuyet));
+        tableThongKe.setModel(new TableGVXN(chuaDuyet));
     }//GEN-LAST:event_btnChuaDuyetActionPerformed
 
-    private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
-        // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(lstDangNghi));
-    }//GEN-LAST:event_btnNghiActionPerformed
-
-    private void btnDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuyetActionPerformed
+    private void btnChuaDuyet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyet1ActionPerformed
         // TODO add your handling code here:
         x = tableThongKe.getSelectedRow();
         if(x != -1){
-            DonXinNghiSV tg = chuaDuyet.get(x);
-            DonXinNghiSV tg2 = tg;
+            DonXinNghiGV tg = chuaDuyet.get(x);
+            DonXinNghiGV tg2 = tg;
             tg2.setTrangThai("Đã duyệt");
             daDuyet.add(tg2);
             chuaDuyet.remove(tg);
-            tableThongKe.setModel(new TableSVXN(chuaDuyet));
+            tableThongKe.setModel(new TableGVXN(chuaDuyet));
             int j = lst.indexOf(tg);
             lst.remove(j);
             lst.add(j, tg2);
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
             String ngayGui = df.format(date);
-            ThongBao t = new ThongBao(gv.getTenGV(),tg2.getMaSV(),"Đã duyệt đơn xin nghỉ ngày "+tg2.getNgayGui(),ngayGui, tg2);
+            LichSu s = new LichSu("Admin","Duyệt đơn xin nghỉ "+gv+" ngay "+tg2.getNgayGui(), ngayGui, (Object)tg2);
+            addLichSu(s);
+            ThongBao t = new ThongBao(gv.getTenGV(),tg2.getMaGV(),"Đã duyệt đơn xin nghỉ ngày "+tg2.getNgayGui(),ngayGui, tg2);
             addThongBao(t);
             try {
-                rw.WriteObject("./src/data/DonXNSV.txt", lst);
+                rw.WriteObject("./src/data/DonXNGV.txt", lst);
             } catch (IOException ex) {
                 Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_btnDuyetActionPerformed
+    }//GEN-LAST:event_btnChuaDuyet1ActionPerformed
     public void addThongBao(ThongBao s)
     {
         DocGhi rw = new DocGhi();
@@ -274,11 +290,20 @@ public class ThongKe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
         }
     }
-    private void btnHocTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHocTTActionPerformed
-        // TODO add your handling code here:
-        tableThongKe.setModel(new TableSVXN(lstHocTT));
-    }//GEN-LAST:event_btnHocTTActionPerformed
-
+    public void addLichSu(LichSu s)
+    {
+        DocGhi rw = new DocGhi();
+        try {
+            
+            ArrayList<LichSu> dsls = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
+            s.setStt(Integer.toString(dsls.size()+1));
+            dsls.add(s);
+            rw.WriteObject("./src/data/LichSu.txt", dsls);
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -296,29 +321,43 @@ public class ThongKe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThongKe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLDonXinNghiGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThongKe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLDonXinNghiGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThongKe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLDonXinNghiGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThongKe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QLDonXinNghiGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ThongKe().setVisible(true);
+                new QLDonXinNghiGV().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChuaDuyet;
+    private javax.swing.JButton btnChuaDuyet1;
     private javax.swing.JButton btnDaDuyet;
-    private javax.swing.JButton btnDuyet;
-    private javax.swing.JButton btnHocTT;
     private javax.swing.JButton btnNghi;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

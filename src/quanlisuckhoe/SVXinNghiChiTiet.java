@@ -4,10 +4,13 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -75,7 +78,7 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
 
         text_ngay = new javax.swing.JTextField();
         tieude_ngay6 = new javax.swing.JLabel();
-        bt_gui = new javax.swing.JButton();
+        bt_xem = new javax.swing.JButton();
         tieude_ngaybd = new javax.swing.JLabel();
         file_name = new javax.swing.JLabel();
         tieude_masv = new javax.swing.JLabel();
@@ -99,6 +102,7 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         rb_co = new javax.swing.JRadioButton();
         rb_khong = new javax.swing.JRadioButton();
+        bt_gui1 = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
         m_gvTroGiup = new javax.swing.JMenu();
@@ -117,10 +121,10 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
 
         tieude_ngay6.setText("Các tài liệu/hình ảnh liên quan:");
 
-        bt_gui.setText("Đóng");
-        bt_gui.addMouseListener(new java.awt.event.MouseAdapter() {
+        bt_xem.setText("Mở file");
+        bt_xem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_guiMouseClicked(evt);
+                bt_xemMouseClicked(evt);
             }
         });
 
@@ -242,6 +246,13 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
             }
         });
 
+        bt_gui1.setText("Đóng");
+        bt_gui1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_gui1MouseClicked(evt);
+            }
+        });
+
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -265,21 +276,23 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(tieude_ngay6, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(199, 199, 199)
-                                .addComponent(bt_gui, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
                                 .addComponent(rb_co, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(rb_khong, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tieude_ngay5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(tieude_ngay6, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_gui1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(bt_xem, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,7 +325,7 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
                                 .addComponent(text_ngaybd, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(text_lop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,13 +390,16 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(tieude_ngay6))
-                    .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(bt_gui)
-                .addContainerGap())
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(file_name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_xem)))
+                .addGap(27, 27, 27)
+                .addComponent(bt_gui1)
+                .addGap(21, 21, 21))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void text_tensvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tensvActionPerformed
@@ -403,10 +419,27 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
 
-    private void bt_guiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guiMouseClicked
+    private void bt_xemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_xemMouseClicked
         // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_bt_guiMouseClicked
+        
+    if (Desktop.isDesktopSupported()) {
+        
+            // TODO add your handling code here:
+            File file = new File("./src/images/"+d.getTaiLieuLienQuan());//đường dẫn file
+            Desktop dt = Desktop.getDesktop();
+        try {
+            dt.open(file);
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(SVXinNghiChiTiet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+    }
+    else {
+      throw new UnsupportedOperationException("Browser not supported.");
+    
+    }
+
+    }//GEN-LAST:event_bt_xemMouseClicked
 
     private void rb_coActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_coActionPerformed
         // TODO add your handling code here:
@@ -435,6 +468,10 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
     private void text_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_ngayActionPerformed
+
+    private void bt_gui1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_gui1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_gui1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -475,7 +512,8 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_gui;
+    private javax.swing.JButton bt_gui1;
+    private javax.swing.JButton bt_xem;
     private javax.swing.JComboBox<String> cb_lydo;
     private javax.swing.JLabel file_name;
     private javax.swing.JLabel jLabel5;

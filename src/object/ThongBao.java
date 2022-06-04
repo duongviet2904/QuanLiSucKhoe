@@ -20,7 +20,6 @@ public class ThongBao implements Serializable{
     private String noiDung;
     private String thoiGian;
     private Object chiTiet;
-    private String trangThai;
 
     public ThongBao() {
     }
@@ -31,7 +30,6 @@ public class ThongBao implements Serializable{
         this.nguoiNhan = nguoiNhan;
         this.noiDung = noiDung;
         this.thoiGian = thoiGian;
-        this.trangThai = "Chờ";
     }
 
     
@@ -42,16 +40,8 @@ public class ThongBao implements Serializable{
         this.noiDung = noiDung;
         this.thoiGian = thoiGian;
         this.chiTiet = chiTiet;
-        this.trangThai = "Chờ";
     }
 
-    public String getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
-    }
 
     
 
@@ -105,7 +95,7 @@ public class ThongBao implements Serializable{
 
     @Override
     public String toString() {
-        return "ThongBao{" + "stt=" + stt + ", nguoiGui=" + nguoiGui + ", nguoiNhan=" + nguoiNhan + ", noiDung=" + noiDung + ", thoiGian=" + thoiGian + ", chiTiet=" + chiTiet + ", trangThai=" + trangThai + '}';
+        return "ThongBao{" + "stt=" + stt + ", nguoiGui=" + nguoiGui + ", nguoiNhan=" + nguoiNhan + ", noiDung=" + noiDung + ", thoiGian=" + thoiGian + ", chiTiet=" + chiTiet +  '}';
     }
 
     

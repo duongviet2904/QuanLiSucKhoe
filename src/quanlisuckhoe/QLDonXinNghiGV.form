@@ -40,21 +40,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tblThongKe" pref="892" max="32767" attributes="0"/>
+                  <Component id="tblThongKe" alignment="0" pref="830" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnDuyet" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnNghi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="btnHocTT" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDaDuyet" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnChuaDuyet" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnChuaDuyet1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -66,20 +63,43 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnHocTT" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDuyet" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnNghi" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDaDuyet" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnChuaDuyet" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnChuaDuyet1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tblThongKe" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JButton" name="btnNghi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;ang ngh&#x1ec9;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNghiActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDaDuyet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;&#xe3; duy&#x1ec7;t"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDaDuyetActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnChuaDuyet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ch&#x1b0;a duy&#x1ec7;t"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChuaDuyetActionPerformed"/>
+      </Events>
+    </Component>
     <Container class="javax.swing.JScrollPane" name="tblThongKe">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -101,44 +121,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnHocTT">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3; h&#x1ecd;c tr&#x1ef1;c tuy&#x1ebf;n"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHocTTActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDuyet">
+    <Component class="javax.swing.JButton" name="btnChuaDuyet1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Duy&#x1ec7;t"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDuyetActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnNghi">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x110;ang ngh&#x1ec9;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNghiActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnChuaDuyet">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ch&#x1b0;a duy&#x1ec7;t"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChuaDuyetActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDaDuyet">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x110;&#xe3; duy&#x1ec7;t"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDaDuyetActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChuaDuyet1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

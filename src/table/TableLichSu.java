@@ -15,7 +15,7 @@ import object.LichSu;
 
 public class TableLichSu extends AbstractTableModel{
  
-    private String Name[] = {"STT","Người Gửi","Nội Dung" ,"Thời Gian","Chi Tiet"};
+    private String Name[] = {"STT","Người thực hiện","Nội Dung" ,"Thời Gian","Chi Tiet"};
     
     private Class classess[]  = {String.class,String.class,String.class,String.class,String.class};
     
