@@ -7,6 +7,7 @@ package object;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import table.ThongBao;
 
 /**
  *
@@ -31,7 +32,7 @@ public class Database {
     public static void taoTK() throws IOException
     {
         DocGhi rw = new DocGhi();
-        tk.add(new TaiKhoan("TK00", "admin", "123", 2, "GV05"));
+        tk.add(new TaiKhoan("TK00", "admin", "123", 2,"GV01"));
         tk.add(new TaiKhoan("TK01", "GV01", "123", 1, "GV01"));
         tk.add(new TaiKhoan("TK02", "GV02", "123", 1, "GV02"));
         tk.add(new TaiKhoan("TK03", "GV03", "123", 1, "GV03"));
@@ -269,18 +270,18 @@ public class Database {
         lichsu.add(new LichSu("15","GV01","Khai báo y tế", "2022-06-12"));
         lichsu.add(new LichSu("16","GV01","Khai báo y tế", "2022-06-12"));
         rw.WriteObject("./src/data/LichSu.txt", lichsu);
-//        try {
-//            
-//            ArrayList<LichSu> khoa10 = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
-//            for(LichSu gv1 : khoa10)
-//            {
-//                System.out.println(gv1.toString());
-//                
-//            }
-//            
-//        } catch (IOException | ClassNotFoundException ex) {
-//            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
-//        }
+        try {
+            
+            ArrayList<LichSu> khoa10 = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
+            for(LichSu gv1 : khoa10)
+            {
+                System.out.println(gv1.toString());
+                
+            }
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
     }
     
     public static void main(String[] args) throws IOException {

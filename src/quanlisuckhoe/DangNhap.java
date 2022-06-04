@@ -54,6 +54,7 @@ public class DangNhap extends javax.swing.JFrame {
         {
             if(name.equals(t.getTenDangNhap()) && pass.equals(t.getMatKhau()))
             {
+                getLopKhoa();
                 return t.getVaiTro();
             }
         }
@@ -187,8 +188,7 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = tf_name.getText();
         String pass = tf_pass.getText();
-        getLopKhoa();
-        DocGhi rw;
+        
         int vaitro = checkTK(name, pass);
             if (vaitro == -1) {
                 JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
@@ -273,25 +273,24 @@ public class DangNhap extends javax.swing.JFrame {
                         if(t.getTenDangNhap().equals(name)){
                             for(GiaoVien s : dsgv)
                                 {
-                                    if (s.getMaGV().equals(t.getMaDoiTuong())) {
-                                        for (LopHoc l : dslop) {
-                                            if (s.getMaGV().equals(l.getMaGV())) {
-                                                for (Khoa k : dskhoa) {
-                                                    if (k.getMaKhoa().equals(l.getMaKhoa())) {
+                                    if(s.getMaGV().equals(t.getMaDoiTuong())){
+                                        for (Khoa k : dskhoa) {
+                                                    if (k.getMaGV().equals(s.getMaGV())) {
                                                         TrangChuNguoiQuanTri frame = new TrangChuNguoiQuanTri(s, k);
                                                         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                                                         Container contentPane = frame.getContentPane();
                                                         frame.setVisible(true);
                                                         this.setVisible(false);
+                                                        System.out.println(s.toString());
+                                                        System.out.println(k.toString());
+                                                        
                                                         break;
                                                     }
                                                 }
-                                            break;
-                                            }
-                                        }
-                                    break;
                                     }
+                                    break;
                                 }
+                            break;
                         }
                     }
                     

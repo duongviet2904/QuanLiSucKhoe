@@ -37,12 +37,15 @@ public class LichSu implements Serializable{
         return "LichSu{" + "stt=" + stt + ", taiKhoan=" + taiKhoan + ", noiDung=" + noiDung + ", th\u01a1iGian=" + thơiGian + '}';
     }
 
-    public LichSu(String stt,String taiKhoan ,String noiDung, String thơiGian) {
+    public LichSu(String stt, String taiKhoan, String noiDung, String thơiGian) {
         this.stt = stt;
         this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;
         this.thơiGian = thơiGian;
     }
+
+    
+    
     public LichSu(String taiKhoan ,String noiDung, String thơiGian, Object obj) {
         this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;

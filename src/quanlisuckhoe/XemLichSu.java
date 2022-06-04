@@ -22,7 +22,7 @@ import object.Khoa;
 import object.LichSu;
 import object.LopHoc;
 import object.SinhVien;
-import object.TableLichSu;
+import table.TableLichSu;
 
 /**
  *
@@ -57,6 +57,7 @@ public class XemLichSu extends javax.swing.JFrame {
         {
             vaitro = 0;
         }
+        System.out.println(vaitro);
         initComponents();
         getLichSu();
         table_ls.setModel(new TableLichSu(ls));
@@ -75,6 +76,7 @@ public class XemLichSu extends javax.swing.JFrame {
         {
             vaitro = 0;
         }
+        System.out.println(vaitro);
         initComponents();
         getLichSu();
         table_ls.setModel(new TableLichSu(ls));

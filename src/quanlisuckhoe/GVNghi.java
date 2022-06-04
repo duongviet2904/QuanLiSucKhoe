@@ -7,6 +7,7 @@ package quanlisuckhoe;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +31,11 @@ public class GVNghi extends javax.swing.JFrame {
     
     private GiaoVien gv;
     private Khoa khoa;
+    
+    
+//    private GiaoVien gv = new GiaoVien("GV01", "Nguyễn Văn Mạnh", "K01");
+//    private Khoa khoa = new Khoa("K01", "CNTT", "GV01");
+    
     
     private DonXinNghiGV gvxn = new DonXinNghiGV();
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -137,7 +143,7 @@ public class GVNghi extends javax.swing.JFrame {
 
         tieude_ngay2.setText("Ngày bắt đầu");
 
-        file_name.setText("No file selected");
+        file_name.setText("Bạn chưa chọn file");
 
         tieude_magv.setText("Mã giáo viên");
 
@@ -323,13 +329,52 @@ public class GVNghi extends javax.swing.JFrame {
             gvxn.setNgayKetThuc(txtNgayKT.getText());
             gvxn.setChiTiet(txtChiTiet.getText());
             gvxn.setLyDo(cb_lydo.getItemAt(cb_lydo.getSelectedIndex()));
-            gvxn.setTaiLieuLienQuan(bt_file.getText());
+            gvxn.setTaiLieuLienQuan(file_name.getText());
             gvxn.setTrangThai(false);
+            
+            DocGhi rw = new DocGhi();
+        int err = 0;
+        Date d1 = new Date();
+        Date d2 = new Date();;
+        try {
+            d1 = df.parse(gvxn.getNgayBatDau());
+            d2 = df.parse(gvxn.getNgayKetThuc());
+        } catch (ParseException ex) {
+            err = 3;
+        }
+        if(!df.format(d1).equals(txtNgayBD.getText()) || !df.format(d2).equals(txtNgayKT.getText()))
+        {
+            err = 3;
+        }
+        if(d1.after(d2) || d1.before(date))
+        {
+            err = 2;
+        }
+        
+        if(gvxn.getTaiLieuLienQuan().equals("Bạn chưa chọn file"))
+            JOptionPane.showMessageDialog(null, "Bạn cần gửi kèm tài liệu");
+        else if(err == 3)
+        {
+            JOptionPane.showMessageDialog(null, "Bạn cần nhập ngày theo định dạng dd/MM/yyyy");
+        }
+        else if(err == 2)
+        {
+            JOptionPane.showMessageDialog(null, "Bạn cần nhập ngày bắt đầu sau kết thúc/ngày bắt từ thời điểm hiện tại");
+        }else{
             dsgvxn.add(gvxn);
-            LichSu s = new LichSu(gvxn.getMaGV(),"Xin nghỉ", ngayGui, gvxn);
+            LichSu s = new LichSu(gvxn.getMaGV(),"Xin nghỉ", gvxn.getNgayGui(), (Object)gvxn);
             addLichSu(s);
             rw.WriteObject("./src/data/DonXNGV.txt", dsgvxn);
+            System.out.println(gvxn.toString());
             dispose();
+        }
+            
+            
+            
+            
+            
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(GVNghi.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -365,7 +410,7 @@ public class GVNghi extends javax.swing.JFrame {
             }
             // if the user cancelled the operation
             else
-            file_name.setText("the user cancelled the operation");
+            file_name.setText("Bạn chưa chọn file");
         }
 
         // if the user presses the open dialog show the open dialog
@@ -393,7 +438,7 @@ public class GVNghi extends javax.swing.JFrame {
             }
             // if the user cancelled the operation
             else
-            file_name.setText("the user cancelled the operation");
+            file_name.setText("Bạn chưa chọn file");
         }
     }//GEN-LAST:event_bt_fileActionPerformed
 

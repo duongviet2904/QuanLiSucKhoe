@@ -23,7 +23,17 @@ public class DonXinNghiGV implements Serializable{
     private String taiLieuLienQuan;
     private boolean trangThai;
 
-    public DonXinNghiGV(String maDon, String maGV, String tenGV, String khoa, String ngayGui , String ngayBatDau, String ngayKetThuc, String lyDo, String chiTiet, String taiLieuLienQuan, boolean trangThai) {
+    
+
+    public DonXinNghiGV() {
+    }
+
+    @Override
+    public String toString() {
+        return "DonXinNghiGV{" + "maDon=" + maDon + ", maGV=" + maGV + ", tenGV=" + tenGV + ", khoa=" + khoa + ", ngayGui=" + ngayGui + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", lyDo=" + lyDo + ", chiTiet=" + chiTiet + ", taiLieuLienQuan=" + taiLieuLienQuan + ", trangThai=" + trangThai + '}';
+    }
+
+    public DonXinNghiGV(String maDon, String maGV, String tenGV, String khoa, String ngayGui, String ngayBatDau, String ngayKetThuc, String lyDo, String chiTiet, String taiLieuLienQuan, boolean trangThai) {
         this.maDon = maDon;
         this.maGV = maGV;
         this.tenGV = tenGV;
@@ -37,8 +47,7 @@ public class DonXinNghiGV implements Serializable{
         this.trangThai = trangThai;
     }
 
-    public DonXinNghiGV() {
-    }
+    
 
     public String getMaDon() {
         return maDon;

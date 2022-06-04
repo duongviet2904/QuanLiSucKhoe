@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import object.GiaoVien;
 import object.Khoa;
-import object.LichSu;
 
 /**
  *
@@ -61,10 +60,10 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnQLSKSV = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnQLSKGV = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
@@ -76,13 +75,23 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("QLSK Sinh Viên");
+        btnQLSKSV.setText("QLSK Sinh Viên");
+        btnQLSKSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLSKSVActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Danh sách đơn xin nghỉ");
 
         jButton4.setText("Lịch sử");
 
-        jButton2.setText("QLSK Giáo viên");
+        btnQLSKGV.setText("QLSK Giáo viên");
+        btnQLSKGV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLSKGVActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Thống kê");
 
@@ -117,9 +126,9 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         menu_gv.add(m_gvTroGiup);
 
         jMenu2.setText("Đăng Xuất");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
             }
         });
         menu_gv.add(jMenu2);
@@ -134,11 +143,11 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQLSKSV, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQLSKGV, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -147,8 +156,8 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnQLSKSV, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQLSKGV, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,10 +177,10 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        XemLichSu frame = new XemLichSu();
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        Container contentPane = frame.getContentPane();
-        frame.setVisible(true);
+//        LichSu frame = new LichSu();
+//        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//        Container contentPane = frame.getContentPane();
+//        frame.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void m_gvTroGiupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTroGiupMouseClicked
@@ -182,9 +191,17 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_m_gvTroGiupMouseClicked
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void btnQLSKSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSKSVActionPerformed
         // TODO add your handling code here:
-        DangNhap frame;
+        QLSKSV frame = new QLSKSV(gv, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnQLSKSVActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+         DangNhap frame;
         try {
             frame = new DangNhap();
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -194,7 +211,15 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(TrangChuNguoiQuanTri.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void btnQLSKGVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSKGVActionPerformed
+        // TODO add your handling code here:
+        QLSKGV frame = new QLSKGV(gv, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnQLSKGVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,8 +258,8 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnQLSKGV;
+    private javax.swing.JButton btnQLSKSV;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;

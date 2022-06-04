@@ -216,7 +216,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="file_name">
       <Properties>
-        <Property name="text" type="java.lang.String" value="No file selected"/>
+        <Property name="text" type="java.lang.String" value="B&#x1ea1;n ch&#x1b0;a ch&#x1ecd;n file"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_magv">

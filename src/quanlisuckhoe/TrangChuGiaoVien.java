@@ -23,7 +23,7 @@ import object.DonXinNghiSV;
 import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
-import object.ThongBao;
+import table.ThongBao;
 
 /**
  *

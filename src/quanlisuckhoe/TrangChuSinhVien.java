@@ -372,7 +372,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         XemLichSu frame = new XemLichSu(sv);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
-        frame.setVisible(true);
+        frame.setVisible(true);;
     }//GEN-LAST:event_jButton4MouseClicked
 
     /**

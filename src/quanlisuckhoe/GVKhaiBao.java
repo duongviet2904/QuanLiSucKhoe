@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import object.DocGhi;
 import object.DonKBYTGiaoVien;
 import object.GiaoVien;
@@ -392,40 +393,60 @@ public class GVKhaiBao extends javax.swing.JFrame {
 
     private void bt_khaibaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khaibaoActionPerformed
         try {
+            int err = 0;
             kbyt.setMaGV(txtMaGV.getText());
             kbyt.setTenGV(txtTenGV.getText());
             kbyt.setKhoa(txtTenKhoa.getText());
             kbyt.setNgayKhaiBao(ngayKB);
             if(rb_14Co.isSelected()){
                 kbyt.setCoTrieuChung(true);
-            }
-            if(rb_14Khong.isSelected()){
+            }else if(rb_14Khong.isSelected()){
                 kbyt.setCoTrieuChung(false);
+            }else
+            {
+                err = 1;
             }
             if(rb_14Co1.isSelected()){
                 kbyt.setTiepXucNguoiBenh(true);
-            }
-            if(rb_14Khong1.isSelected()){
+            }else if(rb_14Khong1.isSelected()){
                 kbyt.setTiepXucNguoiBenh(false);
+            }else
+            {
+                err = 1;
             }
             if(rb_14Co2.isSelected()){
                 kbyt.setTiepXucNguoiTuNuocCoBenh(true);
-            }
-            if(rb_14Khong2.isSelected()){
+            }else if(rb_14Khong2.isSelected()){
                 kbyt.setTiepXucNguoiTuNuocCoBenh(false);
+            }else
+            {
+                err = 1;
             }
             if(rb_14Co3.isSelected()){
                 kbyt.setTiepXucNguoiBenhCoBieuHien(true);
-            }
-            if(rb_14Khong3.isSelected()){
+            }else if(rb_14Khong3.isSelected()){
                 kbyt.setTiepXucNguoiBenhCoBieuHien(false);
+            }else
+            {
+                err = 1;
             }
             if(rb_14Co4.isSelected()){
                 kbyt.setTiepXucNguoiBenhDauMua(true);
-            }
-            if(rb_14Khong4.isSelected()){
+            }else if(rb_14Khong4.isSelected()){
                 kbyt.setTiepXucNguoiBenhDauMua(false);
+            }else
+            {
+                err = 1;
             }
+            
+            DocGhi rw = new DocGhi();
+        
+        
+        
+        if(err == 1)
+            JOptionPane.showMessageDialog(null, "Bạn cần chọn Có hoặc Không");
+        else
+        {
             dskbgv.add(kbyt);
             LichSu s = new LichSu(kbyt.getMaGV(),"Khai báo y tế", kbyt.getNgayKhaiBao(), kbyt);
             addLichSu(s);
@@ -441,6 +462,7 @@ public class GVKhaiBao extends javax.swing.JFrame {
 //                Logger.getLogger(GVNghi.class.getName()).log(Level.SEVERE, null, ex);
 //            }
             dispose();
+        }
         } catch (IOException ex) {
             Logger.getLogger(GVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
         }
