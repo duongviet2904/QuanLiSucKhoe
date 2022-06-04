@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import object.DonXinNghiSV;
 
-public class ThongBao extends AbstractTableModel{
+public class TableSVXN extends AbstractTableModel{
  
     private String Name[] = {"Ma SV","Ten sv","Lop" ,"ly do","Chi Tiet", "Ngay bat dau", "Ngay ket thuc"};
     
@@ -21,7 +21,7 @@ public class ThongBao extends AbstractTableModel{
     
     ArrayList<DonXinNghiSV> dsXinNghi = new ArrayList<DonXinNghiSV>();
 
-    public ThongBao(ArrayList<DonXinNghiSV> dsXinNghi) {
+    public TableSVXN(ArrayList<DonXinNghiSV> dsXinNghi) {
         this.dsXinNghi = dsXinNghi;
     }
 

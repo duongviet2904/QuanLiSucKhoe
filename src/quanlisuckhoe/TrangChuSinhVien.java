@@ -23,7 +23,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     /**
      * Creates new form TrangChuSinhVien
      */
-//    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
+//    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
 //    
 //    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
 //        
@@ -180,6 +180,11 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         menu_gv.add(m_svXinNghi);
 
         m_svThongBao.setText("Thông Báo");
+        m_svThongBao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_svThongBaoMouseClicked(evt);
+            }
+        });
         menu_gv.add(m_svThongBao);
 
         m_svLichSu.setText("Lịch sử");
@@ -317,7 +322,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void m_svLichSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svLichSuMouseClicked
         // TODO add your handling code here:
-        XemLichSu frame = new XemLichSu(sv);
+        XemLichSu frame = new XemLichSu(sv,0);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -369,11 +374,19 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        XemLichSu frame = new XemLichSu(sv);
+        XemLichSu frame = new XemLichSu(sv,0);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
-        frame.setVisible(true);;
+        frame.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void m_svThongBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svThongBaoMouseClicked
+        // TODO add your handling code here:
+        XemThongBao frame = new XemThongBao(sv,0);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_svThongBaoMouseClicked
 
     /**
      * @param args the command line arguments

@@ -22,7 +22,7 @@ import object.Khoa;
 import object.LopHoc;
 import table.TableGVXN;
 import table.TableKBYTSV;
-import table.ThongBao;
+import table.TableSVXN;
 
 /**
  *
@@ -111,9 +111,9 @@ public class QLSKGV extends javax.swing.JFrame {
             
             lst = (ArrayList<DonXinNghiGV>) rw.ReadObject("./src/data/DonXNGV.txt");
             for(DonXinNghiGV sv : lst){
-                if(sv.isTrangThai() == false && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                if("Chờ".equals(sv.getTrangThai()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     chuaDuyet.add(sv);
-                }else if(sv.isTrangThai() == true &&  sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                }else if(!"Chờ".equals(sv.getTrangThai()) &&  sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     daDuyet.add(sv);
                 }
                 
@@ -276,7 +276,7 @@ public class QLSKGV extends javax.swing.JFrame {
 
     private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
         // TODO add your handling code here:
-//        tableThongKe.setModel(new ThongBao(lstDangNghi));
+//        tableThongKe.setModel(new TableSVXN(lstDangNghi));
     }//GEN-LAST:event_btnNghiActionPerformed
 
     private void btnDaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaDuyetActionPerformed

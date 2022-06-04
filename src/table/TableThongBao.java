@@ -11,17 +11,17 @@ package table;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import object.LichSu;
+import object.ThongBao;
 
-public class TableLichSu extends AbstractTableModel{
+public class TableThongBao extends AbstractTableModel{
  
-    private String Name[] = {"STT","Người Gửi","Nội Dung" ,"Thời Gian","Chi Tiet"};
+    private String Name[] = {"STT","Người Gửi","Nội Dung" ,"Thời Gian","Trạng Thái"};
     
     private Class classess[]  = {String.class,String.class,String.class,String.class,String.class};
     
-    ArrayList<LichSu> dsLS = new ArrayList<LichSu>();
+    ArrayList<ThongBao> dsLS = new ArrayList<ThongBao>();
 
-    public TableLichSu(ArrayList<LichSu> dsLS) {
+    public TableThongBao(ArrayList<ThongBao> dsLS) {
         this.dsLS = dsLS;
     }
 
@@ -40,21 +40,13 @@ public class TableLichSu extends AbstractTableModel{
         switch(columnIndex){
             case 0: return (rowIndex+1);
             
-            case 1: return dsLS.get(rowIndex).getTaiKhoan();
+            case 1: return dsLS.get(rowIndex).getNguoiGui();
             
             case 2: return dsLS.get(rowIndex).getNoiDung();
              
             case 3: return dsLS.get(rowIndex).getThoiGian();
             
-            case 4: 
-            {
-                if(dsLS.get(rowIndex).getChiTiet() == null)
-                {
-                    return "Không thể xem lại";
-                }
-                return "Có thể xem lại";
-            }
-            
+            case 4: return dsLS.get(rowIndex).getTrangThai();
             default : return null;
         }
     }

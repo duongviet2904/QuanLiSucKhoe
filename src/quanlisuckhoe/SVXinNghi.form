@@ -233,7 +233,6 @@
         <Property name="text" type="java.lang.String" value="G&#x1eed;i"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_guiMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_guiActionPerformed"/>
       </Events>
     </Component>

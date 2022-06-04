@@ -22,6 +22,7 @@ import object.DonXinNghiGV;
 import object.GiaoVien;
 import object.Khoa;
 import object.LichSu;
+import object.ThongBao;
 
 /**
  *
@@ -83,6 +84,20 @@ public class GVNghi extends javax.swing.JFrame {
             s.setStt(Integer.toString(dsls.size()+1));
             dsls.add(s);
             rw.WriteObject("./src/data/LichSu.txt", dsls);
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
+    }
+    public void addThongBao(ThongBao s)
+    {
+        DocGhi rw = new DocGhi();
+        try {
+            
+            ArrayList<ThongBao> dstb = (ArrayList<ThongBao>) rw.ReadObject("./src/data/ThongBao.txt");
+            s.setStt(Integer.toString(dstb.size()+1));
+            dstb.add(s);
+            rw.WriteObject("./src/data/ThongBao.txt", dstb);
             
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
@@ -330,7 +345,7 @@ public class GVNghi extends javax.swing.JFrame {
             gvxn.setChiTiet(txtChiTiet.getText());
             gvxn.setLyDo(cb_lydo.getItemAt(cb_lydo.getSelectedIndex()));
             gvxn.setTaiLieuLienQuan(file_name.getText());
-            gvxn.setTrangThai(false);
+            gvxn.setTrangThai("Chờ");
             
             DocGhi rw = new DocGhi();
         int err = 0;
@@ -364,6 +379,8 @@ public class GVNghi extends javax.swing.JFrame {
             dsgvxn.add(gvxn);
             LichSu s = new LichSu(gvxn.getMaGV(),"Xin nghỉ", gvxn.getNgayGui(), (Object)gvxn);
             addLichSu(s);
+            ThongBao t = new ThongBao(gvxn.getMaGV(),"admin","Xin nghỉ", gvxn.getNgayGui(), gvxn);
+            addThongBao(t);
             rw.WriteObject("./src/data/DonXNGV.txt", dsgvxn);
             System.out.println(gvxn.toString());
             dispose();

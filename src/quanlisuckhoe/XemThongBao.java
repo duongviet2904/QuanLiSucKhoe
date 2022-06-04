@@ -22,13 +22,15 @@ import object.Khoa;
 import object.LichSu;
 import object.LopHoc;
 import object.SinhVien;
+import object.ThongBao;
 import table.TableLichSu;
+import table.TableThongBao;
 
 /**
  *
  * @author reis
  */
-public class XemLichSu extends javax.swing.JFrame {
+public class XemThongBao extends javax.swing.JFrame {
 
     /**
      * Creates new form XemLichSu
@@ -40,36 +42,40 @@ public class XemLichSu extends javax.swing.JFrame {
     private Object s;
     private SinhVien sv;
     private GiaoVien gv;
+    
+    private LopHoc lh;
+    private Khoa khoa;
     private int vaitro = -1;
-    private int tongLS;
-    ArrayList<LichSu> ls = new ArrayList<>();
+    private int tongTB;
+    ArrayList<ThongBao> tb = new ArrayList<>();
     int dong = -1;
-    public XemLichSu() {
+    public XemThongBao() {
         System.out.println(vaitro);
         initComponents();
-        getLichSu();
-        table_ls.setModel(new TableLichSu(ls));
+        getThongBao();
+        table_ls.setModel(new TableThongBao(tb));
     }
-    public XemLichSu(Object s, int vt) {
+    public XemThongBao(Object s, int vt) {
         this.s = s;
         this.vaitro = vt;
         System.out.println(vaitro);
         initComponents();
         convertObj();
-        getLichSu();
-        table_ls.setModel(new TableLichSu(ls));
+        getThongBao();
+        table_ls.setModel(new TableThongBao(tb));
         
     }
-    public void convertObj()
-    {
-        if(vaitro == 0)
-        {
-            sv = (SinhVien)s;
-        }
-        if(vaitro == 1)
-        {
-            gv = (GiaoVien)s;
-        }
+    public XemThongBao(Object s, int vt, LopHoc l, Khoa k) {
+        this.s = s;
+        this.vaitro = vt;
+        this.lh = l;
+        this.khoa = k;
+        System.out.println(vaitro);
+        initComponents();
+        convertObj();
+        getThongBao();
+        table_ls.setModel(new TableThongBao(tb));
+        
     }
     public int getVaitro() {
         return vaitro;
@@ -86,26 +92,36 @@ public class XemLichSu extends javax.swing.JFrame {
     public void setSv(Object s) {
         this.s = s;
     }
-    
+    public void convertObj()
+    {
+        if(vaitro == 0)
+        {
+            sv = (SinhVien)s;
+        }
+        if(vaitro == 1)
+        {
+            gv = (GiaoVien)s;
+        }
+    }
 
-    public void getLichSu()
+    public void getThongBao()
     {
         DocGhi rw = new DocGhi();
         try {
             
-            ArrayList<LichSu> DSLS = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
-            tongLS=DSLS.size();
-            for(LichSu l : DSLS)
+            ArrayList<ThongBao> DSTB = (ArrayList<ThongBao>) rw.ReadObject("./src/data/ThongBao.txt");
+            tongTB=DSTB.size();
+            for(ThongBao l : DSTB)
             {
                 if(vaitro == 0){
-                    if(l.getTaiKhoan().equals(sv.getMaSV()))
+                    if(l.getNguoiNhan().equals(sv.getMaSV()))
                     {
-                        ls.add(l);
+                        tb.add(l);
                     }
                 }else{
-                    if(l.getTaiKhoan().equals(gv.getMaGV()))
+                    if(l.getNguoiNhan().equals(gv.getMaGV()))
                     {
-                        ls.add(l);
+                        tb.add(l);
                     }
                 }
             
@@ -135,7 +151,7 @@ public class XemLichSu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel2.setText("Lịch sử hoạt động");
+        jLabel2.setText("Thông Báo");
 
         table_ls.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,12 +184,12 @@ public class XemLichSu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(248, 248, 248)
-                        .addComponent(bt_chitiet)))
-                .addContainerGap(234, Short.MAX_VALUE))
+                        .addComponent(bt_chitiet))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel2)))
+                .addContainerGap(268, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -211,25 +227,10 @@ public class XemLichSu extends javax.swing.JFrame {
     private void table_lsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_lsMouseClicked
         // TODO add your handling code here:
         dong = table_ls.getSelectedRow();
-        if(table_ls.getValueAt(dong, 4).equals("Có thể xem lại"))
-        {
-            
         
         if(dong != -1){
-            LichSu l = ls.get(dong);
+            ThongBao l = tb.get(dong);
             if(vaitro == 0){
-            if(l.getNoiDung().equals("Khai báo y tế"))
-            {
-                DonKBYTSinhVien d = new DonKBYTSinhVien();
-                d = (DonKBYTSinhVien) l.getChiTiet();
-                System.out.println(d.toString());
-                SVKhaiBaoChiTiet frame = new SVKhaiBaoChiTiet(d);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                Container contentPane = frame.getContentPane();
-                frame.setVisible(true);
-            }
-            if(l.getNoiDung().equals("Xin nghỉ"))
-            {
                 DonXinNghiSV d = new DonXinNghiSV();
                 d = (DonXinNghiSV) l.getChiTiet();
                 System.out.println(d.toString());
@@ -237,28 +238,13 @@ public class XemLichSu extends javax.swing.JFrame {
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 Container contentPane = frame.getContentPane();
                 frame.setVisible(true);
-            }
-            }else{
-            if(l.getNoiDung().equals("Khai báo y tế"))
-            {
-                DonKBYTGiaoVien d = new DonKBYTGiaoVien();
-                d = (DonKBYTGiaoVien) l.getChiTiet();
-//                System.out.println(d.toString());
-                GVKhaiBaoChiTiet frame = new GVKhaiBaoChiTiet(d);
+            
+            }else if(vaitro == 1){
+                ThongKe frame = new ThongKe(gv, lh, khoa);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                this.setVisible(false);
                 Container contentPane = frame.getContentPane();
-                frame.setVisible(true);
-            }
-            if(l.getNoiDung().equals("Xin nghỉ"))
-            {
-                DonXinNghiGV d = new DonXinNghiGV();
-                d = (DonXinNghiGV) l.getChiTiet();
-//                System.out.println(d.toString());
-                GVNghiChiTiet frame = new GVNghiChiTiet(d);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                Container contentPane = frame.getContentPane();
-                frame.setVisible(true);
-            }
+                frame.setVisible(true);  
             }
             
             
@@ -270,7 +256,7 @@ public class XemLichSu extends javax.swing.JFrame {
 //        txtDiem2.setText(sv.getDiem2()+"");
 //        txtDiemTB.setText(sv.getDiemtb()+"");
 //        txtKetQua.setText(sv.getKetqua()+"");
-        }
+        
         }
     }//GEN-LAST:event_table_lsMouseClicked
 
@@ -291,21 +277,23 @@ public class XemLichSu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(XemLichSu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XemThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(XemLichSu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XemThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(XemLichSu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XemThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(XemLichSu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XemThongBao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new XemLichSu().setVisible(true);
+                new XemThongBao().setVisible(true);
             }
         });
     }

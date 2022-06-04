@@ -40,6 +40,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#xf4;ng B&#xe1;o"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_gvThongBaoMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>

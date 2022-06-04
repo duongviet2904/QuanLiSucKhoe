@@ -23,6 +23,7 @@ import object.LichSu;
 import object.LopHoc;
 import object.SinhVien;
 import object.Database;
+import object.ThongBao;
 
 /**
  *
@@ -135,11 +136,6 @@ public class SVXinNghi extends javax.swing.JFrame {
         tieude_ngay6.setText("Các tài liệu/hình ảnh liên quan:");
 
         bt_gui.setText("Gửi");
-        bt_gui.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_guiMouseClicked(evt);
-            }
-        });
         bt_gui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_guiActionPerformed(evt);
@@ -441,6 +437,8 @@ public class SVXinNghi extends javax.swing.JFrame {
             kb.add(d);
             LichSu s = new LichSu(d.getMaSV(),"Xin nghỉ", d.getNgayGui(), d);
             addLichSu(s);
+            ThongBao t = new ThongBao(d.getMaSV(),lh.getMaGV(),"Xin nghỉ", d.getNgayGui(), d);
+            addThongBao(t);
             
             try {
                 rw.WriteObject("./src/data/DonXNSV.txt", kb);
@@ -476,6 +474,20 @@ public class SVXinNghi extends javax.swing.JFrame {
             s.setStt(Integer.toString(dsls.size()+1));
             dsls.add(s);
             rw.WriteObject("./src/data/LichSu.txt", dsls);
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
+    }
+    public void addThongBao(ThongBao s)
+    {
+        DocGhi rw = new DocGhi();
+        try {
+            
+            ArrayList<ThongBao> dstb = (ArrayList<ThongBao>) rw.ReadObject("./src/data/ThongBao.txt");
+            s.setStt(Integer.toString(dstb.size()+1));
+            dstb.add(s);
+            rw.WriteObject("./src/data/ThongBao.txt", dstb);
             
         } catch (IOException | ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
@@ -547,11 +559,6 @@ public class SVXinNghi extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
-
-    private void bt_guiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guiMouseClicked
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_bt_guiMouseClicked
 
     /**
      * @param args the command line arguments

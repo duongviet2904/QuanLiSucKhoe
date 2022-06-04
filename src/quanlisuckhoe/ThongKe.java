@@ -19,7 +19,8 @@ import object.DonXinNghiSV;
 import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
-import table.ThongBao;
+import object.ThongBao;
+import table.TableSVXN;
 
 /**
  *
@@ -67,6 +68,7 @@ public class ThongKe extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
         }
+        tableThongKe.setModel(new TableSVXN(chuaDuyet));
     }
 
     
@@ -80,9 +82,9 @@ public class ThongKe extends javax.swing.JFrame {
             
             lst = (ArrayList<DonXinNghiSV>) rw.ReadObject("./src/data/DonXNSV.txt");
             for(DonXinNghiSV sv : lst){
-                if(sv.isTrangThai() == false && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                if("Chờ".equals(sv.getTrangThai()) && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     chuaDuyet.add(sv);
-                }else if(sv.isTrangThai() == true && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                }else if(!"Chờ".equals(sv.getTrangThai()) && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     daDuyet.add(sv);
                 }
                 
@@ -219,17 +221,17 @@ public class ThongKe extends javax.swing.JFrame {
 
     private void btnDaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaDuyetActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(daDuyet));
+        tableThongKe.setModel(new TableSVXN(daDuyet));
     }//GEN-LAST:event_btnDaDuyetActionPerformed
 
     private void btnChuaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyetActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(chuaDuyet));
+        tableThongKe.setModel(new TableSVXN(chuaDuyet));
     }//GEN-LAST:event_btnChuaDuyetActionPerformed
 
     private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(lstDangNghi));
+        tableThongKe.setModel(new TableSVXN(lstDangNghi));
     }//GEN-LAST:event_btnNghiActionPerformed
 
     private void btnDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuyetActionPerformed
@@ -238,13 +240,18 @@ public class ThongKe extends javax.swing.JFrame {
         if(x != -1){
             DonXinNghiSV tg = chuaDuyet.get(x);
             DonXinNghiSV tg2 = tg;
-            tg2.setTrangThai(true);
+            tg2.setTrangThai("Đã duyệt");
             daDuyet.add(tg2);
             chuaDuyet.remove(tg);
-            tableThongKe.setModel(new ThongBao(chuaDuyet));
+            tableThongKe.setModel(new TableSVXN(chuaDuyet));
             int j = lst.indexOf(tg);
             lst.remove(j);
             lst.add(j, tg2);
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = new Date();
+            String ngayGui = df.format(date);
+            ThongBao t = new ThongBao(gv.getTenGV(),tg2.getMaSV(),"Đã duyệt đơn xin nghỉ ngày "+tg2.getNgayGui(),ngayGui, tg2);
+            addThongBao(t);
             try {
                 rw.WriteObject("./src/data/DonXNSV.txt", lst);
             } catch (IOException ex) {
@@ -252,10 +259,23 @@ public class ThongKe extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnDuyetActionPerformed
-
+    public void addThongBao(ThongBao s)
+    {
+        DocGhi rw = new DocGhi();
+        try {
+            
+            ArrayList<ThongBao> dstb = (ArrayList<ThongBao>) rw.ReadObject("./src/data/ThongBao.txt");
+            s.setStt(Integer.toString(dstb.size()+1));
+            dstb.add(s);
+            rw.WriteObject("./src/data/ThongBao.txt", dstb);
+            
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
+    }
     private void btnHocTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHocTTActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(lstHocTT));
+        tableThongKe.setModel(new TableSVXN(lstHocTT));
     }//GEN-LAST:event_btnHocTTActionPerformed
 
     /**

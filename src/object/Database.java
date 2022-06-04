@@ -7,7 +7,6 @@ package object;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import table.ThongBao;
 
 /**
  *
@@ -25,7 +24,6 @@ public class Database {
     static ArrayList<DonXinNghiSV> xinnghisv = new ArrayList<>();
     static ArrayList<SinhVien> sinhvien = new ArrayList<>();
     static ArrayList<ThongBao> thongbao = new ArrayList<>();
-    
     static ArrayList<LichSu> lichsu = new ArrayList<>();
     
     
@@ -214,8 +212,8 @@ public class Database {
     public static void taoXinNghiGV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-05-12","2022-05-13", "abc","abc","abc",false));
-        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-06-12","2022-06-13", "abc","abc","abc",false));
+        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-05-12","2022-05-13", "abc","abc","abc"));
+        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "2022-05-12","2022-06-12","2022-06-13", "abc","abc","abc"));
         rw.WriteObject("./src/data/DonXNGV.txt", xinnghigv);
 //        try {
 //            
@@ -233,8 +231,8 @@ public class Database {
     public static void taoXinNghiSV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-10","2022-05-12","2022-05-13", "abc","abc","abc",false,false));
-        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-10","2022-06-12","2022-06-13", "abc","abc","abc",false,false));
+        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "2022-05-10","2022-05-12","2022-05-13", "abc","abc","abc",false));
+        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "2022-06-10","2022-06-12","2022-06-13", "abc","abc","abc",false));
         rw.WriteObject("./src/data/DonXNSV.txt", xinnghisv);
 //        try {
 //            
@@ -270,10 +268,32 @@ public class Database {
         lichsu.add(new LichSu("15","GV01","Khai báo y tế", "2022-06-12"));
         lichsu.add(new LichSu("16","GV01","Khai báo y tế", "2022-06-12"));
         rw.WriteObject("./src/data/LichSu.txt", lichsu);
+//        try {
+//            
+//            ArrayList<LichSu> khoa10 = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
+//            for(LichSu gv1 : khoa10)
+//            {
+//                System.out.println(gv1.toString());
+//                
+//            }
+//            
+//        } catch (IOException | ClassNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+//        }
+    }
+    public static void taoThongBao() throws IOException
+    {
+        DocGhi rw = new DocGhi();
+        thongbao.add(new ThongBao("1","SV01","GV01","Xin nghỉ", "2022-06-12"));
+        thongbao.add(new ThongBao("2","SV01","GV01","Xin nghỉ", "2022-06-12"));
+        thongbao.add(new ThongBao("2","GV02","SV01","Duyệt", "2022-06-12"));
+        thongbao.add(new ThongBao("2","GV02","SV01","Duyệt", "2022-06-12"));
+        
+        rw.WriteObject("./src/data/ThongBao.txt", thongbao);
         try {
             
-            ArrayList<LichSu> khoa10 = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
-            for(LichSu gv1 : khoa10)
+            ArrayList<ThongBao> khoa10 = (ArrayList<ThongBao>) rw.ReadObject("./src/data/ThongBao.txt");
+            for(ThongBao gv1 : khoa10)
             {
                 System.out.println(gv1.toString());
                 
@@ -283,7 +303,6 @@ public class Database {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
         }
     }
-    
     public static void main(String[] args) throws IOException {
         taoTK();
         taoGV();
@@ -295,6 +314,7 @@ public class Database {
         taoXinNghiGV();
         taoXinNghiSV();
         taoLicSu();
+        taoThongBao();
         System.out.println("Đã tạo dữ liệu thành công!");
     }
 }

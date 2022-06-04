@@ -23,7 +23,7 @@ import object.DonXinNghiSV;
 import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
-import table.ThongBao;
+import table.TableSVXN;
 
 /**
  *
@@ -45,7 +45,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
     public TrangChuGiaoVien() {
         initComponents();
         getDanhSach();
-        lstNoti.setModel(new ThongBao(chuaDuyet));
+        lstNoti.setModel(new TableSVXN(chuaDuyet));
     }
 
     public TrangChuGiaoVien(GiaoVien gv, Khoa khoa, LopHoc lh) {
@@ -54,7 +54,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         this.lh = lh;
         initComponents();
         getDanhSach();
-        lstNoti.setModel(new ThongBao(chuaDuyet));
+        lstNoti.setModel(new TableSVXN(chuaDuyet));
     }
     
     public void getDanhSach()
@@ -63,9 +63,9 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
             
             lstXN = (ArrayList<DonXinNghiSV>) rw.ReadObject("./src/data/DonXNSV.txt");
             for(DonXinNghiSV sv : lstXN){
-                if(sv.isTrangThai() == false && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                if("Chờ".equals(sv.getTrangThai()) && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     chuaDuyet.add(sv);
-                }else if(sv.isTrangThai() == true && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                }else if(!"Chờ".equals(sv.getTrangThai()) && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     daDuyet.add(sv);
                 }
             
@@ -205,6 +205,11 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
         menu_gv.add(m_gvThongKe);
 
         m_gvThongBao.setText("Thông Báo");
+        m_gvThongBao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvThongBaoMouseClicked(evt);
+            }
+        });
         menu_gv.add(m_gvThongBao);
 
         jMenu1.setText("Lịch sử");
@@ -362,7 +367,7 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        XemLichSu frame = new XemLichSu(gv);
+        XemLichSu frame = new XemLichSu(gv,1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -415,11 +420,19 @@ public class TrangChuGiaoVien extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        XemLichSu frame = new XemLichSu(gv);
+        XemLichSu frame = new XemLichSu(gv,1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void m_gvThongBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvThongBaoMouseClicked
+        // TODO add your handling code here:
+        XemThongBao frame = new XemThongBao(gv, 1, lh, khoa);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_gvThongBaoMouseClicked
 
     /**
      * @param args the command line arguments

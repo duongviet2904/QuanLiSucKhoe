@@ -17,7 +17,7 @@ public class LichSu implements Serializable{
     private String stt;
     private String taiKhoan;
     private String noiDung;
-    private String thơiGian;
+    private String thoiGian;
     private Object chiTiet;
 
     public Object getChiTiet() {
@@ -34,14 +34,14 @@ public class LichSu implements Serializable{
 
     @Override
     public String toString() {
-        return "LichSu{" + "stt=" + stt + ", taiKhoan=" + taiKhoan + ", noiDung=" + noiDung + ", th\u01a1iGian=" + thơiGian + '}';
+        return "LichSu{" + "stt=" + stt + ", taiKhoan=" + taiKhoan + ", noiDung=" + noiDung + ", thoiGian=" + thoiGian + '}';
     }
 
     public LichSu(String stt, String taiKhoan, String noiDung, String thơiGian) {
         this.stt = stt;
         this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;
-        this.thơiGian = thơiGian;
+        this.thoiGian = thơiGian;
     }
 
     
@@ -49,7 +49,7 @@ public class LichSu implements Serializable{
     public LichSu(String taiKhoan ,String noiDung, String thơiGian, Object obj) {
         this.taiKhoan = taiKhoan;
         this.noiDung = noiDung;
-        this.thơiGian = thơiGian;
+        this.thoiGian = thơiGian;
         this.chiTiet = obj;
     }
     
@@ -77,11 +77,11 @@ public class LichSu implements Serializable{
         this.noiDung = noiDung;
     }
 
-    public String getThơiGian() {
-        return thơiGian;
+    public String getThoiGian() {
+        return thoiGian;
     }
 
-    public void setThơiGian(String thơiGian) {
-        this.thơiGian = thơiGian;
+    public void setThoiGian(String thoiGian) {
+        this.thoiGian = thoiGian;
     }
 }

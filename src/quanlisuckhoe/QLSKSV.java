@@ -19,7 +19,7 @@ import object.GiaoVien;
 import object.Khoa;
 import object.LopHoc;
 import table.TableKBYTSV;
-import table.ThongBao;
+import table.TableSVXN;
 
 /**
  *
@@ -109,9 +109,9 @@ public class QLSKSV extends javax.swing.JFrame {
             
             lst = (ArrayList<DonXinNghiSV>) rw.ReadObject("./src/data/DonXNSV.txt");
             for(DonXinNghiSV sv : lst){
-                if(sv.isTrangThai() == false && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                if("Chờ".equals(sv.getTrangThai()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     chuaDuyet.add(sv);
-                }else if(sv.isTrangThai() == true &&  sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                }else if(!"Chờ".equals(sv.getTrangThai()) &&  sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     daDuyet.add(sv);
                 }
                 
@@ -276,22 +276,22 @@ public class QLSKSV extends javax.swing.JFrame {
 
     private void btnHocTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHocTTActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(lstHocTT));
+        tableThongKe.setModel(new TableSVXN(lstHocTT));
     }//GEN-LAST:event_btnHocTTActionPerformed
 
     private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(lstDangNghi));
+        tableThongKe.setModel(new TableSVXN(lstDangNghi));
     }//GEN-LAST:event_btnNghiActionPerformed
 
     private void btnDaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaDuyetActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(daDuyet));
+        tableThongKe.setModel(new TableSVXN(daDuyet));
     }//GEN-LAST:event_btnDaDuyetActionPerformed
 
     private void btnChuaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyetActionPerformed
         // TODO add your handling code here:
-        tableThongKe.setModel(new ThongBao(chuaDuyet));
+        tableThongKe.setModel(new TableSVXN(chuaDuyet));
     }//GEN-LAST:event_btnChuaDuyetActionPerformed
 
     private void btnCovidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCovidActionPerformed
