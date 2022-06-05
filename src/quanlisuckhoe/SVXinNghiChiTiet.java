@@ -5,6 +5,8 @@
 package quanlisuckhoe;
 
 import java.awt.Desktop;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.lang.System.Logger;
@@ -32,11 +34,7 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-//    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
-//    
-//    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
-//        
-//    private Khoa k = new Khoa("K01", "CNTT", "GV01");
+    
 //    
     private DonXinNghiSV d;
     
@@ -66,6 +64,11 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
             return 3;
         }
         return -1;
+    }
+    public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,9 +108,11 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
         bt_gui1 = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
-        m_gvTroGiup = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chi tiết đơn");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         text_ngay.setEditable(false);
         text_ngay.setText(d.getNgayGui());
@@ -261,9 +266,6 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
         });
         menu_gv.add(m_gvTrangChu);
 
-        m_gvTroGiup.setText("Trợ Giúp");
-        menu_gv.add(m_gvTroGiup);
-
         setJMenuBar(menu_gv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -324,12 +326,11 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
                                 .addComponent(text_ngaykt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(text_ngaybd, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(text_lop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(191, 191, 191))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,6 +472,7 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
 
     private void bt_gui1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_gui1MouseClicked
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_bt_gui1MouseClicked
 
     /**
@@ -511,6 +513,7 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_gui1;
     private javax.swing.JButton bt_xem;
@@ -519,7 +522,6 @@ public class SVXinNghiChiTiet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu m_gvTrangChu;
-    private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenuBar menu_gv;
     private javax.swing.JRadioButton rb_co;
     private javax.swing.JRadioButton rb_khong;

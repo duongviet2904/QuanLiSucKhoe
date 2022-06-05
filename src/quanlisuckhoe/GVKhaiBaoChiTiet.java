@@ -4,6 +4,8 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -75,10 +77,12 @@ public class GVKhaiBaoChiTiet extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
-        m_gvTroGiup = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chi tiết phiếu khai báo y tế");
+        setBackground(new java.awt.Color(250, 250, 250));
         setFocusable(false);
+        setIconImage(getAnh());
 
         txtTenGV.setEditable(false);
         txtTenGV.setText(d.getTenGV());
@@ -199,9 +203,6 @@ public class GVKhaiBaoChiTiet extends javax.swing.JFrame {
         });
         menu_gv.add(m_gvTrangChu);
 
-        m_gvTroGiup.setText("Trợ Giúp");
-        menu_gv.add(m_gvTroGiup);
-
         setJMenuBar(menu_gv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,7 +218,7 @@ public class GVKhaiBaoChiTiet extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rb_14Khong, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rb_14Co, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(30, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -331,6 +332,11 @@ public class GVKhaiBaoChiTiet extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
+    public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
 
     /**
      * @param args the command line arguments
@@ -394,7 +400,6 @@ public class GVKhaiBaoChiTiet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu m_gvTrangChu;
-    private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenuBar menu_gv;
     private javax.swing.JRadioButton rb_14Co;
     private javax.swing.JRadioButton rb_14Co1;

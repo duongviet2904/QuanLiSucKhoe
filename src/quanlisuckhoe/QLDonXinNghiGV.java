@@ -4,6 +4,9 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import object.DocGhi;
 import object.DonKBYTSinhVien;
@@ -41,7 +45,8 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
     String ngayKB = df.format(date);
-    
+    int check = -1;
+    int dong = -1;
     private int x = -1;
     DocGhi rw = new DocGhi();
     
@@ -70,7 +75,12 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
             Logger.getLogger(QLDonXinNghiGV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
+
 //    public String getMaKhoa_byMaSV(String maSV){
 //        try {
 //            lstKBYT = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
@@ -116,7 +126,7 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
                     daDuyet.add(sv);
                 }
                 
-                if(dateNow.after(df.parse(sv.getNgayBatDau())) && dateNow.before(df.parse(sv.getNgayKetThuc())) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                if(!"Chờ".equals(sv.getTrangThai()) && dateNow.after(df.parse(sv.getNgayBatDau())) && dateNow.before(df.parse(sv.getNgayKetThuc())) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     lstDangNghi.add(sv);
                 }
                 
@@ -143,11 +153,13 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
         tblThongKe = new javax.swing.JScrollPane();
         tableThongKe = new javax.swing.JTable();
         btnChuaDuyet1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menu_gv = new javax.swing.JMenuBar();
+        m_gvTrangChu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản lý đơn xin nghỉ");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         btnNghi.setText("Đang nghỉ");
         btnNghi.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +193,11 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableThongKeMouseClicked(evt);
+            }
+        });
         tblThongKe.setViewportView(tableThongKe);
 
         btnChuaDuyet1.setText("Duyệt");
@@ -190,13 +207,15 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        m_gvTrangChu.setText("Trang Chủ");
+        m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTrangChuMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTrangChu);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu_gv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,16 +256,20 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
     private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
         // TODO add your handling code here:
         tableThongKe.setModel(new TableGVXN(lstDangNghi));
+        check = 3;
     }//GEN-LAST:event_btnNghiActionPerformed
 
     private void btnDaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaDuyetActionPerformed
         // TODO add your handling code here:
+        check = 1;
         tableThongKe.setModel(new TableGVXN(daDuyet));
     }//GEN-LAST:event_btnDaDuyetActionPerformed
 
     private void btnChuaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyetActionPerformed
         // TODO add your handling code here:
+        check = 2;
         tableThongKe.setModel(new TableGVXN(chuaDuyet));
+        
     }//GEN-LAST:event_btnChuaDuyetActionPerformed
 
     private void btnChuaDuyet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyet1ActionPerformed
@@ -276,6 +299,43 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnChuaDuyet1ActionPerformed
+
+    private void tableThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableThongKeMouseClicked
+        // TODO add your handling code here:
+        if(check == 1)
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiGV l = daDuyet.get(dong);
+                System.out.println(l.toString());
+                GVNghiChiTiet frame = new GVNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }else if(check == 2)
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiGV l = chuaDuyet.get(dong);
+                System.out.println(l.toString());
+                GVNghiChiTiet frame = new GVNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }else if(check == 3)
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiGV l = lstDangNghi.get(dong);
+                System.out.println(l.toString());
+                GVNghiChiTiet frame = new GVNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }
+    }//GEN-LAST:event_tableThongKeMouseClicked
+
+    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_m_gvTrangChuMouseClicked
     public void addThongBao(ThongBao s)
     {
         DocGhi rw = new DocGhi();
@@ -359,9 +419,8 @@ public class QLDonXinNghiGV extends javax.swing.JFrame {
     private javax.swing.JButton btnChuaDuyet1;
     private javax.swing.JButton btnDaDuyet;
     private javax.swing.JButton btnNghi;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu m_gvTrangChu;
+    private javax.swing.JMenuBar menu_gv;
     private javax.swing.JTable tableThongKe;
     private javax.swing.JScrollPane tblThongKe;
     // End of variables declaration//GEN-END:variables

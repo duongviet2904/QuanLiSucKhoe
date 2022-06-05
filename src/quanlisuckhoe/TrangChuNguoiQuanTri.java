@@ -5,6 +5,8 @@
 package quanlisuckhoe;
 
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,6 +81,9 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản trị viên");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         btnQLSKSV.setText("QLSK Sinh Viên");
         btnQLSKSV.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +92,7 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("DS Sinh Vien Xin nghi");
+        jButton3.setText("DS Sinh Viên Xin nghỉ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -108,9 +113,14 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Thống kê");
+        jButton6.setText("Thống Kê");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("DS Giao Vien xin nghi");
+        jButton5.setText("DS Giáo Viên Xin Nghỉ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -177,7 +187,7 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
                     .addComponent(btnQLSKGV, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +204,7 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -283,6 +293,16 @@ public class TrangChuNguoiQuanTri extends javax.swing.JFrame {
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
     }//GEN-LAST:event_m_gvThongBaoMouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
 
     /**
      * @param args the command line arguments

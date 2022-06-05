@@ -4,6 +4,8 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -76,7 +78,12 @@ public class QLSKGV extends javax.swing.JFrame {
             Logger.getLogger(QLSKGV.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
+
 //    public String getMaKhoa_byMaSV(String maSV){
 //        try {
 //            lstKBYT = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
@@ -169,11 +176,13 @@ public class QLSKGV extends javax.swing.JFrame {
         btnKhac3 = new javax.swing.JButton();
         btnKhac4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menu_gv = new javax.swing.JMenuBar();
+        m_gvTrangChu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản lý sức khỏe giáo viên");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         tableThongKe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -239,13 +248,15 @@ public class QLSKGV extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        m_gvTrangChu.setText("Trang Chủ");
+        m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTrangChuMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTrangChu);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu_gv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -340,6 +351,11 @@ public class QLSKGV extends javax.swing.JFrame {
         tableThongKe.setModel(new TableKBYTGV(lstKBYT));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_m_gvTrangChuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -399,9 +415,8 @@ public class QLSKGV extends javax.swing.JFrame {
     private javax.swing.JButton btnKhac4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu m_gvTrangChu;
+    private javax.swing.JMenuBar menu_gv;
     private javax.swing.JTable tableThongKe;
     private javax.swing.JScrollPane tblThongKe;
     // End of variables declaration//GEN-END:variables

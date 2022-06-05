@@ -4,6 +4,8 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.ArrayList;
 import object.LopHoc;
@@ -57,7 +59,12 @@ public class SVKhaiBaoChiTiet extends javax.swing.JFrame {
         bg4.add(rb_14Co4);
         bg4.add(rb_14Khong4);
     }
-    
+    public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,6 +110,9 @@ public class SVKhaiBaoChiTiet extends javax.swing.JFrame {
         m_gvTroGiup = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Chi tiết phiếu khai báo y tế");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Khai Báo Y Tế");

@@ -6,6 +6,8 @@ package quanlisuckhoe;
 
 
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -54,6 +56,7 @@ public class XemThongBao extends javax.swing.JFrame {
         initComponents();
         getThongBao();
         table_ls.setModel(new TableThongBao(tb));
+        table_ls.getColumnModel().getColumn(0).setPreferredWidth(7);
     }
     public XemThongBao(Object s, int vt) {
         this.s = s;
@@ -63,6 +66,7 @@ public class XemThongBao extends javax.swing.JFrame {
         convertObj();
         getThongBao();
         table_ls.setModel(new TableThongBao(tb));
+        table_ls.getColumnModel().getColumn(0).setPreferredWidth(7);
         
     }
     public XemThongBao(int vt) {
@@ -73,6 +77,8 @@ public class XemThongBao extends javax.swing.JFrame {
         convertObj();
         getThongBao();
         table_ls.setModel(new TableThongBao(tb));
+        table_ls.getColumnModel().getColumn(0).setPreferredWidth(7);
+        
         
     }
     public XemThongBao(Object s, int vt, LopHoc l, Khoa k) {
@@ -85,6 +91,7 @@ public class XemThongBao extends javax.swing.JFrame {
         convertObj();
         getThongBao();
         table_ls.setModel(new TableThongBao(tb));
+        table_ls.getColumnModel().getColumn(0).setPreferredWidth(7);
         
     }
     public int getVaitro() {
@@ -146,7 +153,11 @@ public class XemThongBao extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
         }
     }
-    
+    public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,16 +175,39 @@ public class XemThongBao extends javax.swing.JFrame {
         m_gvTrangChu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thông báo");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("Thông Báo");
 
+        table_ls.setAutoCreateRowSorter(true);
+        table_ls.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "", "", "", ""
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         table_ls.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table_lsMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(table_ls);
+        if (table_ls.getColumnModel().getColumnCount() > 0) {
+            table_ls.getColumnModel().getColumn(0).setMaxWidth(5);
+        }
 
         bt_chitiet.setText("Đóng");
         bt_chitiet.addActionListener(new java.awt.event.ActionListener() {

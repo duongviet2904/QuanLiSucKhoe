@@ -4,6 +4,9 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,10 +14,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import object.DocGhi;
 import object.DonKBYTGiaoVien;
 import object.DonKBYTSinhVien;
+import object.DonXinNghiGV;
 import object.DonXinNghiSV;
 import object.GiaoVien;
 import object.Khoa;
@@ -31,7 +36,7 @@ public class ThongKe extends javax.swing.JFrame {
     private GiaoVien gv;
     private LopHoc lh;
     private Khoa khoa;
-    
+    int dong = -1, check = -1;
     
     SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
@@ -91,7 +96,7 @@ public class ThongKe extends javax.swing.JFrame {
 //                if(dateNow.compareTo(df.parse(sv.getNgayBatDau())) > 0 && dateNow.compareTo(df.parse(sv.getNgayKetThuc())) < 0 && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
 //                    lstDangNghi.add(sv);
 //                }
-                if(sv.isHocOnl()== true && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
+                if(!"Chờ".equals(sv.getTrangThai()) && sv.isHocOnl()== true && sv.getLop().equalsIgnoreCase(lh.getTenLop()) && sv.getKhoa().equalsIgnoreCase(khoa.getTenKhoa())){
                     lstHocTT.add(sv);
                 }
                 
@@ -102,6 +107,12 @@ public class ThongKe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
         }
     }
+    public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,11 +129,13 @@ public class ThongKe extends javax.swing.JFrame {
         btnNghi = new javax.swing.JButton();
         btnChuaDuyet = new javax.swing.JButton();
         btnDaDuyet = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menu_gv = new javax.swing.JMenuBar();
+        m_gvTrangChu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thống kê");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         tableThongKe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,6 +148,11 @@ public class ThongKe extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableThongKeMouseClicked(evt);
+            }
+        });
         tblThongKe.setViewportView(tableThongKe);
 
         btnHocTT.setText("Có học trực tuyến");
@@ -172,13 +190,15 @@ public class ThongKe extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        m_gvTrangChu.setText("Trang Chủ");
+        m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_gvTrangChuMouseClicked(evt);
+            }
+        });
+        menu_gv.add(m_gvTrangChu);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu_gv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,8 +209,6 @@ public class ThongKe extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tblThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDuyet)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNghi)
                         .addGap(8, 8, 8)
                         .addComponent(btnHocTT)
@@ -198,7 +216,8 @@ public class ThongKe extends javax.swing.JFrame {
                         .addComponent(btnDaDuyet)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnChuaDuyet)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDuyet)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -222,21 +241,25 @@ public class ThongKe extends javax.swing.JFrame {
 
     private void btnDaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaDuyetActionPerformed
         // TODO add your handling code here:
+        check = 1;
         tableThongKe.setModel(new TableSVXN(daDuyet));
     }//GEN-LAST:event_btnDaDuyetActionPerformed
 
     private void btnChuaDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuaDuyetActionPerformed
         // TODO add your handling code here:
+        check = 2;
         tableThongKe.setModel(new TableSVXN(chuaDuyet));
     }//GEN-LAST:event_btnChuaDuyetActionPerformed
 
     private void btnNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNghiActionPerformed
         // TODO add your handling code here:
+        check = 3;
         tableThongKe.setModel(new TableSVXN(lstDangNghi));
     }//GEN-LAST:event_btnNghiActionPerformed
 
     private void btnDuyetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuyetActionPerformed
         // TODO add your handling code here:
+        check = 0;
         x = tableThongKe.getSelectedRow();
         if(x != -1){
             DonXinNghiSV tg = chuaDuyet.get(x);
@@ -276,8 +299,66 @@ public class ThongKe extends javax.swing.JFrame {
     }
     private void btnHocTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHocTTActionPerformed
         // TODO add your handling code here:
+        check = 4;
         tableThongKe.setModel(new TableSVXN(lstHocTT));
     }//GEN-LAST:event_btnHocTTActionPerformed
+
+    private void tableThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableThongKeMouseClicked
+        // TODO add your handling code here:
+        if(check == 1)
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiSV l = daDuyet.get(dong);
+                System.out.println(l.toString());
+                SVXinNghiChiTiet frame = new SVXinNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }else if(check == 2)
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiSV l = chuaDuyet.get(dong);
+                System.out.println(l.toString());
+                SVXinNghiChiTiet frame = new SVXinNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }else if(check == 3)
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiSV l = lstDangNghi.get(dong);
+                System.out.println(l.toString());
+                SVXinNghiChiTiet frame = new SVXinNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }
+        else if(check == 4)
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiSV l = lstHocTT.get(dong);
+                System.out.println(l.toString());
+                SVXinNghiChiTiet frame = new SVXinNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }
+        else
+        {
+            dong = tableThongKe.getSelectedRow();
+                DonXinNghiSV l = lst.get(dong);
+                System.out.println(l.toString());
+                SVXinNghiChiTiet frame = new SVXinNghiChiTiet(l);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                Container contentPane = frame.getContentPane();
+                frame.setVisible(true);
+        }
+    }//GEN-LAST:event_tableThongKeMouseClicked
+
+    private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_m_gvTrangChuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -320,9 +401,8 @@ public class ThongKe extends javax.swing.JFrame {
     private javax.swing.JButton btnDuyet;
     private javax.swing.JButton btnHocTT;
     private javax.swing.JButton btnNghi;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu m_gvTrangChu;
+    private javax.swing.JMenuBar menu_gv;
     private javax.swing.JTable tableThongKe;
     private javax.swing.JScrollPane tblThongKe;
     // End of variables declaration//GEN-END:variables

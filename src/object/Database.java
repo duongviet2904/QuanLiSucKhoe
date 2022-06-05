@@ -212,16 +212,16 @@ public class Database {
     public static void taoXinNghiGV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG03","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG04","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG05","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG06","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG07","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG08","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG09","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","abc"));
-        xinnghigv.add(new DonXinNghiGV("DG10","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","abc"));
+        xinnghigv.add(new DonXinNghiGV("DG01","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG02","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG03","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG04","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG05","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG06","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG07","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG08","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG09","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png"));
+        xinnghigv.add(new DonXinNghiGV("DG10","GV01", "Nguyễn Văn Mạnh", "CNTT", "12/05/2022","12/06/2022","13/06/2022", "abc","abc","haui.png"));
         
         
         
@@ -242,20 +242,20 @@ public class Database {
     public static void taoXinNghiSV() throws IOException
     {
         DocGhi rw = new DocGhi();
-        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS03","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS04","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS05","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","abc",true));
-        xinnghisv.add(new DonXinNghiSV("DS06","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","abc",true));
-        xinnghisv.add(new DonXinNghiSV("DS07","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","abc",true));
-        xinnghisv.add(new DonXinNghiSV("DS08","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS09","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS10","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS11","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS12","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS13","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","abc",false));
-        xinnghisv.add(new DonXinNghiSV("DS14","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","abc",false));
+        xinnghisv.add(new DonXinNghiSV("DS01","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS02","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS03","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS04","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS05","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png",true));
+        xinnghisv.add(new DonXinNghiSV("DS06","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","haui.png",true));
+        xinnghisv.add(new DonXinNghiSV("DS07","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png",true));
+        xinnghisv.add(new DonXinNghiSV("DS08","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS09","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS10","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS11","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS12","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS13","SV01", "Nguyễn Minh Anh","IT01", "CNTT", "19/05/2022","12/05/2022","13/05/2022", "abc","abc","haui.png",false));
+        xinnghisv.add(new DonXinNghiSV("DS14","SV02", "Nguyễn Văn Minh","IT02", "CNTT", "10/06/2022","12/06/2022","13/06/2022", "abc","abc","haui.png",false));
         
         
         
@@ -311,10 +311,7 @@ public class Database {
     public static void taoThongBao() throws IOException
     {
         DocGhi rw = new DocGhi();
-        thongbao.add(new ThongBao("1","SV01","GV01","Xin nghỉ", "12/06/2022"));
-        thongbao.add(new ThongBao("2","SV01","GV01","Xin nghỉ", "12/06/2022"));
-        thongbao.add(new ThongBao("3","GV02","SV01","Duyệt", "12/06/2022"));
-        thongbao.add(new ThongBao("4","GV02","SV01","Duyệt", "12/06/2022"));
+        
         
         rw.WriteObject("./src/data/ThongBao.txt", thongbao);
         try {
