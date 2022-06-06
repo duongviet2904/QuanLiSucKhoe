@@ -5,14 +5,29 @@
 package quanlisuckhoe;
 
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import object.DocGhi;
+import object.DonXinNghiSV;
 import object.Khoa;
 import object.LopHoc;
 import object.SinhVien;
+import object.ThongBao;
 
 /**
  *
@@ -23,16 +38,16 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     /**
      * Creates new form TrangChuSinhVien
      */
-    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
-    
+    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
+
     private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
-        
+
     private Khoa k = new Khoa("K01", "CNTT", "GV01");
-    
+
 //    private SinhVien sv;
 //    private LopHoc lh;
 //    private Khoa k;
-    
+    ArrayList<ThongBao> tb = new ArrayList<>();
 
     public SinhVien getSv() {
         return sv;
@@ -57,25 +72,70 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     public void setK(Khoa k) {
         this.k = k;
     }
-    
-    
-    public TrangChuSinhVien() {
+
+    public TrangChuSinhVien() throws IOException {
+
         initComponents();
+        getImage();
+        ChekThongBao();
     }
-    public TrangChuSinhVien(SinhVien s, LopHoc lh, Khoa kh) {
-        
-        this.sv =s;
+
+    public TrangChuSinhVien(SinhVien s, LopHoc lh, Khoa kh) throws IOException {
+
+        this.sv = s;
         this.lh = lh;
         this.k = kh;
+
         initComponents();
+        getImage();
+        ChekThongBao();
     }
-    public void loadData()
-    {
-        text_masv.setText(sv.getMaSV());
-        text_tensv.setText(sv.getTenSV());
-        text_lop.setText(lh.getTenLop());
-        text_khoa.setText(k.getTenKhoa());
+
+    public void getThongBao() {
+        DocGhi rw = new DocGhi();
+        try {
+
+            ArrayList<ThongBao> DSTB = (ArrayList<ThongBao>) rw.ReadObject("./src/data/ThongBao.txt");
+
+            for (ThongBao l : DSTB) {
+                if (l.getNguoiNhan().equals(sv.getMaSV())) {
+                    tb.add(l);
+                }
+            }
+
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println("K có tb nào/Lỗi file data");
+        }
     }
+
+    public void ChekThongBao() {
+        getThongBao();
+        int index = tb.size();
+        if (index == 0) {
+            text_ms.setText("Xin chào " + sv.getTenSV());
+        } else {
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = new Date();
+            String ngayGui = df.format(date);
+            if (ngayGui.equals(tb.get(index - 1).getThoiGian())) {
+                text_ms.setText("Xin chào " + sv.getTenSV() + " - Bạn có thông báo cho hôm nay!");
+            } else {
+                text_ms.setText("Xin chào " + sv.getTenSV());
+            }
+        }
+    }
+
+    public Image getAnh() {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
+
+    public void getImage() throws IOException {
+        Image image = ImageIO.read(new File("./src/images/" + sv.getAnhSV()));
+        Icon icon = new ImageIcon(image);
+        text_anh.setIcon(icon);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,8 +156,9 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         text_lop = new javax.swing.JLabel();
         bt_xinnghi = new javax.swing.JButton();
         bt_khaibao = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bt_lichsu = new javax.swing.JButton();
+        bt_thongbao = new javax.swing.JButton();
+        text_ms = new javax.swing.JLabel();
         menu_gv = new javax.swing.JMenuBar();
         m_svTrangChu = new javax.swing.JMenu();
         m_svKhaiBao = new javax.swing.JMenu();
@@ -108,26 +169,35 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         m_dangXuat = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sinh viên");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Mã sinh viên: ");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Khoa: ");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Tên sinh viên:");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Lớp:");
 
-        text_anh.setText("jLabel5");
-
+        text_masv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         text_masv.setText(sv.getMaSV());
 
+        text_tensv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         text_tensv.setText(sv.getTenSV());
 
+        text_khoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         text_khoa.setText(k.getTenKhoa());
 
-        text_lop.setText(k.getTenKhoa());
+        text_lop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        text_lop.setText(lh.getTenLop());
 
-        bt_xinnghi.setText("Đăng kí nghỉ phép");
+        bt_xinnghi.setText("Xin nghỉ");
         bt_xinnghi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_xinnghiActionPerformed(evt);
@@ -141,14 +211,22 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Lịch sử");
-
-        jButton5.setText("Hỗ trợ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+        bt_lichsu.setText("Lịch sử");
+        bt_lichsu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_lichsuMouseClicked(evt);
             }
         });
+
+        bt_thongbao.setText("Thông báo");
+        bt_thongbao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_thongbaoActionPerformed(evt);
+            }
+        });
+
+        text_ms.setForeground(new java.awt.Color(255, 51, 51));
+        text_ms.setFocusable(false);
 
         m_svTrangChu.setText("Trang Chủ");
         m_svTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -175,6 +253,11 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         menu_gv.add(m_svXinNghi);
 
         m_svThongBao.setText("Thông Báo");
+        m_svThongBao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                m_svThongBaoMouseClicked(evt);
+            }
+        });
         menu_gv.add(m_svThongBao);
 
         m_svLichSu.setText("Lịch sử");
@@ -213,18 +296,24 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(text_ms, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_lichsu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_thongbao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_xinnghi, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(85, 85, 85))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -239,55 +328,55 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(text_lop)
                                     .addComponent(text_khoa)
-                                    .addComponent(text_tensv)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_xinnghi, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                                    .addComponent(text_tensv))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addComponent(text_ms, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(text_masv))
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(text_tensv))
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(text_khoa))
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(text_lop)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(text_anh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(51, 51, 51)
+                    .addComponent(text_anh, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_xinnghi, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addComponent(bt_thongbao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_lichsu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void bt_thongbaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_thongbaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        XemLichSu frame = new XemLichSu(sv, 0);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_bt_thongbaoActionPerformed
 
     private void m_svTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svTrangChuMouseClicked
         // TODO add your handling code here:
@@ -296,7 +385,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void m_svKhaiBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svKhaiBaoMouseClicked
         // TODO add your handling code here:
-        SVKhaiBao frame = new SVKhaiBao(sv,lh,k);
+        SVKhaiBao frame = new SVKhaiBao(sv, lh, k);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -304,7 +393,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void m_svXinNghiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svXinNghiMouseClicked
         // TODO add your handling code here:
-        SVXinNghi frame = new SVXinNghi(sv,lh,k);
+        SVXinNghi frame = new SVXinNghi(sv, lh, k);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -312,7 +401,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void m_svLichSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svLichSuMouseClicked
         // TODO add your handling code here:
-        LichSu frame = new LichSu();
+        XemLichSu frame = new XemLichSu(sv, 0);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -328,7 +417,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void bt_khaibaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khaibaoActionPerformed
         // TODO add your handling code here:
-        SVKhaiBao frame = new SVKhaiBao(sv,lh,k);
+        SVKhaiBao frame = new SVKhaiBao(sv, lh, k);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -336,7 +425,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void bt_xinnghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_xinnghiActionPerformed
         // TODO add your handling code here:
-        SVXinNghi frame = new SVXinNghi(sv,lh,k);
+        SVXinNghi frame = new SVXinNghi(sv, lh, k);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Container contentPane = frame.getContentPane();
         frame.setVisible(true);
@@ -344,8 +433,8 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
 
     private void m_dangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_dangXuatActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_m_dangXuatActionPerformed
 
     private void m_dangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_dangXuatMouseClicked
@@ -361,6 +450,22 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
             Logger.getLogger(TrangChuSinhVien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_m_dangXuatMouseClicked
+
+    private void bt_lichsuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_lichsuMouseClicked
+        // TODO add your handling code here:
+        XemLichSu frame = new XemLichSu(sv, 0);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_bt_lichsuMouseClicked
+
+    private void m_svThongBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_svThongBaoMouseClicked
+        // TODO add your handling code here:
+        XemThongBao frame = new XemThongBao(sv, 0);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container contentPane = frame.getContentPane();
+        frame.setVisible(true);
+    }//GEN-LAST:event_m_svThongBaoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -392,16 +497,20 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangChuSinhVien().setVisible(true);
+                try {
+                    new TrangChuSinhVien().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(TrangChuSinhVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_khaibao;
+    private javax.swing.JButton bt_lichsu;
+    private javax.swing.JButton bt_thongbao;
     private javax.swing.JButton bt_xinnghi;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -418,6 +527,7 @@ public class TrangChuSinhVien extends javax.swing.JFrame {
     private javax.swing.JLabel text_khoa;
     private javax.swing.JLabel text_lop;
     private javax.swing.JLabel text_masv;
+    private javax.swing.JLabel text_ms;
     private javax.swing.JLabel text_tensv;
     // End of variables declaration//GEN-END:variables
 }

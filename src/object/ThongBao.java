@@ -4,37 +4,46 @@
  */
 package object;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ducth
  */
-public class ThongBao {
+public class ThongBao implements Serializable{
     private String stt;
-    private String taiKhoan;
-    private String noiDung;
-    private String thơiGian;
     private String nguoiGui;
-    private String maDon;
+    private String nguoiNhan;
+    private String noiDung;
+    private String thoiGian;
+    private Object chiTiet;
 
     public ThongBao() {
     }
 
-    public ThongBao(String stt, String taiKhoan, String noiDung, String thơiGian, String nguoiGui, String maDon) {
+    public ThongBao(String stt, String nguoiGui, String nguoiNhan, String noiDung, String thoiGian) {
         this.stt = stt;
-        this.taiKhoan = taiKhoan;
-        this.noiDung = noiDung;
-        this.thơiGian = thơiGian;
         this.nguoiGui = nguoiGui;
-        this.maDon = maDon;
+        this.nguoiNhan = nguoiNhan;
+        this.noiDung = noiDung;
+        this.thoiGian = thoiGian;
     }
 
-    public ThongBao(String stt, String taiKhoan, String noiDung, String thơiGian, String nguoiGui) {
-        this.stt = stt;
-        this.taiKhoan = taiKhoan;
-        this.noiDung = noiDung;
-        this.thơiGian = thơiGian;
+    
+
+    public ThongBao(String nguoiGui, String nguoiNhan, String noiDung, String thoiGian, Object chiTiet) {
         this.nguoiGui = nguoiGui;
+        this.nguoiNhan = nguoiNhan;
+        this.noiDung = noiDung;
+        this.thoiGian = thoiGian;
+        this.chiTiet = chiTiet;
     }
+
+
+    
 
     public String getStt() {
         return stt;
@@ -42,30 +51,6 @@ public class ThongBao {
 
     public void setStt(String stt) {
         this.stt = stt;
-    }
-
-    public String getTaiKhoan() {
-        return taiKhoan;
-    }
-
-    public void setTaiKhoan(String taiKhoan) {
-        this.taiKhoan = taiKhoan;
-    }
-
-    public String getNoiDung() {
-        return noiDung;
-    }
-
-    public void setNoiDung(String noiDung) {
-        this.noiDung = noiDung;
-    }
-
-    public String getThơiGian() {
-        return thơiGian;
-    }
-
-    public void setThơiGian(String thơiGian) {
-        this.thơiGian = thơiGian;
     }
 
     public String getNguoiGui() {
@@ -76,12 +61,45 @@ public class ThongBao {
         this.nguoiGui = nguoiGui;
     }
 
-    public String getMaDon() {
-        return maDon;
+    public String getNguoiNhan() {
+        return nguoiNhan;
     }
 
-    public void setMaDon(String maDon) {
-        this.maDon = maDon;
+    public void setNguoiNhan(String nguoiNhan) {
+        this.nguoiNhan = nguoiNhan;
     }
+
+    public String getNoiDung() {
+        return noiDung;
+    }
+
+    public void setNoiDung(String noiDung) {
+        this.noiDung = noiDung;
+    }
+
+    public String getThoiGian() {
+        return thoiGian;
+    }
+
+    public void setThoiGian(String thoiGian) {
+        this.thoiGian = thoiGian;
+    }
+
+    public Object getChiTiet() {
+        return chiTiet;
+    }
+
+    public void setChiTiet(Object chiTiet) {
+        this.chiTiet = chiTiet;
+    }
+
+    @Override
+    public String toString() {
+        return "ThongBao{" + "stt=" + stt + ", nguoiGui=" + nguoiGui + ", nguoiNhan=" + nguoiNhan + ", noiDung=" + noiDung + ", thoiGian=" + thoiGian + ", chiTiet=" + chiTiet +  '}';
+    }
+
+    
+
+
     
 }

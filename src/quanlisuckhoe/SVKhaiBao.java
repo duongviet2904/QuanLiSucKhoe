@@ -4,18 +4,24 @@
  */
 package quanlisuckhoe;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import object.LopHoc;
 import object.SinhVien;
 import object.Khoa;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import object.DocGhi;
 import object.DonKBYTSinhVien;
 import javax.swing.ButtonGroup;
+import object.LichSu;
+
 /**
  *
  * @author ducth
@@ -23,17 +29,20 @@ import javax.swing.ButtonGroup;
 public class SVKhaiBao extends javax.swing.JFrame {
 
     /**
-     * Creates new form SVKhaiBao
+     * Creates new form SVKhaiBao //
      */
-    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01", "TK05", "SV01", "123", 0);
-    
-    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
-        
-    private Khoa k = new Khoa("K01", "CNTT", "GV01");
+//    private SinhVien sv = new SinhVien("SV01", "Nguyễn Minh Anh", "Nữ", "012345678", "abc@gmail.com", "2001-01-16", "L01");
 //    
-//    private SinhVien sv;
-//    private LopHoc lh;
-//    private Khoa k;
+//    private LopHoc lh = new LopHoc("L01", "IT01", 4, 14, "K01", "GV01");
+//        
+//    private Khoa k = new Khoa("K01", "CNTT", "GV01");
+//    
+    private SinhVien sv;
+    private LopHoc lh;
+    private Khoa k;
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+    Date date = new Date();
+    String ngayGui = df.format(date);
 
     public SinhVien getSv() {
         return sv;
@@ -50,21 +59,22 @@ public class SVKhaiBao extends javax.swing.JFrame {
     public void setLh(LopHoc lh) {
         this.lh = lh;
     }
-    
+
     public SVKhaiBao() {
         initComponents();
         groupBT();
     }
+
     public SVKhaiBao(SinhVien s, LopHoc lh, Khoa kh) {
-        
-        this.sv =s;
+
+        this.sv = s;
         this.lh = lh;
         this.k = kh;
         initComponents();
         groupBT();
     }
-    public void groupBT()
-    {
+
+    public void groupBT() {
         ButtonGroup bg = new ButtonGroup();
         bg.add(rb_14Co);
         bg.add(rb_14Khong);
@@ -81,6 +91,26 @@ public class SVKhaiBao extends javax.swing.JFrame {
         bg4.add(rb_14Co4);
         bg4.add(rb_14Khong4);
     }
+
+    public void addLichSu(LichSu s) {
+        DocGhi rw = new DocGhi();
+        try {
+
+            ArrayList<LichSu> dsls = (ArrayList<LichSu>) rw.ReadObject("./src/data/LichSu.txt");
+            s.setStt(Integer.toString(dsls.size() + 1));
+            dsls.add(s);
+            rw.WriteObject("./src/data/LichSu.txt", dsls);
+
+        } catch (IOException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
+        }
+    }
+
+    public Image getAnh() {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,20 +153,17 @@ public class SVKhaiBao extends javax.swing.JFrame {
         bt_khaibao = new javax.swing.JButton();
         menu_gv = new javax.swing.JMenuBar();
         m_gvTrangChu = new javax.swing.JMenu();
-        m_gvTroGiup = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Khai báo y tế");
+        setBackground(new java.awt.Color(250, 250, 250));
+        setIconImage(getAnh());
 
         tieude.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tieude.setText("Khai Báo Y Tế");
 
         text_ngay.setEditable(false);
-        text_ngay.setText(java.time.LocalDate.now().toString());
-        text_ngay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_ngayActionPerformed(evt);
-            }
-        });
+        text_ngay.setText(ngayGui);
 
         tieude_masv.setText("Mã sinh viên");
 
@@ -146,53 +173,23 @@ public class SVKhaiBao extends javax.swing.JFrame {
 
         text_lop.setEditable(false);
         text_lop.setText(lh.getTenLop());
-        text_lop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_lopActionPerformed(evt);
-            }
-        });
 
         tieude_khoa.setText("Khoa");
 
         text_tensv.setEditable(false);
         text_tensv.setText(sv.getTenSV());
-        text_tensv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_tensvActionPerformed(evt);
-            }
-        });
 
         tieude_ngay.setText("Ngày gửi");
 
         text_msv.setEditable(false);
         text_msv.setText(sv.getMaSV());
-        text_msv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_msvActionPerformed(evt);
-            }
-        });
 
         text_khoa.setEditable(false);
         text_khoa.setText(k.getTenKhoa());
-        text_khoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                text_khoaActionPerformed(evt);
-            }
-        });
 
         rb_14Co.setText("Có");
-        rb_14Co.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14CoActionPerformed(evt);
-            }
-        });
 
         rb_14Khong.setText("Không");
-        rb_14Khong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14KhongActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Người từ nước có bệnh Covid-19");
 
@@ -201,39 +198,14 @@ public class SVKhaiBao extends javax.swing.JFrame {
         jLabel8.setText("Người bệnh hoặc nghi ngờ mắc bệnh đậu mùa khỉ");
 
         rb_14Khong1.setText("Không");
-        rb_14Khong1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong1ActionPerformed(evt);
-            }
-        });
 
         rb_14Co1.setText("Có");
-        rb_14Co1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co1ActionPerformed(evt);
-            }
-        });
 
         rb_14Co2.setText("Có");
-        rb_14Co2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co2ActionPerformed(evt);
-            }
-        });
 
         rb_14Khong2.setText("Không");
-        rb_14Khong2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong2ActionPerformed(evt);
-            }
-        });
 
         rb_14Co3.setText("Có");
-        rb_14Co3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co3ActionPerformed(evt);
-            }
-        });
 
         jPanel1.setRequestFocusEnabled(false);
         jPanel1.setVerifyInputWhenFocusTarget(false);
@@ -267,25 +239,10 @@ public class SVKhaiBao extends javax.swing.JFrame {
         jLabel5.setText("Người bệnh hoặc nghi ngờ mắc bệnh Covid-19");
 
         rb_14Khong3.setText("Không");
-        rb_14Khong3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong3ActionPerformed(evt);
-            }
-        });
 
         rb_14Co4.setText("Có");
-        rb_14Co4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Co4ActionPerformed(evt);
-            }
-        });
 
         rb_14Khong4.setText("Không");
-        rb_14Khong4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_14Khong4ActionPerformed(evt);
-            }
-        });
 
         bt_khaibao.setText("Khai Báo");
         bt_khaibao.addActionListener(new java.awt.event.ActionListener() {
@@ -301,9 +258,6 @@ public class SVKhaiBao extends javax.swing.JFrame {
             }
         });
         menu_gv.add(m_gvTrangChu);
-
-        m_gvTroGiup.setText("Trợ Giúp");
-        menu_gv.add(m_gvTroGiup);
 
         setJMenuBar(menu_gv);
 
@@ -322,63 +276,59 @@ public class SVKhaiBao extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(249, 249, 249)
-                                        .addComponent(tieude_ngay))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(tieude_masv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(5, 5, 5)
-                                        .addComponent(text_msv, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tieude_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(text_khoa)
-                                    .addComponent(text_ngay, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tieude_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(text_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(tieude_masv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(5, 5, 5)
+                                                .addComponent(text_msv, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(tieude_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(5, 5, 5)
+                                                .addComponent(text_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tieude_khoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tieude_khoa1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(tieude_ngay)))
                                 .addGap(18, 18, 18)
-                                .addComponent(tieude_khoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(text_khoa)
+                                        .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel8))
+                                        .addGap(44, 44, 44)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rb_14Co1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(rb_14Co2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(rb_14Co3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(rb_14Co4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rb_14Khong1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Khong2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Khong3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rb_14Khong4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(rb_14Khong, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rb_14Co, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(70, 70, 70)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rb_14Co1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rb_14Khong1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rb_14Co2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rb_14Khong2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(44, 44, 44)
-                                .addComponent(rb_14Co3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_14Khong3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(54, 54, 54)
-                                .addComponent(rb_14Co4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_14Khong4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(rb_14Co, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 23, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addComponent(bt_khaibao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,63 +336,75 @@ public class SVKhaiBao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tieude, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tieude_ngay)
-                    .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tieude_masv)
-                    .addComponent(text_msv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tieude_khoa)
-                            .addComponent(text_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(tieude_tensv))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(text_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tieude_khoa1)
-                            .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tieude_masv)
+                                    .addComponent(text_msv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(11, 11, 11)
+                                        .addComponent(tieude_tensv))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(text_tensv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(text_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tieude_ngay))
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(text_khoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tieude_khoa))
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(text_lop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tieude_khoa1))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rb_14Co)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rb_14Khong)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rb_14Co1)
-                    .addComponent(rb_14Khong1)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rb_14Co2)
-                    .addComponent(rb_14Khong2)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rb_14Co3)
-                    .addComponent(rb_14Khong3)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rb_14Co4)
-                    .addComponent(rb_14Khong4)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rb_14Co1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(rb_14Co2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rb_14Co3)
+                            .addGap(11, 11, 11)
+                            .addComponent(rb_14Co4))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(17, 17, 17)
+                            .addComponent(jLabel8)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(rb_14Khong1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb_14Khong2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_14Khong3)
+                        .addGap(11, 11, 11)
+                        .addComponent(rb_14Khong4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(bt_khaibao)
                 .addGap(33, 33, 33))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
@@ -450,74 +412,14 @@ public class SVKhaiBao extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_m_gvTrangChuMouseClicked
 
-    private void text_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_ngayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_ngayActionPerformed
-
-    private void text_lopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_lopActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_lopActionPerformed
-
-    private void text_tensvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_tensvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_tensvActionPerformed
-
-    private void text_msvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_msvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_msvActionPerformed
-
-    private void text_khoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_khoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_text_khoaActionPerformed
-
-    private void rb_14CoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14CoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14CoActionPerformed
-
-    private void rb_14KhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14KhongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14KhongActionPerformed
-
-    private void rb_14Khong1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong1ActionPerformed
-
-    private void rb_14Co1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co1ActionPerformed
-
-    private void rb_14Co2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co2ActionPerformed
-
-    private void rb_14Khong2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong2ActionPerformed
-
-    private void rb_14Co3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co3ActionPerformed
-
-    private void rb_14Khong3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong3ActionPerformed
-
-    private void rb_14Co4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Co4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Co4ActionPerformed
-
-    private void rb_14Khong4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_14Khong4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_14Khong4ActionPerformed
-
     private void bt_khaibaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_khaibaoActionPerformed
         // TODO add your handling code here:
         DocGhi rw = new DocGhi();
         int err = 0;
-        ArrayList<DonKBYTSinhVien> kb;
+        ArrayList<DonKBYTSinhVien> kb = new ArrayList<>();
         try {
             kb = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
-                 
+
         } catch (IOException | ClassNotFoundException ex) {
             kb = new ArrayList<>();
         }
@@ -527,89 +429,69 @@ public class SVKhaiBao extends javax.swing.JFrame {
         d.setKhoa(k.getTenKhoa());
         d.setLop(lh.getTenLop());
         d.setNgayKhaiBao(text_ngay.getText());
-        if(rb_14Co.isSelected())
-        {
+        if (rb_14Co.isSelected()) {
             d.setCoTrieuChung(true);
-            
-        }else if(rb_14Khong.isSelected())
-        {
+
+        } else if (rb_14Khong.isSelected()) {
             d.setCoTrieuChung(false);
-        }
-        else
-        {
+        } else {
             err = 1;
         }
-        if(rb_14Co1.isSelected())
-        {
+        if (rb_14Co1.isSelected()) {
             d.setTiepXucNguoiBenh(true);
-            
-        }else if(rb_14Khong1.isSelected())
-        {
+
+        } else if (rb_14Khong1.isSelected()) {
             d.setTiepXucNguoiBenh(false);
-        }
-        else
-        {
+        } else {
             err = 1;
         }
-        if(rb_14Co2.isSelected())
-        {
+        if (rb_14Co2.isSelected()) {
             d.setTiepXucNguoiTuNuocCoBenh(true);
-            
-        }else if(rb_14Khong2.isSelected())
-        {
+
+        } else if (rb_14Khong2.isSelected()) {
             d.setTiepXucNguoiTuNuocCoBenh(false);
-        }
-        else
-        {
+        } else {
             err = 1;
         }
-        if(rb_14Co3.isSelected())
-        {
+        if (rb_14Co3.isSelected()) {
             d.setTiepXucNguoiBenhCoBieuHien(true);
-            
-        }else if(rb_14Khong3.isSelected())
-        {
+
+        } else if (rb_14Khong3.isSelected()) {
             d.setTiepXucNguoiBenhCoBieuHien(false);
-        }
-        else
-        {
+        } else {
             err = 1;
         }
-        if(rb_14Co4.isSelected())
-        {
+        if (rb_14Co4.isSelected()) {
             d.setTiepXucNguoiBenhDauMua(true);
-            
-        }else if(rb_14Khong4.isSelected())
-        {
+
+        } else if (rb_14Khong4.isSelected()) {
             d.setTiepXucNguoiBenhDauMua(false);
-        }
-        else
-        {
+        } else {
             err = 1;
         }
-        if(err == 1)
+        if (err == 1)
             JOptionPane.showMessageDialog(null, "Bạn cần chọn Có hoặc Không");
-        else
-        {
+        else {
             kb.add(d);
-        try {
-            rw.WriteObject("./src/data/KBYTSV.txt", kb);
-        } catch (IOException ex) {
-            Logger.getLogger(SVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            
-            ArrayList<DonKBYTSinhVien> khoa1 = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("src\\data\\KBYTSV.txt");
-            for(DonKBYTSinhVien gv : khoa1)
-            {
-                System.out.println(gv.toString());
-                
+            LichSu s = new LichSu(d.getMaSV(), "Khai báo y tế", d.getNgayKhaiBao(), d);
+            addLichSu(s);
+            try {
+                rw.WriteObject("./src/data/KBYTSV.txt", kb);
+            } catch (IOException ex) {
+                Logger.getLogger(SVKhaiBao.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        } catch (IOException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Danh sach hien tai rong");
-        }
-        dispose();
+            try {
+
+                ArrayList<DonKBYTSinhVien> khoa1 = (ArrayList<DonKBYTSinhVien>) rw.ReadObject("./src/data/KBYTSV.txt");
+                for (DonKBYTSinhVien gv : khoa1) {
+                    System.out.println(gv.toString());
+
+                }
+
+            } catch (IOException | ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Có lỗi xảy ra, liên hệ quản trị viên");
+            }
+            dispose();
         }
     }//GEN-LAST:event_bt_khaibaoActionPerformed
 
@@ -660,7 +542,6 @@ public class SVKhaiBao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu m_gvTrangChu;
-    private javax.swing.JMenu m_gvTroGiup;
     private javax.swing.JMenuBar menu_gv;
     private javax.swing.JRadioButton rb_14Co;
     private javax.swing.JRadioButton rb_14Co1;

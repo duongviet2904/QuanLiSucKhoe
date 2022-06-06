@@ -23,9 +23,6 @@ public class DonKBYTSinhVien implements Serializable{
     private boolean tiepXucNguoiBenhCoBieuHien;
     private boolean tiepXucNguoiBenhDauMua;
 
-    public DonKBYTSinhVien() {
-    }
-    
     public DonKBYTSinhVien(String maSV, String tenSV, String lop, String khoa, String ngayKhaiBao, boolean coTrieuChung, boolean tiepXucNguoiBenh, boolean tiepXucNguoiTuNuocCoBenh, boolean tiepXucNguoiBenhCoBieuHien, boolean tiepXucNguoiBenhDauMua) {
         this.maSV = maSV;
         this.tenSV = tenSV;
@@ -37,6 +34,9 @@ public class DonKBYTSinhVien implements Serializable{
         this.tiepXucNguoiTuNuocCoBenh = tiepXucNguoiTuNuocCoBenh;
         this.tiepXucNguoiBenhCoBieuHien = tiepXucNguoiBenhCoBieuHien;
         this.tiepXucNguoiBenhDauMua = tiepXucNguoiBenhDauMua;
+    }
+
+    public DonKBYTSinhVien() {
     }
 
     public String getMaSV() {

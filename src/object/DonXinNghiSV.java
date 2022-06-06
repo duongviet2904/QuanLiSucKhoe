@@ -23,13 +23,12 @@ public class DonXinNghiSV implements Serializable{
     private String chiTiet;
     private String taiLieuLienQuan;
     private boolean hocOnl;
-    private boolean trangThai;
+    private String trangThai;
 
     public DonXinNghiSV() {
-        this.trangThai = false;
     }
 
-    public DonXinNghiSV(String maDon, String maSV, String tenSV, String lop, String khoa, String ngayGui, String ngayBatDau, String ngayKetThuc, String lyDo, String chiTiet, String taiLieuLienQuan, boolean hocOnl,boolean trangThai) {
+    public DonXinNghiSV(String maDon, String maSV, String tenSV, String lop, String khoa, String ngayGui, String ngayBatDau, String ngayKetThuc, String lyDo, String chiTiet, String taiLieuLienQuan, boolean hocOnl) {
         this.maDon = maDon;
         this.maSV = maSV;
         this.tenSV = tenSV;
@@ -41,7 +40,7 @@ public class DonXinNghiSV implements Serializable{
         this.lyDo = lyDo;
         this.chiTiet = chiTiet;
         this.taiLieuLienQuan = taiLieuLienQuan;
-        this.trangThai = trangThai;
+        this.trangThai = "Chờ";
         this.hocOnl = hocOnl;
     }
 
@@ -53,13 +52,15 @@ public class DonXinNghiSV implements Serializable{
         this.hocOnl = hocOnl;
     }
 
-    public boolean isTrangThai() {
+    public String getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(boolean trangThai) {
+    public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
+
+    
 
     public String getNgayGui() {
         return ngayGui;
@@ -126,7 +127,7 @@ public class DonXinNghiSV implements Serializable{
     public void setNgayKetThuc(String ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
-
+    
     public String getLyDo() {
         return lyDo;
     }
@@ -155,6 +156,8 @@ public class DonXinNghiSV implements Serializable{
     public String toString() {
         return "DonXinNghiSV{" + "maDon=" + maDon + ", maSV=" + maSV + ", tenSV=" + tenSV + ", lop=" + lop + ", khoa=" + khoa + ", ngayGui=" + ngayGui + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", lyDo=" + lyDo + ", chiTiet=" + chiTiet + ", taiLieuLienQuan=" + taiLieuLienQuan + ", hocOnl=" + hocOnl + ", trangThai=" + trangThai + '}';
     }
+
+    
     
     
 }

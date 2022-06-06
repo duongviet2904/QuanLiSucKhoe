@@ -12,21 +12,23 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="m_gvTrangChuMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="m_gvTroGiup">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tr&#x1ee3; Gi&#xfa;p"/>
-          </Properties>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Xin ngh&#x1ec9;"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="fa" green="fa" red="fa" type="rgb"/>
+    </Property>
+    <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection code="getAnh()" type="code"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menu_gv"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -49,44 +51,45 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace pref="92" max="-2" attributes="0"/>
-                                                  <Component id="cb_lydo" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="tieude_ngay4" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="cb_lydo" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                      <Component id="tieude_ngay2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="tieude_ngay5" min="-2" pref="89" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="tieude_ngay3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <Component id="tieude_ngay4" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="tieude_ngay5" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
+                                          <Component id="tieude" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tieude_ngay3" alignment="1" min="-2" pref="89" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="tieude_ngay2" max="-2" attributes="0"/>
-                                              <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="txtNgayBD" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                                          <Component id="txtNgayKT" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="tieude" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+                                      <Component id="tieude_ngay" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtNgayGui" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                                          <Component id="txtKhoa" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="text_ngaybd" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <Component id="text_ngaykt" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="10" pref="309" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="text_ngay" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <Component id="text_khoa" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -100,15 +103,12 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="text_mgv" alignment="0" max="32767" attributes="0"/>
-                              <Component id="text_mgv1" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                              <Component id="txtTenGV" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMaGV" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="tieude_khoa" alignment="0" max="-2" attributes="0"/>
-                              <Component id="tieude_ngay" alignment="0" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="214" max="32767" attributes="0"/>
+                          <Component id="tieude_khoa" max="-2" attributes="0"/>
+                          <EmptySpace pref="236" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -137,45 +137,39 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="text_mgv1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="text_ngay" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMaGV" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNgayGui" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tieude_ngay" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="tieude_magv" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="tieude_tengv" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="text_mgv" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="text_khoa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTenGV" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtKhoa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tieude_khoa" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Component id="tieude_ngay" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-                      <Component id="tieude_khoa" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="text_ngaybd" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tieude_ngay5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="text_ngaykt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNgayBD" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tieude_ngay2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tieude_ngay4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cb_lydo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtNgayKT" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="tieude_ngay2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="tieude_ngay3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tieude_ngay3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tieude_ngay5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="111" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -183,7 +177,7 @@
                   <Component id="bt_file" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="file_name" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Component id="bt_gui" min="-2" pref="27" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -201,7 +195,6 @@
         <Property name="text" type="java.lang.String" value="G&#x1eed;i"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_guiMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_guiActionPerformed"/>
       </Events>
     </Component>
@@ -220,7 +213,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="file_name">
       <Properties>
-        <Property name="text" type="java.lang.String" value="No file selected"/>
+        <Property name="text" type="java.lang.String" value="B&#x1ea1;n ch&#x1b0;a ch&#x1ecd;n file"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_magv">
@@ -228,14 +221,11 @@
         <Property name="text" type="java.lang.String" value="M&#xe3; gi&#xe1;o vi&#xea;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="text_ngaybd">
+    <Component class="javax.swing.JTextField" name="txtNgayBD">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="dd/mm/yyyy"/>
         <Property name="autoscrolls" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_ngaybdActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude_tengv">
       <Properties>
@@ -252,14 +242,11 @@
         <Property name="text" type="java.lang.String" value="Khoa"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="text_ngaykt">
+    <Component class="javax.swing.JTextField" name="txtNgayKT">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="dd/mm/yyyy"/>
         <Property name="autoscrolls" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_ngayktActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="tieude">
       <Properties>
@@ -278,13 +265,13 @@
         <Property name="text" type="java.lang.String" value="L&#xfd; do xin ngh&#x1ec9;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="text_mgv">
+    <Component class="javax.swing.JTextField" name="txtTenGV">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="gv.getTenGV()" type="code"/>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_mgvActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cb_lydo">
       <Properties>
@@ -297,9 +284,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_lydoActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -314,13 +298,13 @@
         <Property name="text" type="java.lang.String" value="M&#xf4; t&#x1ea3; chi ti&#x1ebf;t:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="text_mgv1">
+    <Component class="javax.swing.JTextField" name="txtMaGV">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="gv.getMaGV()" type="code"/>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_mgv1ActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -329,7 +313,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="txtChiTiet">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -337,22 +321,22 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="text_khoa">
+    <Component class="javax.swing.JTextField" name="txtKhoa">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="khoa.getTenKhoa()" type="code"/>
+        </Property>
         <Property name="autoscrolls" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_khoaActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="text_ngay">
+    <Component class="javax.swing.JTextField" name="txtNgayGui">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="ngayGui" type="code"/>
+        </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="text_ngayActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

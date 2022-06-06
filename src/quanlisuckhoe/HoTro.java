@@ -5,6 +5,8 @@
 package quanlisuckhoe;
 
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -56,8 +58,10 @@ public class HoTro extends javax.swing.JFrame {
         m_gvTrangChu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hỗ trợ");
+        setIconImage(getAnh());
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel2.setText("Thông tin hỗ trợ sức khoẻ sinh viên");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -74,14 +78,16 @@ public class HoTro extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel3)))
                 .addGap(296, 296, 296))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -94,9 +100,9 @@ public class HoTro extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(68, 68, 68))
         );
@@ -105,6 +111,8 @@ public class HoTro extends javax.swing.JFrame {
 
         jLabel12.setText("Phòng y tế Trường ĐHCN Hà Nội");
 
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/m76409.jpeg"))); // NOI18N
+
         jLabel14.setText("Số 298 Đ. Cầu Diễn, Minh Khai, Bắc Từ Liêm, Hà Nội");
 
         javax.swing.GroupLayout Address3Layout = new javax.swing.GroupLayout(Address3);
@@ -112,21 +120,24 @@ public class HoTro extends javax.swing.JFrame {
         Address3Layout.setHorizontalGroup(
             Address3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Address3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(Address3Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel12))
-            .addGroup(Address3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel14))
+                .addGroup(Address3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Address3Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel12))
+                    .addGroup(Address3Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel14))
+                    .addGroup(Address3Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         Address3Layout.setVerticalGroup(
             Address3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Address3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addGap(6, 6, 6)
                 .addComponent(jLabel14))
@@ -136,7 +147,7 @@ public class HoTro extends javax.swing.JFrame {
 
         jLabel9.setText("Viện Huyết học - Truyền máu Trung ương");
 
-        jLabel10.setText("jLabel7");
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/huyethoc.jpeg"))); // NOI18N
 
         jLabel11.setText("Số 2, P. Phạm Văn Bạch, P, Cầu Giấy, Hà Nội");
 
@@ -145,21 +156,24 @@ public class HoTro extends javax.swing.JFrame {
         Address1Layout.setHorizontalGroup(
             Address1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Address1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGroup(Address1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Address1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel9))
+                    .addGroup(Address1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel11)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Address1Layout.createSequentialGroup()
+                .addGap(0, 24, Short.MAX_VALUE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(Address1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel9))
-            .addGroup(Address1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel11))
         );
         Address1Layout.setVerticalGroup(
             Address1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Address1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel11))
@@ -167,7 +181,7 @@ public class HoTro extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel18.setText("Hotline: 911");
+        jLabel18.setText("Hotline: 115");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -189,6 +203,8 @@ public class HoTro extends javax.swing.JFrame {
         Address4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel15.setText("Bệnh Viện Đa Khoa Y Học Cổ Truyền Hà Nội");
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cotruyen.jpeg"))); // NOI18N
 
         jLabel17.setText("Số 8 Phạm Hùng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội");
 
@@ -219,6 +235,8 @@ public class HoTro extends javax.swing.JFrame {
 
         Address2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minhkhai.jpeg"))); // NOI18N
+
         jLabel8.setText("Số 68 Đ. Ngoạ Long, Minh Khai, Bắc Từ Liêm, Hà Nội");
 
         jLabel6.setText("Trạm y tế phường Minh Khai");
@@ -228,26 +246,32 @@ public class HoTro extends javax.swing.JFrame {
         Address2Layout.setHorizontalGroup(
             Address2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Address2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(Address2Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jLabel6))
-            .addGroup(Address2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel8))
+                .addGroup(Address2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Address2Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel6))
+                    .addGroup(Address2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel8))
+                    .addGroup(Address2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         Address2Layout.setVerticalGroup(
             Address2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Address2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jLabel8))
         );
 
+        menu_gv.setBackground(new java.awt.Color(250, 250, 250));
+
+        m_gvTrangChu.setBackground(new java.awt.Color(250, 250, 250));
         m_gvTrangChu.setText("Trang Chủ");
         m_gvTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -272,21 +296,18 @@ public class HoTro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(Address4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(37, 37, 37)
                 .addComponent(Address1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Address3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Address2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(Address3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Address2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -297,6 +318,7 @@ public class HoTro extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_gvTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_m_gvTrangChuMouseClicked
@@ -337,6 +359,11 @@ public class HoTro extends javax.swing.JFrame {
                 new HoTro().setVisible(true);
             }
         });
+    }
+public Image getAnh()
+    {
+        Image icon = Toolkit.getDefaultToolkit().getImage("./src/images/logo.png");
+        return icon;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

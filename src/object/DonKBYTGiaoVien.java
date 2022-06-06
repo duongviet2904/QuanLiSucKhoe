@@ -22,6 +22,9 @@ public class DonKBYTGiaoVien implements Serializable{
     private boolean tiepXucNguoiBenhCoBieuHien;
     private boolean tiepXucNguoiBenhDauMua;
 
+    public DonKBYTGiaoVien() {
+    }
+
     public DonKBYTGiaoVien(String maGV, String tenGV, String khoa, String ngayKhaiBao, boolean coTrieuChung, boolean tiepXucNguoiBenh, boolean tiepXucNguoiTuNuocCoBenh, boolean tiepXucNguoiBenhCoBieuHien, boolean tiepXucNguoiBenhDauMua) {
         this.maGV = maGV;
         this.tenGV = tenGV;
@@ -104,6 +107,11 @@ public class DonKBYTGiaoVien implements Serializable{
 
     public void setTiepXucNguoiBenhDauMua(boolean tiepXucNguoiBenhDauMua) {
         this.tiepXucNguoiBenhDauMua = tiepXucNguoiBenhDauMua;
+    }
+
+    @Override
+    public String toString() {
+        return "DonKBYTGiaoVien{" + "maGV=" + maGV + ", tenGV=" + tenGV + ", khoa=" + khoa + ", ngayKhaiBao=" + ngayKhaiBao + ", coTrieuChung=" + coTrieuChung + ", tiepXucNguoiBenh=" + tiepXucNguoiBenh + ", tiepXucNguoiTuNuocCoBenh=" + tiepXucNguoiTuNuocCoBenh + ", tiepXucNguoiBenhCoBieuHien=" + tiepXucNguoiBenhCoBieuHien + ", tiepXucNguoiBenhDauMua=" + tiepXucNguoiBenhDauMua + '}';
     }
 
     
